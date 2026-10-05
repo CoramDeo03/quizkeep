@@ -22,6 +22,18 @@ npm run preview
 
 별도 서버 API, 계정, GPT 키가 필요하지 않습니다. 글꼴은 로컬 빌드에 포함됩니다. `dist`는 정적 웹 서버에 올릴 수 있으며 HTML 파일을 직접 여는 file:// 실행은 지원하지 않습니다.
 
+## 온라인 배포
+
+**플레이 주소: https://coramdeo03.github.io/quizkeep/**
+
+GitHub Pages(무료)로 배포됩니다. `main` 브랜치에 push하면 `.github/workflows/deploy.yml`이 테스트 → 빌드 → 배포를 자동으로 합니다(1분 정도). 문제 JSON만 바꿔도 push하면 반영됩니다. 진행 상황은 저장소의 **Actions** 탭에서 볼 수 있습니다.
+
+```sh
+git add -A
+git commit -m "문제 업데이트"
+git push
+```
+
 ## 플레이
 
 1. 시작 화면의 **출제 범위**에서 `전체` / `Chapter 1` / `Chapter 2`를 고릅니다. 챕터 하나만 고르면 그 챕터 문제만 나오고, **전체(모든 챕터)**를 고르면 기존 180문제 문제집을 사용합니다. 선택은 브라우저에 저장됩니다.
