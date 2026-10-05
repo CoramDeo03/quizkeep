@@ -1,0 +1,3862 @@
+{
+  "version": 1,
+  "title": "Computer Networks Midterm Practice Bank",
+  "coverage": [
+    "Chapter 1, excluding Internet history",
+    "Chapter 2 Part 1",
+    "Chapter 2 Part 2 through DNS only, up to page 17"
+  ],
+  "questions": [
+    {
+      "id": "TF01",
+      "type": "true_false",
+      "prompt": "The Internet can be viewed as a network of interconnected networks.",
+      "explanation": "The lecture describes the Internet as a 'network of networks' built from interconnected ISPs.",
+      "topic": "Network fundamentals",
+      "answer": true
+    },
+    {
+      "id": "TF02",
+      "type": "true_false",
+      "prompt": "A protocol defines only the format of messages, not their order or the actions taken when messages are sent or received.",
+      "explanation": "A protocol defines the format and order of messages and the actions taken on message transmission or receipt.",
+      "topic": "Network fundamentals",
+      "answer": false
+    },
+    {
+      "id": "TF03",
+      "type": "true_false",
+      "prompt": "Hosts and end systems are located at the network edge.",
+      "explanation": "Hosts, including clients and servers, are end systems at the Internet edge.",
+      "topic": "Network fundamentals",
+      "answer": true
+    },
+    {
+      "id": "TF04",
+      "type": "true_false",
+      "prompt": "Packet switches include routers and switches.",
+      "explanation": "The lecture lists routers and switches as packet switches that forward packets.",
+      "topic": "Network fundamentals",
+      "answer": true
+    },
+    {
+      "id": "TF05",
+      "type": "true_false",
+      "prompt": "In DSL access, the line from a home to the central office is shared by all neighboring homes.",
+      "explanation": "DSL uses the existing telephone line as a dedicated line from the home to the central office DSLAM.",
+      "topic": "Application layer",
+      "answer": false
+    },
+    {
+      "id": "TF06",
+      "type": "true_false",
+      "prompt": "Cable-based access commonly uses a shared access network among homes connected to the same cable headend.",
+      "explanation": "The cable distribution network is shared among homes.",
+      "topic": "Network fundamentals",
+      "answer": true
+    },
+    {
+      "id": "TF07",
+      "type": "true_false",
+      "prompt": "Frequency Division Multiplexing assigns different users periodic time slots on the same frequency band.",
+      "explanation": "That describes TDM. FDM divides the available spectrum into different frequency bands.",
+      "topic": "Application layer",
+      "answer": false
+    },
+    {
+      "id": "TF08",
+      "type": "true_false",
+      "prompt": "Time Division Multiplexing divides time into slots and assigns periodic slots to calls.",
+      "explanation": "TDM allocates periodic time slots to each call.",
+      "topic": "Application layer",
+      "answer": true
+    },
+    {
+      "id": "TF09",
+      "type": "true_false",
+      "prompt": "In store-and-forward packet switching, a router can begin forwarding a packet before receiving the entire packet.",
+      "explanation": "With store-and-forward, the entire packet must arrive before it is transmitted on the next link.",
+      "topic": "Network fundamentals",
+      "answer": false
+    },
+    {
+      "id": "TF10",
+      "type": "true_false",
+      "prompt": "Transmission delay depends on packet length and link transmission rate.",
+      "explanation": "Transmission delay is L/R.",
+      "topic": "Delay & throughput",
+      "answer": true
+    },
+    {
+      "id": "TF11",
+      "type": "true_false",
+      "prompt": "Propagation delay depends on packet length.",
+      "explanation": "Propagation delay depends on physical distance and propagation speed, d/s, not packet length.",
+      "topic": "Delay & throughput",
+      "answer": false
+    },
+    {
+      "id": "TF12",
+      "type": "true_false",
+      "prompt": "Queueing delay generally increases as traffic intensity approaches 1.",
+      "explanation": "The lecture shows average queueing delay becoming large as La/R approaches 1.",
+      "topic": "Delay & throughput",
+      "answer": true
+    },
+    {
+      "id": "TF13",
+      "type": "true_false",
+      "prompt": "A packet arriving at a full finite buffer may be dropped.",
+      "explanation": "Packet loss occurs when an arriving packet finds no free buffer space.",
+      "topic": "Application layer",
+      "answer": true
+    },
+    {
+      "id": "TF14",
+      "type": "true_false",
+      "prompt": "End-to-end throughput is limited by the fastest link on the path.",
+      "explanation": "End-to-end throughput is constrained by the bottleneck link, the slowest limiting rate.",
+      "topic": "Delay & throughput",
+      "answer": false
+    },
+    {
+      "id": "TF15",
+      "type": "true_false",
+      "prompt": "Forwarding is a local router action, while routing determines source-to-destination paths globally.",
+      "explanation": "Forwarding moves a packet to an output link locally; routing computes paths across the network.",
+      "topic": "Network fundamentals",
+      "answer": true
+    },
+    {
+      "id": "TF16",
+      "type": "true_false",
+      "prompt": "Circuit switching reserves end-to-end resources for a call.",
+      "explanation": "Circuit switching allocates dedicated resources along the path.",
+      "topic": "Network fundamentals",
+      "answer": true
+    },
+    {
+      "id": "TF17",
+      "type": "true_false",
+      "prompt": "Packet switching is especially suitable for bursty data because resources can be shared on demand.",
+      "explanation": "The lecture highlights resource sharing and no call setup as advantages for bursty traffic.",
+      "topic": "Network fundamentals",
+      "answer": true
+    },
+    {
+      "id": "TF18",
+      "type": "true_false",
+      "prompt": "The Internet protocol stack contains application, transport, network, link, and physical layers.",
+      "explanation": "These are the five layers shown in the Internet protocol stack.",
+      "topic": "Transport",
+      "answer": true
+    },
+    {
+      "id": "TF19",
+      "type": "true_false",
+      "prompt": "The transport-layer PDU is called a frame.",
+      "explanation": "The transport-layer PDU is a segment; a frame is the link-layer PDU.",
+      "topic": "Transport",
+      "answer": false
+    },
+    {
+      "id": "TF20",
+      "type": "true_false",
+      "prompt": "IP spoofing means injecting a packet with a false source address.",
+      "explanation": "That is the definition given in the security section.",
+      "topic": "Application layer",
+      "answer": true
+    },
+    {
+      "id": "TF21",
+      "type": "true_false",
+      "prompt": "Network applications must run on routers in the network core to communicate over the Internet.",
+      "explanation": "Network applications run on end systems; network-core devices do not run user applications.",
+      "topic": "Network fundamentals",
+      "answer": false
+    },
+    {
+      "id": "TF22",
+      "type": "true_false",
+      "prompt": "In the client-server paradigm, clients normally communicate directly with each other.",
+      "explanation": "Clients contact the server and do not directly communicate with each other in the client-server model.",
+      "topic": "Application layer",
+      "answer": false
+    },
+    {
+      "id": "TF23",
+      "type": "true_false",
+      "prompt": "A process is a program running within a host.",
+      "explanation": "That is the lecture definition of a process.",
+      "topic": "Application layer",
+      "answer": true
+    },
+    {
+      "id": "TF24",
+      "type": "true_false",
+      "prompt": "Processes on different hosts communicate by exchanging messages.",
+      "explanation": "Inter-host process communication occurs through message exchange.",
+      "topic": "Application layer",
+      "answer": true
+    },
+    {
+      "id": "TF25",
+      "type": "true_false",
+      "prompt": "A socket can be viewed as the door through which a process sends and receives messages.",
+      "explanation": "The lecture explicitly uses the door analogy for sockets.",
+      "topic": "Application layer",
+      "answer": true
+    },
+    {
+      "id": "TF26",
+      "type": "true_false",
+      "prompt": "An IP address alone is always sufficient to identify a receiving process on a host.",
+      "explanation": "A process identifier needs both an IP address and a port number because many processes can run on one host.",
+      "topic": "Application layer",
+      "answer": false
+    },
+    {
+      "id": "TF27",
+      "type": "true_false",
+      "prompt": "TCP provides reliable transport, flow control, and congestion control.",
+      "explanation": "These services are listed for TCP.",
+      "topic": "Transport",
+      "answer": true
+    },
+    {
+      "id": "TF28",
+      "type": "true_false",
+      "prompt": "TCP guarantees a minimum throughput and a maximum delay.",
+      "explanation": "The lecture states that TCP does not provide timing or minimum throughput guarantees.",
+      "topic": "Transport",
+      "answer": false
+    },
+    {
+      "id": "TF29",
+      "type": "true_false",
+      "prompt": "UDP provides connection setup before data transfer.",
+      "explanation": "UDP has no connection setup.",
+      "topic": "Transport",
+      "answer": false
+    },
+    {
+      "id": "TF30",
+      "type": "true_false",
+      "prompt": "HTTP is an application-layer protocol that uses a client/server model.",
+      "explanation": "Browsers act as HTTP clients and web servers respond to their requests.",
+      "topic": "HTTP",
+      "answer": true
+    },
+    {
+      "id": "TF31",
+      "type": "true_false",
+      "prompt": "HTTP is stateful because the server automatically remembers all past requests from a client.",
+      "explanation": "HTTP is stateless; the server maintains no information about past client requests by default.",
+      "topic": "HTTP",
+      "answer": false
+    },
+    {
+      "id": "TF32",
+      "type": "true_false",
+      "prompt": "Non-persistent HTTP sends at most one object over each TCP connection.",
+      "explanation": "Each non-persistent TCP connection carries at most one object.",
+      "topic": "HTTP",
+      "answer": true
+    },
+    {
+      "id": "TF33",
+      "type": "true_false",
+      "prompt": "Persistent HTTP can send multiple objects over a single TCP connection.",
+      "explanation": "The connection remains open and can carry subsequent HTTP messages.",
+      "topic": "HTTP",
+      "answer": true
+    },
+    {
+      "id": "TF34",
+      "type": "true_false",
+      "prompt": "Ignoring transmission time, non-persistent HTTP requires two RTTs per object.",
+      "explanation": "One RTT establishes TCP and one RTT carries the request and initial response.",
+      "topic": "HTTP",
+      "answer": true
+    },
+    {
+      "id": "TF35",
+      "type": "true_false",
+      "prompt": "The HTTP GET method normally places form data in the entity body rather than in the URL.",
+      "explanation": "GET commonly includes user data in the URL after '?'; POST places input in the entity body.",
+      "topic": "HTTP",
+      "answer": false
+    },
+    {
+      "id": "TF36",
+      "type": "true_false",
+      "prompt": "The HTTP HEAD method requests only the headers that a GET request would return.",
+      "explanation": "HEAD retrieves headers without the object body.",
+      "topic": "HTTP",
+      "answer": true
+    },
+    {
+      "id": "TF37",
+      "type": "true_false",
+      "prompt": "HTTP status code 404 means the requested document was not found on the server.",
+      "explanation": "404 Not Found has that meaning.",
+      "topic": "HTTP",
+      "answer": true
+    },
+    {
+      "id": "TF38",
+      "type": "true_false",
+      "prompt": "Cookies can be used to maintain user/server state across otherwise stateless HTTP transactions.",
+      "explanation": "Cookies carry identifiers and state across requests.",
+      "topic": "HTTP",
+      "answer": true
+    },
+    {
+      "id": "TF39",
+      "type": "true_false",
+      "prompt": "A web cache always contacts the origin server before replying to the client.",
+      "explanation": "If the object is already cached, the cache can reply without involving the origin server.",
+      "topic": "HTTP",
+      "answer": false
+    },
+    {
+      "id": "TF40",
+      "type": "true_false",
+      "prompt": "A Conditional GET can avoid sending an object when the cached copy is still up to date.",
+      "explanation": "The server can return 304 Not Modified with no object body.",
+      "topic": "HTTP",
+      "answer": true
+    },
+    {
+      "id": "TF41",
+      "type": "true_false",
+      "prompt": "HTTP/2 can divide objects into frames and interleave their transmission to reduce head-of-line blocking among objects.",
+      "explanation": "The lecture presents frame interleaving as an HTTP/2 mechanism to mitigate HOL blocking.",
+      "topic": "HTTP",
+      "answer": true
+    },
+    {
+      "id": "TF42",
+      "type": "true_false",
+      "prompt": "SMTP is primarily a pull protocol used by a receiver to retrieve stored e-mail.",
+      "explanation": "SMTP is a push protocol used to send mail; IMAP/POP3 are used for retrieval.",
+      "topic": "E-mail",
+      "answer": false
+    },
+    {
+      "id": "TF43",
+      "type": "true_false",
+      "prompt": "SMTP uses persistent connections between mail servers.",
+      "explanation": "The lecture explicitly states that SMTP uses persistent connections.",
+      "topic": "E-mail",
+      "answer": true
+    },
+    {
+      "id": "TF44",
+      "type": "true_false",
+      "prompt": "IMAP keeps messages on the server and supports retrieval, deletion, and folders.",
+      "explanation": "Those capabilities are listed for IMAP.",
+      "topic": "E-mail",
+      "answer": true
+    },
+    {
+      "id": "TF45",
+      "type": "true_false",
+      "prompt": "DNS is implemented as a single centralized database on one Internet server.",
+      "explanation": "DNS is a distributed database implemented through a hierarchy of many name servers.",
+      "topic": "DNS",
+      "answer": false
+    },
+    {
+      "id": "TF46",
+      "type": "true_false",
+      "prompt": "A local DNS server strictly belongs to the root-TLD-authoritative hierarchy.",
+      "explanation": "The lecture says a local DNS server does not strictly belong to the hierarchy.",
+      "topic": "DNS",
+      "answer": false
+    },
+    {
+      "id": "TF47",
+      "type": "true_false",
+      "prompt": "In an iterative DNS query, a contacted server may reply with the name of another server to contact.",
+      "explanation": "The iterative behavior is summarized as 'I don't know this name, but ask this server.'",
+      "topic": "DNS",
+      "answer": true
+    },
+    {
+      "id": "TF48",
+      "type": "true_false",
+      "prompt": "In a recursive DNS query, the burden of name resolution is placed on the contacted name server.",
+      "explanation": "The contacted server is responsible for continuing the resolution process.",
+      "topic": "DNS",
+      "answer": true
+    },
+    {
+      "id": "TF49",
+      "type": "true_false",
+      "prompt": "A DNS A record maps a hostname to an IP address.",
+      "explanation": "For type A, the name is a hostname and the value is its IP address.",
+      "topic": "DNS",
+      "answer": true
+    },
+    {
+      "id": "TF50",
+      "type": "true_false",
+      "prompt": "DNS cache entries can remain valid forever and never expire.",
+      "explanation": "DNS cache entries expire after their TTL.",
+      "topic": "DNS",
+      "answer": false
+    },
+    {
+      "id": "MC01",
+      "type": "multiple_choice",
+      "prompt": "Which statement best describes a network protocol?",
+      "explanation": "Protocols define the format and order of messages and the actions taken when messages are transmitted or received.",
+      "topic": "Network fundamentals",
+      "choices": [
+        {
+          "id": "A",
+          "text": "It specifies only physical media."
+        },
+        {
+          "id": "B",
+          "text": "It defines message format, order, and actions on transmission or receipt."
+        },
+        {
+          "id": "C",
+          "text": "It assigns IP addresses to all hosts."
+        },
+        {
+          "id": "D",
+          "text": "It guarantees zero packet loss."
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "id": "MC02",
+      "type": "multiple_choice",
+      "prompt": "Which device is located at the network edge?",
+      "explanation": "Hosts and end systems are at the network edge.",
+      "topic": "Network fundamentals",
+      "choices": [
+        {
+          "id": "A",
+          "text": "End host"
+        },
+        {
+          "id": "B",
+          "text": "Core router only"
+        },
+        {
+          "id": "C",
+          "text": "IXP only"
+        },
+        {
+          "id": "D",
+          "text": "TLD server only"
+        }
+      ],
+      "answer": "A"
+    },
+    {
+      "id": "MC03",
+      "type": "multiple_choice",
+      "prompt": "Which access technology uses an existing telephone line to a central-office DSLAM?",
+      "explanation": "DSL uses the existing telephone line and a DSLAM at the central office.",
+      "topic": "Application layer",
+      "choices": [
+        {
+          "id": "A",
+          "text": "Cable HFC"
+        },
+        {
+          "id": "B",
+          "text": "DSL"
+        },
+        {
+          "id": "C",
+          "text": "FTTH"
+        },
+        {
+          "id": "D",
+          "text": "Satellite"
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "id": "MC04",
+      "type": "multiple_choice",
+      "prompt": "Which access technology commonly has homes sharing a cable distribution network to a cable headend?",
+      "explanation": "Cable-based HFC access is shared among homes connected to the headend.",
+      "topic": "Network fundamentals",
+      "choices": [
+        {
+          "id": "A",
+          "text": "DSL"
+        },
+        {
+          "id": "B",
+          "text": "FTTH only"
+        },
+        {
+          "id": "C",
+          "text": "Cable HFC"
+        },
+        {
+          "id": "D",
+          "text": "Dedicated Ethernet only"
+        }
+      ],
+      "answer": "C"
+    },
+    {
+      "id": "MC05",
+      "type": "multiple_choice",
+      "prompt": "Which medium is unguided?",
+      "explanation": "Radio propagates without a physical wire and is an unguided medium.",
+      "topic": "Application layer",
+      "choices": [
+        {
+          "id": "A",
+          "text": "Fiber optic cable"
+        },
+        {
+          "id": "B",
+          "text": "Twisted pair"
+        },
+        {
+          "id": "C",
+          "text": "Coaxial cable"
+        },
+        {
+          "id": "D",
+          "text": "Radio"
+        }
+      ],
+      "answer": "D"
+    },
+    {
+      "id": "MC06",
+      "type": "multiple_choice",
+      "prompt": "What is the transmission delay for an L-bit packet on a link with rate R bps?",
+      "explanation": "Transmission delay is L/R.",
+      "topic": "Delay & throughput",
+      "choices": [
+        {
+          "id": "A",
+          "text": "R/L"
+        },
+        {
+          "id": "B",
+          "text": "L/R"
+        },
+        {
+          "id": "C",
+          "text": "d/s"
+        },
+        {
+          "id": "D",
+          "text": "s/d"
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "id": "MC07",
+      "type": "multiple_choice",
+      "prompt": "What determines propagation delay?",
+      "explanation": "Propagation delay is d/s.",
+      "topic": "Delay & throughput",
+      "choices": [
+        {
+          "id": "A",
+          "text": "Packet length and queue size"
+        },
+        {
+          "id": "B",
+          "text": "Link distance and propagation speed"
+        },
+        {
+          "id": "C",
+          "text": "Packet length and transmission rate"
+        },
+        {
+          "id": "D",
+          "text": "Number of routers only"
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "id": "MC08",
+      "type": "multiple_choice",
+      "prompt": "Which condition causes queueing to build up at a router?",
+      "explanation": "Queueing occurs when arriving work temporarily exceeds service capacity.",
+      "topic": "Network fundamentals",
+      "choices": [
+        {
+          "id": "A",
+          "text": "Work arrives faster than the output link can serve it."
+        },
+        {
+          "id": "B",
+          "text": "Propagation speed increases."
+        },
+        {
+          "id": "C",
+          "text": "Packet length becomes zero."
+        },
+        {
+          "id": "D",
+          "text": "The buffer is empty."
+        }
+      ],
+      "answer": "A"
+    },
+    {
+      "id": "MC09",
+      "type": "multiple_choice",
+      "prompt": "Which statement describes store-and-forward packet switching?",
+      "explanation": "Store-and-forward requires the full packet to arrive first.",
+      "topic": "Network fundamentals",
+      "choices": [
+        {
+          "id": "A",
+          "text": "A router forwards the first bit immediately without receiving the rest."
+        },
+        {
+          "id": "B",
+          "text": "The entire packet must arrive before transmission on the next link."
+        },
+        {
+          "id": "C",
+          "text": "Each flow reserves a fixed circuit."
+        },
+        {
+          "id": "D",
+          "text": "Only one router may exist on the path."
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "id": "MC10",
+      "type": "multiple_choice",
+      "prompt": "Which is a local action performed at a router?",
+      "explanation": "Forwarding moves an arriving packet from an input link to the appropriate output link.",
+      "topic": "Network fundamentals",
+      "choices": [
+        {
+          "id": "A",
+          "text": "Routing"
+        },
+        {
+          "id": "B",
+          "text": "Forwarding"
+        },
+        {
+          "id": "C",
+          "text": "Name resolution"
+        },
+        {
+          "id": "D",
+          "text": "Mail retrieval"
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "id": "MC11",
+      "type": "multiple_choice",
+      "prompt": "Which is a global network-core function?",
+      "explanation": "Routing determines source-to-destination paths through the network.",
+      "topic": "Network fundamentals",
+      "choices": [
+        {
+          "id": "A",
+          "text": "Forwarding"
+        },
+        {
+          "id": "B",
+          "text": "Routing"
+        },
+        {
+          "id": "C",
+          "text": "Socket creation"
+        },
+        {
+          "id": "D",
+          "text": "Cookie storage"
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "id": "MC12",
+      "type": "multiple_choice",
+      "prompt": "In circuit switching, what happens to reserved resources when the call is idle?",
+      "explanation": "Circuit resources are dedicated and can be unused when the call has nothing to send.",
+      "topic": "Network fundamentals",
+      "choices": [
+        {
+          "id": "A",
+          "text": "They are always shared with other calls."
+        },
+        {
+          "id": "B",
+          "text": "They may remain idle because they are dedicated to the call."
+        },
+        {
+          "id": "C",
+          "text": "They are converted into DNS cache entries."
+        },
+        {
+          "id": "D",
+          "text": "They are used only for routing tables."
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "id": "MC13",
+      "type": "multiple_choice",
+      "prompt": "Which multiplexing technique divides the spectrum into frequency bands?",
+      "explanation": "FDM allocates different frequency bands to calls.",
+      "topic": "Application layer",
+      "choices": [
+        {
+          "id": "A",
+          "text": "TDM"
+        },
+        {
+          "id": "B",
+          "text": "FDM"
+        },
+        {
+          "id": "C",
+          "text": "HTTP"
+        },
+        {
+          "id": "D",
+          "text": "IMAP"
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "id": "MC14",
+      "type": "multiple_choice",
+      "prompt": "Which multiplexing technique assigns periodic time slots?",
+      "explanation": "TDM divides time into slots and assigns periodic slots to calls.",
+      "topic": "Application layer",
+      "choices": [
+        {
+          "id": "A",
+          "text": "FDM"
+        },
+        {
+          "id": "B",
+          "text": "TDM"
+        },
+        {
+          "id": "C",
+          "text": "DNS"
+        },
+        {
+          "id": "D",
+          "text": "SMTP"
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "id": "MC15",
+      "type": "multiple_choice",
+      "prompt": "If a path has link rates 20 Mbps, 5 Mbps, and 10 Mbps, what is the maximum end-to-end throughput assuming no other bottleneck?",
+      "explanation": "The 5 Mbps link is the bottleneck.",
+      "topic": "Delay & throughput",
+      "choices": [
+        {
+          "id": "A",
+          "text": "20 Mbps"
+        },
+        {
+          "id": "B",
+          "text": "15 Mbps"
+        },
+        {
+          "id": "C",
+          "text": "10 Mbps"
+        },
+        {
+          "id": "D",
+          "text": "5 Mbps"
+        }
+      ],
+      "answer": "D"
+    },
+    {
+      "id": "MC16",
+      "type": "multiple_choice",
+      "prompt": "Which layer is responsible for process-to-process data transfer?",
+      "explanation": "The transport layer provides process-to-process data transfer.",
+      "topic": "Architecture",
+      "choices": [
+        {
+          "id": "A",
+          "text": "Application"
+        },
+        {
+          "id": "B",
+          "text": "Transport"
+        },
+        {
+          "id": "C",
+          "text": "Network"
+        },
+        {
+          "id": "D",
+          "text": "Physical"
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "id": "MC17",
+      "type": "multiple_choice",
+      "prompt": "Which PDU name belongs to the network layer in the lecture?",
+      "explanation": "The network-layer PDU is a datagram.",
+      "topic": "Architecture",
+      "choices": [
+        {
+          "id": "A",
+          "text": "Message"
+        },
+        {
+          "id": "B",
+          "text": "Segment"
+        },
+        {
+          "id": "C",
+          "text": "Datagram"
+        },
+        {
+          "id": "D",
+          "text": "Frame"
+        }
+      ],
+      "answer": "C"
+    },
+    {
+      "id": "MC18",
+      "type": "multiple_choice",
+      "prompt": "Which PDU name belongs to the link layer?",
+      "explanation": "The link-layer PDU is a frame.",
+      "topic": "Architecture",
+      "choices": [
+        {
+          "id": "A",
+          "text": "Frame"
+        },
+        {
+          "id": "B",
+          "text": "Segment"
+        },
+        {
+          "id": "C",
+          "text": "Message"
+        },
+        {
+          "id": "D",
+          "text": "Datagram only"
+        }
+      ],
+      "answer": "A"
+    },
+    {
+      "id": "MC19",
+      "type": "multiple_choice",
+      "prompt": "Which attack injects packets with a false source address?",
+      "explanation": "IP spoofing uses a false source address.",
+      "topic": "Application layer",
+      "choices": [
+        {
+          "id": "A",
+          "text": "Packet sniffing"
+        },
+        {
+          "id": "B",
+          "text": "IP spoofing"
+        },
+        {
+          "id": "C",
+          "text": "DoS only"
+        },
+        {
+          "id": "D",
+          "text": "Encapsulation"
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "id": "MC20",
+      "type": "multiple_choice",
+      "prompt": "Which defense is mainly associated with confidentiality?",
+      "explanation": "The lecture lists encryption as a mechanism for confidentiality.",
+      "topic": "Application layer",
+      "choices": [
+        {
+          "id": "A",
+          "text": "Encryption"
+        },
+        {
+          "id": "B",
+          "text": "Routing"
+        },
+        {
+          "id": "C",
+          "text": "FDM"
+        },
+        {
+          "id": "D",
+          "text": "Caching"
+        }
+      ],
+      "answer": "A"
+    },
+    {
+      "id": "MC21",
+      "type": "multiple_choice",
+      "prompt": "Where are network applications normally implemented?",
+      "explanation": "Applications run on end systems, enabling rapid development and deployment.",
+      "topic": "Network fundamentals",
+      "choices": [
+        {
+          "id": "A",
+          "text": "Only in network-core routers"
+        },
+        {
+          "id": "B",
+          "text": "On end systems"
+        },
+        {
+          "id": "C",
+          "text": "Only at IXPs"
+        },
+        {
+          "id": "D",
+          "text": "Only in root DNS servers"
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "id": "MC22",
+      "type": "multiple_choice",
+      "prompt": "Which process initiates communication?",
+      "explanation": "The client process initiates communication.",
+      "topic": "Application layer",
+      "choices": [
+        {
+          "id": "A",
+          "text": "Server process"
+        },
+        {
+          "id": "B",
+          "text": "Client process"
+        },
+        {
+          "id": "C",
+          "text": "Router process"
+        },
+        {
+          "id": "D",
+          "text": "TLD process"
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "id": "MC23",
+      "type": "multiple_choice",
+      "prompt": "Which pair uniquely identifies a process endpoint in the lecture model?",
+      "explanation": "A process is addressed using the host IP address plus a port number.",
+      "topic": "Application layer",
+      "choices": [
+        {
+          "id": "A",
+          "text": "MAC address and URL"
+        },
+        {
+          "id": "B",
+          "text": "IP address and port number"
+        },
+        {
+          "id": "C",
+          "text": "Hostname and RTT"
+        },
+        {
+          "id": "D",
+          "text": "TTL and status code"
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "id": "MC24",
+      "type": "multiple_choice",
+      "prompt": "Which TCP service prevents a sender from overwhelming the receiver?",
+      "explanation": "Flow control protects the receiver from an overly fast sender.",
+      "topic": "Transport",
+      "choices": [
+        {
+          "id": "A",
+          "text": "Flow control"
+        },
+        {
+          "id": "B",
+          "text": "DNS caching"
+        },
+        {
+          "id": "C",
+          "text": "Packet sniffing"
+        },
+        {
+          "id": "D",
+          "text": "FDM"
+        }
+      ],
+      "answer": "A"
+    },
+    {
+      "id": "MC25",
+      "type": "multiple_choice",
+      "prompt": "Which TCP service throttles the sender when the network is overloaded?",
+      "explanation": "Congestion control reduces sending rate when the network is congested.",
+      "topic": "Transport",
+      "choices": [
+        {
+          "id": "A",
+          "text": "Congestion control"
+        },
+        {
+          "id": "B",
+          "text": "Flow control only"
+        },
+        {
+          "id": "C",
+          "text": "Mail access"
+        },
+        {
+          "id": "D",
+          "text": "Name resolution"
+        }
+      ],
+      "answer": "A"
+    },
+    {
+      "id": "MC26",
+      "type": "multiple_choice",
+      "prompt": "Which statement about UDP is correct?",
+      "explanation": "UDP does not provide reliability or connection setup.",
+      "topic": "Transport",
+      "choices": [
+        {
+          "id": "A",
+          "text": "It guarantees reliable delivery."
+        },
+        {
+          "id": "B",
+          "text": "It requires connection setup."
+        },
+        {
+          "id": "C",
+          "text": "It provides unreliable data transfer without connection setup."
+        },
+        {
+          "id": "D",
+          "text": "It guarantees minimum throughput."
+        }
+      ],
+      "answer": "C"
+    },
+    {
+      "id": "MC27",
+      "type": "multiple_choice",
+      "prompt": "Which is the Web's application-layer protocol?",
+      "explanation": "HTTP is the Web's application-layer protocol.",
+      "topic": "Architecture",
+      "choices": [
+        {
+          "id": "A",
+          "text": "HTTP"
+        },
+        {
+          "id": "B",
+          "text": "IP"
+        },
+        {
+          "id": "C",
+          "text": "Ethernet"
+        },
+        {
+          "id": "D",
+          "text": "DNS only"
+        }
+      ],
+      "answer": "A"
+    },
+    {
+      "id": "MC28",
+      "type": "multiple_choice",
+      "prompt": "Which statement best describes HTTP's default state behavior?",
+      "explanation": "HTTP is stateless: the server keeps no information about past client requests by default.",
+      "topic": "HTTP",
+      "choices": [
+        {
+          "id": "A",
+          "text": "HTTP automatically stores all client history on the server."
+        },
+        {
+          "id": "B",
+          "text": "HTTP is stateless."
+        },
+        {
+          "id": "C",
+          "text": "HTTP is always peer-to-peer."
+        },
+        {
+          "id": "D",
+          "text": "HTTP does not use TCP in the lecture material."
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "id": "MC29",
+      "type": "multiple_choice",
+      "prompt": "In non-persistent HTTP, how many objects can be sent over one TCP connection at most?",
+      "explanation": "At most one object is sent per TCP connection.",
+      "topic": "HTTP",
+      "choices": [
+        {
+          "id": "A",
+          "text": "One"
+        },
+        {
+          "id": "B",
+          "text": "Two"
+        },
+        {
+          "id": "C",
+          "text": "Eight"
+        },
+        {
+          "id": "D",
+          "text": "Unlimited"
+        }
+      ],
+      "answer": "A"
+    },
+    {
+      "id": "MC30",
+      "type": "multiple_choice",
+      "prompt": "Ignoring transmission time, what is the response time for one object with non-persistent HTTP?",
+      "explanation": "One RTT establishes TCP and one RTT carries the request and beginning of the response.",
+      "topic": "HTTP",
+      "choices": [
+        {
+          "id": "A",
+          "text": "0.5 RTT"
+        },
+        {
+          "id": "B",
+          "text": "1 RTT"
+        },
+        {
+          "id": "C",
+          "text": "2 RTT"
+        },
+        {
+          "id": "D",
+          "text": "4 RTT"
+        }
+      ],
+      "answer": "C"
+    },
+    {
+      "id": "MC31",
+      "type": "multiple_choice",
+      "prompt": "Which HTTP method sends form input in the entity body?",
+      "explanation": "POST commonly carries user input in the entity body.",
+      "topic": "HTTP",
+      "choices": [
+        {
+          "id": "A",
+          "text": "HEAD"
+        },
+        {
+          "id": "B",
+          "text": "POST"
+        },
+        {
+          "id": "C",
+          "text": "GET only"
+        },
+        {
+          "id": "D",
+          "text": "304"
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "id": "MC32",
+      "type": "multiple_choice",
+      "prompt": "Which HTTP method requests only the headers that would be returned by GET?",
+      "explanation": "HEAD requests the headers without the object body.",
+      "topic": "HTTP",
+      "choices": [
+        {
+          "id": "A",
+          "text": "PUT"
+        },
+        {
+          "id": "B",
+          "text": "POST"
+        },
+        {
+          "id": "C",
+          "text": "HEAD"
+        },
+        {
+          "id": "D",
+          "text": "DELETE"
+        }
+      ],
+      "answer": "C"
+    },
+    {
+      "id": "MC33",
+      "type": "multiple_choice",
+      "prompt": "What does HTTP status code 301 indicate?",
+      "explanation": "301 Moved Permanently indicates the requested object has moved.",
+      "topic": "HTTP",
+      "choices": [
+        {
+          "id": "A",
+          "text": "Bad Request"
+        },
+        {
+          "id": "B",
+          "text": "Not Found"
+        },
+        {
+          "id": "C",
+          "text": "Moved Permanently"
+        },
+        {
+          "id": "D",
+          "text": "Version Not Supported"
+        }
+      ],
+      "answer": "C"
+    },
+    {
+      "id": "MC34",
+      "type": "multiple_choice",
+      "prompt": "Which is NOT one of the four cookie components listed in the lecture?",
+      "explanation": "Cookies use response/request headers, a browser-managed cookie file, and a backend database, not DNS MX records.",
+      "topic": "HTTP",
+      "choices": [
+        {
+          "id": "A",
+          "text": "A cookie header line in an HTTP response"
+        },
+        {
+          "id": "B",
+          "text": "A cookie header line in a later HTTP request"
+        },
+        {
+          "id": "C",
+          "text": "A cookie file on the user's host"
+        },
+        {
+          "id": "D",
+          "text": "A mandatory DNS MX record for every cookie"
+        }
+      ],
+      "answer": "D"
+    },
+    {
+      "id": "MC35",
+      "type": "multiple_choice",
+      "prompt": "What is a main goal of a web cache?",
+      "explanation": "A cache can return stored objects directly and reduce delay and access-link traffic.",
+      "topic": "HTTP",
+      "choices": [
+        {
+          "id": "A",
+          "text": "Force every request to reach the origin server"
+        },
+        {
+          "id": "B",
+          "text": "Satisfy client requests without involving the origin server when possible"
+        },
+        {
+          "id": "C",
+          "text": "Replace TCP with DNS"
+        },
+        {
+          "id": "D",
+          "text": "Increase access-link utilization"
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "id": "MC36",
+      "type": "multiple_choice",
+      "prompt": "Which header is used in the lecture's Conditional GET example?",
+      "explanation": "The client sends If-Modified-Since with the date of its cached copy.",
+      "topic": "HTTP",
+      "choices": [
+        {
+          "id": "A",
+          "text": "If-Modified-Since"
+        },
+        {
+          "id": "B",
+          "text": "MAIL FROM"
+        },
+        {
+          "id": "C",
+          "text": "RCPT TO"
+        },
+        {
+          "id": "D",
+          "text": "Recursion Desired"
+        }
+      ],
+      "answer": "A"
+    },
+    {
+      "id": "MC37",
+      "type": "multiple_choice",
+      "prompt": "Which status code can indicate that a browser-cached object is still current?",
+      "explanation": "304 Not Modified tells the client to use its cached copy.",
+      "topic": "Application layer",
+      "choices": [
+        {
+          "id": "A",
+          "text": "200 OK with a full object always"
+        },
+        {
+          "id": "B",
+          "text": "304 Not Modified"
+        },
+        {
+          "id": "C",
+          "text": "404 Not Found"
+        },
+        {
+          "id": "D",
+          "text": "505 HTTP Version Not Supported"
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "id": "MC38",
+      "type": "multiple_choice",
+      "prompt": "What is a key HTTP/2 technique for reducing object-level HOL blocking?",
+      "explanation": "HTTP/2 frames and schedules data from multiple objects flexibly.",
+      "topic": "HTTP",
+      "choices": [
+        {
+          "id": "A",
+          "text": "Remove all headers"
+        },
+        {
+          "id": "B",
+          "text": "Divide objects into frames and interleave frame transmission"
+        },
+        {
+          "id": "C",
+          "text": "Use only one object per TCP connection"
+        },
+        {
+          "id": "D",
+          "text": "Replace URLs with IP addresses"
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "id": "MC39",
+      "type": "multiple_choice",
+      "prompt": "Which protocol is used between mail servers to send e-mail?",
+      "explanation": "SMTP is used between mail servers for mail delivery.",
+      "topic": "E-mail",
+      "choices": [
+        {
+          "id": "A",
+          "text": "SMTP"
+        },
+        {
+          "id": "B",
+          "text": "IMAP only"
+        },
+        {
+          "id": "C",
+          "text": "DNS"
+        },
+        {
+          "id": "D",
+          "text": "HTTP HEAD"
+        }
+      ],
+      "answer": "A"
+    },
+    {
+      "id": "MC40",
+      "type": "multiple_choice",
+      "prompt": "Which protocol is mainly used to retrieve and manage messages stored on a mail server?",
+      "explanation": "IMAP supports retrieval, deletion, and folders while messages remain on the server.",
+      "topic": "Network fundamentals",
+      "choices": [
+        {
+          "id": "A",
+          "text": "FDM"
+        },
+        {
+          "id": "B",
+          "text": "IMAP"
+        },
+        {
+          "id": "C",
+          "text": "IP spoofing"
+        },
+        {
+          "id": "D",
+          "text": "TDM"
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "id": "MC41",
+      "type": "multiple_choice",
+      "prompt": "What is the primary role of DNS?",
+      "explanation": "DNS performs name/address translation.",
+      "topic": "DNS",
+      "choices": [
+        {
+          "id": "A",
+          "text": "Encrypt HTTP traffic"
+        },
+        {
+          "id": "B",
+          "text": "Map hostnames and IP addresses"
+        },
+        {
+          "id": "C",
+          "text": "Reserve circuits"
+        },
+        {
+          "id": "D",
+          "text": "Transmit physical bits"
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "id": "MC42",
+      "type": "multiple_choice",
+      "prompt": "Why is DNS not centralized according to the lecture?",
+      "explanation": "The lecture gives those scalability problems as reasons not to centralize DNS.",
+      "topic": "DNS",
+      "choices": [
+        {
+          "id": "A",
+          "text": "Centralization would eliminate all maintenance."
+        },
+        {
+          "id": "B",
+          "text": "A centralized design would suffer from issues such as a single point of failure, traffic volume, distance, and maintenance."
+        },
+        {
+          "id": "C",
+          "text": "DNS must run only in routers."
+        },
+        {
+          "id": "D",
+          "text": "A centralized DNS would always be faster."
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "id": "MC43",
+      "type": "multiple_choice",
+      "prompt": "Which DNS server type is responsible for top-level domains such as .com and .edu?",
+      "explanation": "TLD servers are responsible for top-level domains.",
+      "topic": "DNS",
+      "choices": [
+        {
+          "id": "A",
+          "text": "Local DNS server"
+        },
+        {
+          "id": "B",
+          "text": "TLD server"
+        },
+        {
+          "id": "C",
+          "text": "Web cache"
+        },
+        {
+          "id": "D",
+          "text": "Mail user agent"
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "id": "MC44",
+      "type": "multiple_choice",
+      "prompt": "Which DNS server provides authoritative hostname-to-IP mappings for an organization's named hosts?",
+      "explanation": "An organization's authoritative DNS server stores the official mappings for its hosts.",
+      "topic": "DNS",
+      "choices": [
+        {
+          "id": "A",
+          "text": "Authoritative DNS server"
+        },
+        {
+          "id": "B",
+          "text": "Any browser cache"
+        },
+        {
+          "id": "C",
+          "text": "Root server only"
+        },
+        {
+          "id": "D",
+          "text": "SMTP server"
+        }
+      ],
+      "answer": "A"
+    },
+    {
+      "id": "MC45",
+      "type": "multiple_choice",
+      "prompt": "What is another name for a local DNS server in the lecture?",
+      "explanation": "A local DNS server is also called a default name server.",
+      "topic": "DNS",
+      "choices": [
+        {
+          "id": "A",
+          "text": "Default name server"
+        },
+        {
+          "id": "B",
+          "text": "Root-only server"
+        },
+        {
+          "id": "C",
+          "text": "Mail reader"
+        },
+        {
+          "id": "D",
+          "text": "Origin cache"
+        }
+      ],
+      "answer": "A"
+    },
+    {
+      "id": "MC46",
+      "type": "multiple_choice",
+      "prompt": "In an iterative DNS query, what does a contacted server commonly return if it does not know the final answer?",
+      "explanation": "The server can direct the requester to another server to contact.",
+      "topic": "DNS",
+      "choices": [
+        {
+          "id": "A",
+          "text": "A referral to another DNS server"
+        },
+        {
+          "id": "B",
+          "text": "An HTTP cookie"
+        },
+        {
+          "id": "C",
+          "text": "A reserved circuit"
+        },
+        {
+          "id": "D",
+          "text": "A TCP congestion window"
+        }
+      ],
+      "answer": "A"
+    },
+    {
+      "id": "MC47",
+      "type": "multiple_choice",
+      "prompt": "Which DNS record type has an IP address as its value?",
+      "explanation": "An A record maps a hostname to an IP address.",
+      "topic": "DNS",
+      "choices": [
+        {
+          "id": "A",
+          "text": "A"
+        },
+        {
+          "id": "B",
+          "text": "NS"
+        },
+        {
+          "id": "C",
+          "text": "CNAME"
+        },
+        {
+          "id": "D",
+          "text": "MX"
+        }
+      ],
+      "answer": "A"
+    },
+    {
+      "id": "MC48",
+      "type": "multiple_choice",
+      "prompt": "Which DNS record type stores the canonical name corresponding to an alias?",
+      "explanation": "CNAME maps an alias name to its canonical name.",
+      "topic": "DNS",
+      "choices": [
+        {
+          "id": "A",
+          "text": "A"
+        },
+        {
+          "id": "B",
+          "text": "NS"
+        },
+        {
+          "id": "C",
+          "text": "CNAME"
+        },
+        {
+          "id": "D",
+          "text": "MX"
+        }
+      ],
+      "answer": "C"
+    },
+    {
+      "id": "MC49",
+      "type": "multiple_choice",
+      "prompt": "Which DNS record type identifies a mail server associated with a domain name?",
+      "explanation": "MX records identify mail servers.",
+      "topic": "DNS",
+      "choices": [
+        {
+          "id": "A",
+          "text": "MX"
+        },
+        {
+          "id": "B",
+          "text": "A only"
+        },
+        {
+          "id": "C",
+          "text": "CNAME only"
+        },
+        {
+          "id": "D",
+          "text": "HTTP"
+        }
+      ],
+      "answer": "A"
+    },
+    {
+      "id": "MC50",
+      "type": "multiple_choice",
+      "prompt": "What causes a cached DNS entry to disappear after some time?",
+      "explanation": "DNS cache entries time out according to their TTL.",
+      "topic": "DNS",
+      "choices": [
+        {
+          "id": "A",
+          "text": "RTT"
+        },
+        {
+          "id": "B",
+          "text": "TTL expiration"
+        },
+        {
+          "id": "C",
+          "text": "HTTP 301"
+        },
+        {
+          "id": "D",
+          "text": "TDM slot expiration"
+        }
+      ],
+      "answer": "B"
+    },
+    {
+      "id": "SA01",
+      "type": "short_answer",
+      "prompt": "Define a network protocol in one sentence.",
+      "explanation": "A protocol defines the format and order of messages exchanged among network entities and the actions taken when messages are transmitted or received.",
+      "topic": "Network fundamentals",
+      "answers": [
+        "A protocol defines the format and order of messages exchanged among network entities and the actions taken when messages are transmitted or received."
+      ],
+      "concepts": [
+        [
+          "format"
+        ],
+        [
+          "order"
+        ],
+        [
+          "messages",
+          "message"
+        ],
+        [
+          "actions",
+          "action"
+        ]
+      ]
+    },
+    {
+      "id": "SA02",
+      "type": "short_answer",
+      "prompt": "What is an end system also called?",
+      "explanation": "A host.",
+      "topic": "Application layer",
+      "answers": [
+        "A host."
+      ],
+      "concepts": [
+        [
+          "host",
+          "a host",
+          "hosts"
+        ]
+      ]
+    },
+    {
+      "id": "SA03",
+      "type": "short_answer",
+      "prompt": "Name two examples of packet switches.",
+      "explanation": "Routers and switches.",
+      "topic": "Network fundamentals",
+      "answers": [
+        "Routers and switches."
+      ],
+      "concepts": [
+        [
+          "router",
+          "routers"
+        ],
+        [
+          "switch",
+          "switches"
+        ]
+      ]
+    },
+    {
+      "id": "SA04",
+      "type": "short_answer",
+      "prompt": "What is the difference between the network edge and the network core?",
+      "explanation": "The network edge contains hosts/end systems, while the network core contains interconnected routers that forward packets.",
+      "topic": "Network fundamentals",
+      "answers": [
+        "The network edge contains hosts/end systems, while the network core contains interconnected routers that forward packets."
+      ],
+      "concepts": [
+        [
+          "network edge"
+        ],
+        [
+          "hosts",
+          "host",
+          "end systems",
+          "end system"
+        ],
+        [
+          "network core"
+        ],
+        [
+          "routers",
+          "router"
+        ]
+      ]
+    },
+    {
+      "id": "SA05",
+      "type": "short_answer",
+      "prompt": "What does FDM stand for, and what does it divide?",
+      "explanation": "Frequency Division Multiplexing; it divides the available frequency spectrum into separate frequency bands.",
+      "topic": "Application layer",
+      "answers": [
+        "Frequency Division Multiplexing; it divides the available frequency spectrum into separate frequency bands."
+      ],
+      "concepts": [
+        [
+          "Frequency Division Multiplexing"
+        ],
+        [
+          "frequency bands",
+          "frequency band",
+          "bands"
+        ]
+      ]
+    },
+    {
+      "id": "SA06",
+      "type": "short_answer",
+      "prompt": "What does TDM stand for, and what does it divide?",
+      "explanation": "Time Division Multiplexing; it divides time into periodic slots assigned to calls.",
+      "topic": "Application layer",
+      "answers": [
+        "Time Division Multiplexing; it divides time into periodic slots assigned to calls."
+      ],
+      "concepts": [
+        [
+          "Time Division Multiplexing"
+        ],
+        [
+          "time slots",
+          "slots",
+          "periodic slots"
+        ]
+      ]
+    },
+    {
+      "id": "SA07",
+      "type": "short_answer",
+      "prompt": "State the formula for transmission delay.",
+      "explanation": "d_trans = L/R.",
+      "topic": "Delay & throughput",
+      "answers": [
+        "d_trans = L/R."
+      ],
+      "concepts": [
+        [
+          "L/R",
+          "L divided by R",
+          "packet length divided by link rate"
+        ]
+      ]
+    },
+    {
+      "id": "SA08",
+      "type": "short_answer",
+      "prompt": "State the formula for propagation delay.",
+      "explanation": "d_prop = d/s.",
+      "topic": "Delay & throughput",
+      "answers": [
+        "d_prop = d/s."
+      ],
+      "concepts": [
+        [
+          "d/s",
+          "d divided by s",
+          "distance divided by propagation speed"
+        ]
+      ]
+    },
+    {
+      "id": "SA09",
+      "type": "short_answer",
+      "prompt": "List the four sources of nodal delay.",
+      "explanation": "Processing delay, queueing delay, transmission delay, and propagation delay.",
+      "topic": "Delay & throughput",
+      "answers": [
+        "Processing delay, queueing delay, transmission delay, and propagation delay."
+      ],
+      "concepts": [
+        [
+          "processing delay"
+        ],
+        [
+          "queueing delay",
+          "queuing delay",
+          "queues can build"
+        ],
+        [
+          "transmission delay"
+        ],
+        [
+          "propagation delay"
+        ]
+      ]
+    },
+    {
+      "id": "SA10",
+      "type": "short_answer",
+      "prompt": "What is traffic intensity in the lecture notation?",
+      "explanation": "La/R, where L is packet length, a is average packet arrival rate, and R is link bandwidth.",
+      "topic": "Delay & throughput",
+      "answers": [
+        "La/R, where L is packet length, a is average packet arrival rate, and R is link bandwidth."
+      ],
+      "concepts": [
+        [
+          "La/R",
+          "L*a/R",
+          "L a / R",
+          "L times a divided by R"
+        ]
+      ]
+    },
+    {
+      "id": "SA11",
+      "type": "short_answer",
+      "prompt": "What happens to queueing delay as traffic intensity approaches 1?",
+      "explanation": "Average queueing delay becomes very large.",
+      "topic": "Delay & throughput",
+      "answers": [
+        "Average queueing delay becomes very large."
+      ],
+      "concepts": [
+        [
+          "large",
+          "very large",
+          "increases",
+          "grows",
+          "infinity",
+          "unbounded",
+          "high"
+        ]
+      ]
+    },
+    {
+      "id": "SA12",
+      "type": "short_answer",
+      "prompt": "What is packet loss?",
+      "explanation": "Packet loss occurs when an arriving packet is dropped, typically because the router's finite buffer is full.",
+      "topic": "Application layer",
+      "answers": [
+        "Packet loss occurs when an arriving packet is dropped, typically because the router's finite buffer is full."
+      ],
+      "concepts": [
+        [
+          "buffer"
+        ],
+        [
+          "dropped",
+          "drop",
+          "drops",
+          "discarded"
+        ]
+      ]
+    },
+    {
+      "id": "SA13",
+      "type": "short_answer",
+      "prompt": "Define throughput.",
+      "explanation": "Throughput is the rate, in bits per unit time, at which bits are successfully sent from sender to receiver.",
+      "topic": "Delay & throughput",
+      "answers": [
+        "Throughput is the rate, in bits per unit time, at which bits are successfully sent from sender to receiver."
+      ],
+      "concepts": [
+        [
+          "rate",
+          "speed",
+          "rates"
+        ],
+        [
+          "bits",
+          "bit"
+        ]
+      ]
+    },
+    {
+      "id": "SA14",
+      "type": "short_answer",
+      "prompt": "What is a bottleneck link?",
+      "explanation": "The link on an end-to-end path that constrains the end-to-end throughput.",
+      "topic": "Delay & throughput",
+      "answers": [
+        "The link on an end-to-end path that constrains the end-to-end throughput."
+      ],
+      "concepts": [
+        [
+          "constrains",
+          "limits",
+          "limiting",
+          "bottleneck",
+          "slowest"
+        ],
+        [
+          "throughput"
+        ]
+      ]
+    },
+    {
+      "id": "SA15",
+      "type": "short_answer",
+      "prompt": "Differentiate forwarding from routing in one sentence.",
+      "explanation": "Forwarding is a local router action that selects an output link, while routing is the global process of determining source-to-destination paths.",
+      "topic": "Application layer",
+      "answers": [
+        "Forwarding is a local router action that selects an output link, while routing is the global process of determining source-to-destination paths."
+      ],
+      "concepts": [
+        [
+          "forwarding"
+        ],
+        [
+          "local"
+        ],
+        [
+          "routing"
+        ],
+        [
+          "global"
+        ],
+        [
+          "path",
+          "paths"
+        ]
+      ]
+    },
+    {
+      "id": "SA16",
+      "type": "short_answer",
+      "prompt": "What is store-and-forward?",
+      "explanation": "A router must receive the entire packet before transmitting it on the next link.",
+      "topic": "Application layer",
+      "answers": [
+        "A router must receive the entire packet before transmitting it on the next link."
+      ],
+      "concepts": [
+        [
+          "entire packet",
+          "whole packet",
+          "complete packet"
+        ],
+        [
+          "before transmitting",
+          "before forwarding",
+          "before sending",
+          "before transmission"
+        ]
+      ]
+    },
+    {
+      "id": "SA17",
+      "type": "short_answer",
+      "prompt": "Name the five layers of the Internet protocol stack in order from top to bottom.",
+      "explanation": "Application, transport, network, link, physical.",
+      "topic": "Architecture",
+      "answers": [
+        "Application, transport, network, link, physical."
+      ],
+      "concepts": [
+        [
+          "application"
+        ],
+        [
+          "transport"
+        ],
+        [
+          "network"
+        ],
+        [
+          "link"
+        ],
+        [
+          "physical"
+        ]
+      ],
+      "ordered": true
+    },
+    {
+      "id": "SA18",
+      "type": "short_answer",
+      "prompt": "Name the PDU at the application, transport, network, and link layers.",
+      "explanation": "Message, segment, datagram, frame.",
+      "topic": "Transport",
+      "answers": [
+        "Message, segment, datagram, frame."
+      ],
+      "concepts": [
+        [
+          "message"
+        ],
+        [
+          "segment"
+        ],
+        [
+          "datagram"
+        ],
+        [
+          "frame"
+        ]
+      ],
+      "ordered": true
+    },
+    {
+      "id": "SA19",
+      "type": "short_answer",
+      "prompt": "What is encapsulation?",
+      "explanation": "Encapsulation is the process of adding lower-layer headers to higher-layer data as it moves down the protocol stack.",
+      "topic": "Architecture",
+      "answers": [
+        "Encapsulation is the process of adding lower-layer headers to higher-layer data as it moves down the protocol stack."
+      ],
+      "concepts": [
+        [
+          "adding",
+          "add",
+          "adds"
+        ],
+        [
+          "header",
+          "headers"
+        ],
+        [
+          "lower layer",
+          "lower layers",
+          "protocol stack"
+        ]
+      ]
+    },
+    {
+      "id": "SA20",
+      "type": "short_answer",
+      "prompt": "What is IP spoofing?",
+      "explanation": "Injecting a packet with a false source IP address.",
+      "topic": "Application layer",
+      "answers": [
+        "Injecting a packet with a false source IP address."
+      ],
+      "concepts": [
+        [
+          "false source address",
+          "false source IP address",
+          "forged source IP address",
+          "fake source IP address"
+        ]
+      ]
+    },
+    {
+      "id": "SA21",
+      "type": "short_answer",
+      "prompt": "What is a process?",
+      "explanation": "A program running within a host.",
+      "topic": "Application layer",
+      "answers": [
+        "A program running within a host."
+      ],
+      "concepts": [
+        [
+          "program"
+        ],
+        [
+          "host"
+        ]
+      ]
+    },
+    {
+      "id": "SA22",
+      "type": "short_answer",
+      "prompt": "What is a socket?",
+      "explanation": "A socket is the interface through which a process sends and receives messages using the transport infrastructure.",
+      "topic": "Application layer",
+      "answers": [
+        "A socket is the interface through which a process sends and receives messages using the transport infrastructure."
+      ],
+      "concepts": [
+        [
+          "interface",
+          "door"
+        ],
+        [
+          "messages",
+          "message"
+        ]
+      ]
+    },
+    {
+      "id": "SA23",
+      "type": "short_answer",
+      "prompt": "How is a receiving process identified on the Internet according to the lecture?",
+      "explanation": "By the host's IP address and the process's port number.",
+      "topic": "Network fundamentals",
+      "answers": [
+        "By the host's IP address and the process's port number."
+      ],
+      "concepts": [
+        [
+          "IP address"
+        ],
+        [
+          "port number"
+        ]
+      ]
+    },
+    {
+      "id": "SA24",
+      "type": "short_answer",
+      "prompt": "What is the role of a client process?",
+      "explanation": "It initiates communication.",
+      "topic": "Application layer",
+      "answers": [
+        "It initiates communication."
+      ],
+      "concepts": [
+        [
+          "initiates",
+          "initiate",
+          "starts",
+          "start"
+        ]
+      ]
+    },
+    {
+      "id": "SA25",
+      "type": "short_answer",
+      "prompt": "What is the role of a server process?",
+      "explanation": "It waits to be contacted.",
+      "topic": "Application layer",
+      "answers": [
+        "It waits to be contacted."
+      ],
+      "concepts": [
+        [
+          "waits",
+          "wait",
+          "listens",
+          "listen"
+        ]
+      ]
+    },
+    {
+      "id": "SA26",
+      "type": "short_answer",
+      "prompt": "List three services provided by TCP.",
+      "explanation": "Reliable transport, flow control, and congestion control.",
+      "topic": "Transport",
+      "answers": [
+        "Reliable transport, flow control, and congestion control."
+      ],
+      "concepts": [
+        [
+          "reliable transport",
+          "reliable delivery",
+          "reliable data transfer"
+        ],
+        [
+          "flow control"
+        ],
+        [
+          "congestion control"
+        ]
+      ]
+    },
+    {
+      "id": "SA27",
+      "type": "short_answer",
+      "prompt": "List two services that TCP does not guarantee according to the lecture.",
+      "explanation": "Timing and minimum throughput guarantees. Security is also not provided by TCP itself in the lecture model.",
+      "topic": "Transport",
+      "answers": [
+        "Timing and minimum throughput guarantees. Security is also not provided by TCP itself in the lecture model."
+      ],
+      "concepts": [
+        [
+          "timing"
+        ],
+        [
+          "minimum throughput"
+        ]
+      ]
+    },
+    {
+      "id": "SA28",
+      "type": "short_answer",
+      "prompt": "What type of transport does UDP provide?",
+      "explanation": "Unreliable data transfer without connection setup.",
+      "topic": "Transport",
+      "answers": [
+        "Unreliable data transfer without connection setup."
+      ],
+      "concepts": [
+        [
+          "unreliable"
+        ],
+        [
+          "no connection setup",
+          "without connection setup",
+          "does not provide connection setup",
+          "connectionless"
+        ]
+      ]
+    },
+    {
+      "id": "SA29",
+      "type": "short_answer",
+      "prompt": "What does HTTP stand for?",
+      "explanation": "Hypertext Transfer Protocol.",
+      "topic": "HTTP",
+      "answers": [
+        "Hypertext Transfer Protocol."
+      ],
+      "concepts": [
+        [
+          "Hypertext Transfer Protocol"
+        ]
+      ]
+    },
+    {
+      "id": "SA30",
+      "type": "short_answer",
+      "prompt": "Why is HTTP called stateless?",
+      "explanation": "Because the server does not maintain information about a client's past requests by default.",
+      "topic": "HTTP",
+      "answers": [
+        "Because the server does not maintain information about a client's past requests by default."
+      ],
+      "concepts": [
+        [
+          "does not maintain",
+          "does not remember",
+          "no memory",
+          "not remember",
+          "stateless"
+        ],
+        [
+          "past requests"
+        ]
+      ]
+    },
+    {
+      "id": "SA31",
+      "type": "short_answer",
+      "prompt": "What is the key difference between non-persistent and persistent HTTP?",
+      "explanation": "Non-persistent HTTP uses a separate TCP connection for at most one object, while persistent HTTP can carry multiple objects over one TCP connection.",
+      "topic": "HTTP",
+      "answers": [
+        "Non-persistent HTTP uses a separate TCP connection for at most one object, while persistent HTTP can carry multiple objects over one TCP connection."
+      ],
+      "concepts": [
+        [
+          "non-persistent HTTP"
+        ],
+        [
+          "TCP connection"
+        ],
+        [
+          "one object",
+          "single object"
+        ],
+        [
+          "multiple objects"
+        ]
+      ]
+    },
+    {
+      "id": "SA32",
+      "type": "short_answer",
+      "prompt": "Ignoring transmission time, what is the response time for one object using non-persistent HTTP?",
+      "explanation": "2 RTT.",
+      "topic": "HTTP",
+      "answers": [
+        "2 RTT."
+      ],
+      "concepts": [
+        [
+          "2 RTT",
+          "two RTTs",
+          "2 RTTs",
+          "two RTT",
+          "2RTT"
+        ]
+      ]
+    },
+    {
+      "id": "SA33",
+      "type": "short_answer",
+      "prompt": "What does the HTTP POST method commonly do?",
+      "explanation": "It sends user input from the client to the server in the entity body.",
+      "topic": "HTTP",
+      "answers": [
+        "It sends user input from the client to the server in the entity body."
+      ],
+      "concepts": [
+        [
+          "entity body"
+        ]
+      ]
+    },
+    {
+      "id": "SA34",
+      "type": "short_answer",
+      "prompt": "What does the HTTP HEAD method return?",
+      "explanation": "Only the headers that would be returned by a GET request.",
+      "topic": "HTTP",
+      "answers": [
+        "Only the headers that would be returned by a GET request."
+      ],
+      "concepts": [
+        [
+          "headers",
+          "header"
+        ],
+        [
+          "GET"
+        ]
+      ]
+    },
+    {
+      "id": "SA35",
+      "type": "short_answer",
+      "prompt": "What does HTTP status code 404 mean?",
+      "explanation": "Not Found: the requested document is not found on the server.",
+      "topic": "HTTP",
+      "answers": [
+        "Not Found: the requested document is not found on the server."
+      ],
+      "concepts": [
+        [
+          "not found"
+        ]
+      ]
+    },
+    {
+      "id": "SA36",
+      "type": "short_answer",
+      "prompt": "Name the four components used by cookies in the lecture.",
+      "explanation": "A cookie header in the HTTP response, a cookie header in a later HTTP request, a cookie file on the user's host, and a backend database at the Web site.",
+      "topic": "HTTP",
+      "answers": [
+        "A cookie header in the HTTP response, a cookie header in a later HTTP request, a cookie file on the user's host, and a backend database at the Web site."
+      ],
+      "concepts": [
+        [
+          "HTTP response"
+        ],
+        [
+          "HTTP request"
+        ],
+        [
+          "cookie file"
+        ],
+        [
+          "backend database"
+        ]
+      ]
+    },
+    {
+      "id": "SA37",
+      "type": "short_answer",
+      "prompt": "Give two benefits of a web cache.",
+      "explanation": "It can reduce client response time and reduce traffic on the institution's access link.",
+      "topic": "HTTP",
+      "answers": [
+        "It can reduce client response time and reduce traffic on the institution's access link."
+      ],
+      "concepts": [
+        [
+          "response time"
+        ],
+        [
+          "access link traffic",
+          "traffic on the access link",
+          "traffic on the institution s access link",
+          "access link"
+        ]
+      ]
+    },
+    {
+      "id": "SA38",
+      "type": "short_answer",
+      "prompt": "What is the goal of Conditional GET?",
+      "explanation": "To avoid sending an object when the browser already has an up-to-date cached copy.",
+      "topic": "HTTP",
+      "answers": [
+        "To avoid sending an object when the browser already has an up-to-date cached copy."
+      ],
+      "concepts": [
+        [
+          "avoid sending",
+          "avoids sending",
+          "not send",
+          "not modified",
+          "304"
+        ],
+        [
+          "cached copy",
+          "cached object",
+          "up to date"
+        ]
+      ]
+    },
+    {
+      "id": "SA39",
+      "type": "short_answer",
+      "prompt": "What problem does HTTP/2 frame interleaving help mitigate?",
+      "explanation": "Head-of-line (HOL) blocking among multiple requested objects.",
+      "topic": "HTTP",
+      "answers": [
+        "Head-of-line (HOL) blocking among multiple requested objects."
+      ],
+      "concepts": [
+        [
+          "head-of-line blocking",
+          "HOL blocking",
+          "head of line blocking"
+        ]
+      ]
+    },
+    {
+      "id": "SA40",
+      "type": "short_answer",
+      "prompt": "Name the three major components of e-mail described in the lecture.",
+      "explanation": "User agents, mail servers, and SMTP.",
+      "topic": "E-mail",
+      "answers": [
+        "User agents, mail servers, and SMTP."
+      ],
+      "concepts": [
+        [
+          "user agents",
+          "user agent"
+        ],
+        [
+          "mail servers",
+          "mail server"
+        ],
+        [
+          "SMTP"
+        ]
+      ]
+    },
+    {
+      "id": "SA41",
+      "type": "short_answer",
+      "prompt": "What is SMTP used for?",
+      "explanation": "SMTP is used to send e-mail messages, especially between mail servers.",
+      "topic": "E-mail",
+      "answers": [
+        "SMTP is used to send e-mail messages, especially between mail servers."
+      ],
+      "concepts": [
+        [
+          "send",
+          "sends",
+          "sending",
+          "transfer",
+          "transfers"
+        ],
+        [
+          "mail server",
+          "mail servers"
+        ]
+      ]
+    },
+    {
+      "id": "SA42",
+      "type": "short_answer",
+      "prompt": "What is IMAP used for?",
+      "explanation": "IMAP retrieves and manages messages stored on a mail server, including deletion and folders.",
+      "topic": "E-mail",
+      "answers": [
+        "IMAP retrieves and manages messages stored on a mail server, including deletion and folders."
+      ],
+      "concepts": [
+        [
+          "retrieval",
+          "retrieves",
+          "retrieve"
+        ],
+        [
+          "server"
+        ]
+      ]
+    },
+    {
+      "id": "SA43",
+      "type": "short_answer",
+      "prompt": "What is DNS?",
+      "explanation": "DNS is a distributed hierarchical database and application-layer protocol used for name/address translation.",
+      "topic": "DNS",
+      "answers": [
+        "DNS is a distributed hierarchical database and application-layer protocol used for name/address translation."
+      ],
+      "concepts": [
+        [
+          "distributed",
+          "distributes",
+          "distributing"
+        ],
+        [
+          "hierarchical",
+          "hierarchically",
+          "hierarchy"
+        ],
+        [
+          "application layer",
+          "application layer protocol"
+        ],
+        [
+          "name address translation",
+          "name to address",
+          "hostname to IP",
+          "names to addresses"
+        ]
+      ]
+    },
+    {
+      "id": "SA44",
+      "type": "short_answer",
+      "prompt": "Name four services provided by DNS from the lecture.",
+      "explanation": "Hostname-to-IP translation, host aliasing, mail server aliasing, and load distribution.",
+      "topic": "DNS",
+      "answers": [
+        "Hostname-to-IP translation, host aliasing, mail server aliasing, and load distribution."
+      ],
+      "concepts": [
+        [
+          "hostname-to-IP",
+          "hostname to IP translation",
+          "hostname to IP mapping",
+          "name address translation"
+        ],
+        [
+          "host aliasing"
+        ],
+        [
+          "mail server aliasing"
+        ],
+        [
+          "load distribution",
+          "load balancing"
+        ]
+      ]
+    },
+    {
+      "id": "SA45",
+      "type": "short_answer",
+      "prompt": "Name the main DNS hierarchy levels used to resolve a typical hostname.",
+      "explanation": "Root DNS servers, TLD DNS servers, and authoritative DNS servers.",
+      "topic": "DNS",
+      "answers": [
+        "Root DNS servers, TLD DNS servers, and authoritative DNS servers."
+      ],
+      "concepts": [
+        [
+          "root DNS server",
+          "root DNS servers",
+          "root server",
+          "root servers"
+        ],
+        [
+          "TLD DNS server",
+          "TLD DNS servers",
+          "TLD server",
+          "TLD servers"
+        ],
+        [
+          "authoritative DNS server",
+          "authoritative DNS servers",
+          "authoritative server",
+          "authoritative servers"
+        ]
+      ]
+    },
+    {
+      "id": "SA46",
+      "type": "short_answer",
+      "prompt": "What is a local DNS server?",
+      "explanation": "A default name server, usually operated by an ISP or organization, that receives host queries, caches mappings, and forwards queries into the DNS hierarchy.",
+      "topic": "DNS",
+      "answers": [
+        "A default name server, usually operated by an ISP or organization, that receives host queries, caches mappings, and forwards queries into the DNS hierarchy."
+      ],
+      "concepts": [
+        [
+          "default name server"
+        ],
+        [
+          "cache",
+          "caches",
+          "cached",
+          "caching"
+        ]
+      ]
+    },
+    {
+      "id": "SA47",
+      "type": "short_answer",
+      "prompt": "What is the difference between iterative and recursive DNS queries?",
+      "explanation": "In an iterative query, each contacted server may return a referral; in a recursive query, the contacted server continues the resolution on behalf of the requester.",
+      "topic": "DNS",
+      "answers": [
+        "In an iterative query, each contacted server may return a referral; in a recursive query, the contacted server continues the resolution on behalf of the requester."
+      ],
+      "concepts": [
+        [
+          "iterative",
+          "iterative query"
+        ],
+        [
+          "referral",
+          "referrals"
+        ],
+        [
+          "recursive",
+          "recursive query"
+        ],
+        [
+          "resolution",
+          "resolves",
+          "resolve",
+          "resolving"
+        ]
+      ]
+    },
+    {
+      "id": "SA48",
+      "type": "short_answer",
+      "prompt": "What is TTL in DNS caching?",
+      "explanation": "Time To Live; it determines how long a cached DNS record remains before expiring.",
+      "topic": "DNS",
+      "answers": [
+        "Time To Live; it determines how long a cached DNS record remains before expiring."
+      ],
+      "concepts": [
+        [
+          "Time To Live",
+          "time to live"
+        ],
+        [
+          "cache",
+          "caches",
+          "cached",
+          "caching"
+        ],
+        [
+          "expire",
+          "expires",
+          "expiring",
+          "expiration",
+          "expiry"
+        ]
+      ]
+    },
+    {
+      "id": "SA49",
+      "type": "short_answer",
+      "prompt": "Give the general format of a DNS resource record.",
+      "explanation": "(name, value, type, ttl).",
+      "topic": "DNS",
+      "answers": [
+        "(name, value, type, ttl)."
+      ],
+      "concepts": [
+        [
+          "name"
+        ],
+        [
+          "value"
+        ],
+        [
+          "type"
+        ],
+        [
+          "ttl"
+        ]
+      ],
+      "ordered": true
+    },
+    {
+      "id": "SA50",
+      "type": "short_answer",
+      "prompt": "Match the DNS record types A, NS, CNAME, and MX to their basic roles.",
+      "explanation": "A: hostname to IP address; NS: domain to authoritative name server; CNAME: alias to canonical name; MX: domain to mail server.",
+      "topic": "DNS",
+      "answers": [
+        "A: hostname to IP address; NS: domain to authoritative name server; CNAME: alias to canonical name; MX: domain to mail server."
+      ],
+      "concepts": [
+        [
+          "A"
+        ],
+        [
+          "IP address",
+          "IP"
+        ],
+        [
+          "NS"
+        ],
+        [
+          "authoritative name server",
+          "authoritative name servers"
+        ],
+        [
+          "CNAME"
+        ],
+        [
+          "canonical name"
+        ],
+        [
+          "MX"
+        ],
+        [
+          "mail server",
+          "mail servers"
+        ]
+      ]
+    },
+    {
+      "id": "OE01",
+      "type": "open_ended",
+      "prompt": "Compare packet switching and circuit switching. Explain one major advantage and one major disadvantage of packet switching.",
+      "explanation": "Packet switching shares link resources among users on demand and does not require call setup, so it works well for bursty traffic. However, when many packets arrive at once, queues can build and packets may experience delay or be lost if buffers overflow. Circuit switching instead reserves end-to-end resources for a call and can provide more predictable performance, but reserved capacity can sit idle.",
+      "topic": "Network fundamentals",
+      "modelAnswer": "Packet switching shares link resources among users on demand and does not require call setup, so it works well for bursty traffic. However, when many packets arrive at once, queues can build and packets may experience delay or be lost if buffers overflow. Circuit switching instead reserves end-to-end resources for a call and can provide more predictable performance, but reserved capacity can sit idle.",
+      "concepts": [
+        [
+          "packet switching"
+        ],
+        [
+          "circuit switching",
+          "circuit switched",
+          "each call",
+          "calls"
+        ],
+        [
+          "resource sharing",
+          "shares link resources",
+          "share resources",
+          "shared resources",
+          "on demand"
+        ],
+        [
+          "bursty traffic",
+          "bursty"
+        ],
+        [
+          "queueing delay",
+          "queuing delay",
+          "queues can build"
+        ],
+        [
+          "packet loss",
+          "be lost",
+          "packets lost",
+          "packets are lost",
+          "lost packets"
+        ],
+        [
+          "reserved resources",
+          "reserves end to end resources",
+          "reserve resources",
+          "reserves resources",
+          "reserved capacity"
+        ]
+      ]
+    },
+    {
+      "id": "OE02",
+      "type": "open_ended",
+      "prompt": "Explain the difference between transmission delay and propagation delay, including the factors that determine each one.",
+      "explanation": "Transmission delay is the time required to push all packet bits onto a link and is L/R, so it depends on packet length L and link rate R. Propagation delay is the time for a bit to travel across the physical link and is d/s, so it depends on link distance d and propagation speed s. The two delays are conceptually different.",
+      "topic": "Delay & throughput",
+      "modelAnswer": "Transmission delay is the time required to push all packet bits onto a link and is L/R, so it depends on packet length L and link rate R. Propagation delay is the time for a bit to travel across the physical link and is d/s, so it depends on link distance d and propagation speed s. The two delays are conceptually different.",
+      "concepts": [
+        [
+          "transmission delay"
+        ],
+        [
+          "L/R"
+        ],
+        [
+          "packet length"
+        ],
+        [
+          "link rate"
+        ],
+        [
+          "propagation delay"
+        ],
+        [
+          "d/s"
+        ],
+        [
+          "distance",
+          "distant users",
+          "distant",
+          "link distance"
+        ],
+        [
+          "propagation speed"
+        ]
+      ]
+    },
+    {
+      "id": "OE03",
+      "type": "open_ended",
+      "prompt": "Explain the four components of nodal delay and how congestion affects them.",
+      "explanation": "Nodal delay is the sum of processing delay, queueing delay, transmission delay, and propagation delay. Processing delay covers tasks such as checking bit errors and choosing an output link. Queueing delay is the waiting time before transmission and grows with congestion. Transmission delay is L/R, and propagation delay is d/s.",
+      "topic": "Delay & throughput",
+      "modelAnswer": "Nodal delay is the sum of processing delay, queueing delay, transmission delay, and propagation delay. Processing delay covers tasks such as checking bit errors and choosing an output link. Queueing delay is the waiting time before transmission and grows with congestion. Transmission delay is L/R, and propagation delay is d/s.",
+      "concepts": [
+        [
+          "nodal delay"
+        ],
+        [
+          "processing delay"
+        ],
+        [
+          "queueing delay",
+          "queuing delay",
+          "queues can build"
+        ],
+        [
+          "transmission delay"
+        ],
+        [
+          "propagation delay"
+        ],
+        [
+          "congestion"
+        ]
+      ]
+    },
+    {
+      "id": "OE04",
+      "type": "open_ended",
+      "prompt": "Explain why packet loss can occur in a router and what may happen to a lost packet afterward.",
+      "explanation": "A router has a finite buffer. When packets arrive faster than the output link can transmit them, packets queue. If the buffer becomes full, a newly arriving packet can be dropped, causing packet loss. A lost packet may later be retransmitted by a previous node or the source end system, or it may not be retransmitted at all.",
+      "topic": "Network fundamentals",
+      "modelAnswer": "A router has a finite buffer. When packets arrive faster than the output link can transmit them, packets queue. If the buffer becomes full, a newly arriving packet can be dropped, causing packet loss. A lost packet may later be retransmitted by a previous node or the source end system, or it may not be retransmitted at all.",
+      "concepts": [
+        [
+          "finite buffer"
+        ],
+        [
+          "queue",
+          "queues",
+          "queued",
+          "queueing",
+          "queuing"
+        ],
+        [
+          "packet loss",
+          "be lost",
+          "packets lost",
+          "packets are lost",
+          "lost packets"
+        ],
+        [
+          "dropped",
+          "drop",
+          "drops",
+          "discarded"
+        ],
+        [
+          "retransmission",
+          "retransmitted",
+          "retransmit",
+          "retransmits",
+          "resent"
+        ]
+      ]
+    },
+    {
+      "id": "OE05",
+      "type": "open_ended",
+      "prompt": "Explain forwarding and routing and why both are needed in the network core.",
+      "explanation": "Forwarding is the local action inside a router that moves an arriving packet from an input link to the proper output link, usually using a forwarding table. Routing is the global process that determines the source-to-destination paths packets should follow. Routing creates the path information that forwarding uses hop by hop.",
+      "topic": "Network fundamentals",
+      "modelAnswer": "Forwarding is the local action inside a router that moves an arriving packet from an input link to the proper output link, usually using a forwarding table. Routing is the global process that determines the source-to-destination paths packets should follow. Routing creates the path information that forwarding uses hop by hop.",
+      "concepts": [
+        [
+          "forwarding"
+        ],
+        [
+          "local action",
+          "local router action",
+          "local"
+        ],
+        [
+          "routing"
+        ],
+        [
+          "global action",
+          "global process",
+          "global"
+        ],
+        [
+          "forwarding table"
+        ],
+        [
+          "path",
+          "paths"
+        ]
+      ]
+    },
+    {
+      "id": "OE06",
+      "type": "open_ended",
+      "prompt": "Explain the purpose of layering in computer networks and one benefit of modularization.",
+      "explanation": "Layering organizes a complex network system into modules in which each layer implements a service using its own actions and the services of the layer below. This explicit structure makes the system easier to understand, maintain, and update because changes inside one layer can often be transparent to the rest of the system.",
+      "topic": "Architecture",
+      "modelAnswer": "Layering organizes a complex network system into modules in which each layer implements a service using its own actions and the services of the layer below. This explicit structure makes the system easier to understand, maintain, and update because changes inside one layer can often be transparent to the rest of the system.",
+      "concepts": [
+        [
+          "layering"
+        ],
+        [
+          "service"
+        ],
+        [
+          "lower layer",
+          "layer below"
+        ],
+        [
+          "modularization",
+          "modules",
+          "modular"
+        ],
+        [
+          "maintenance",
+          "maintain",
+          "maintaining"
+        ],
+        [
+          "transparent"
+        ]
+      ]
+    },
+    {
+      "id": "OE07",
+      "type": "open_ended",
+      "prompt": "Explain encapsulation from the application layer down to the link layer.",
+      "explanation": "The application creates a message M. The transport layer adds a transport header Ht to form a segment. The network layer adds a network header Hn to form a datagram. The link layer adds a link header Hl to form a frame. At the destination, decapsulation removes these headers as data moves up the stack.",
+      "topic": "Architecture",
+      "modelAnswer": "The application creates a message M. The transport layer adds a transport header Ht to form a segment. The network layer adds a network header Hn to form a datagram. The link layer adds a link header Hl to form a frame. At the destination, decapsulation removes these headers as data moves up the stack.",
+      "concepts": [
+        [
+          "encapsulation",
+          "adds a transport header",
+          "adding headers"
+        ],
+        [
+          "message"
+        ],
+        [
+          "segment"
+        ],
+        [
+          "datagram"
+        ],
+        [
+          "frame"
+        ],
+        [
+          "header",
+          "headers"
+        ],
+        [
+          "decapsulation"
+        ]
+      ]
+    },
+    {
+      "id": "OE08",
+      "type": "open_ended",
+      "prompt": "Explain how throughput is determined on an end-to-end path and define a bottleneck link.",
+      "explanation": "End-to-end throughput is limited by the slowest constraining rate along the path. In a simple path with link rates Rs and Rc, throughput is approximately min(Rs, Rc). With additional shared links, the fair share of a shared bottleneck can also limit throughput. The bottleneck link is the link that constrains the end-to-end throughput.",
+      "topic": "Delay & throughput",
+      "modelAnswer": "End-to-end throughput is limited by the slowest constraining rate along the path. In a simple path with link rates Rs and Rc, throughput is approximately min(Rs, Rc). With additional shared links, the fair share of a shared bottleneck can also limit throughput. The bottleneck link is the link that constrains the end-to-end throughput.",
+      "concepts": [
+        [
+          "throughput"
+        ],
+        [
+          "bottleneck link"
+        ],
+        [
+          "minimum rate",
+          "slowest constraining rate",
+          "min Rs Rc",
+          "slowest rate",
+          "minimum"
+        ],
+        [
+          "end-to-end"
+        ]
+      ]
+    },
+    {
+      "id": "OE09",
+      "type": "open_ended",
+      "prompt": "Describe packet sniffing, IP spoofing, and DoS as three different network security threats.",
+      "explanation": "Packet sniffing captures packets passing over a medium, especially shared or broadcast media. IP spoofing injects packets with a false source address. A Denial of Service attack overwhelms a resource such as a server or bandwidth with bogus traffic so legitimate users cannot access it.",
+      "topic": "Network fundamentals",
+      "modelAnswer": "Packet sniffing captures packets passing over a medium, especially shared or broadcast media. IP spoofing injects packets with a false source address. A Denial of Service attack overwhelms a resource such as a server or bandwidth with bogus traffic so legitimate users cannot access it.",
+      "concepts": [
+        [
+          "packet sniffing"
+        ],
+        [
+          "IP spoofing"
+        ],
+        [
+          "false source address",
+          "false source IP address",
+          "forged source IP address",
+          "fake source IP address"
+        ],
+        [
+          "Denial of Service"
+        ],
+        [
+          "bogus traffic"
+        ]
+      ]
+    },
+    {
+      "id": "OE10",
+      "type": "open_ended",
+      "prompt": "Explain the difference between FDM and TDM in circuit-switched networks.",
+      "explanation": "Frequency Division Multiplexing divides the available spectrum into frequency bands and assigns a band to each call. Time Division Multiplexing divides time into slots and assigns periodic slots to each call. FDM separates users by frequency, while TDM separates them by time.",
+      "topic": "Network fundamentals",
+      "modelAnswer": "Frequency Division Multiplexing divides the available spectrum into frequency bands and assigns a band to each call. Time Division Multiplexing divides time into slots and assigns periodic slots to each call. FDM separates users by frequency, while TDM separates them by time.",
+      "concepts": [
+        [
+          "FDM",
+          "Frequency Division Multiplexing"
+        ],
+        [
+          "frequency bands",
+          "frequency band",
+          "bands"
+        ],
+        [
+          "TDM",
+          "Time Division Multiplexing"
+        ],
+        [
+          "time slots",
+          "slots",
+          "periodic slots"
+        ],
+        [
+          "circuit switching",
+          "circuit switched",
+          "each call",
+          "calls"
+        ]
+      ]
+    },
+    {
+      "id": "OE11",
+      "type": "open_ended",
+      "prompt": "Compare the client-server paradigm with peer-to-peer architecture as introduced in Chapter 2 Part 1.",
+      "explanation": "In the client-server paradigm, an always-on server with a stable address provides service to clients, and clients normally do not communicate directly with each other. In peer-to-peer architecture, there is no always-on server; arbitrary end systems can communicate directly and peers both request and provide service. P2P can be self-scalable but is more complex to manage because peers can join, leave, and change IP addresses.",
+      "topic": "Application layer",
+      "modelAnswer": "In the client-server paradigm, an always-on server with a stable address provides service to clients, and clients normally do not communicate directly with each other. In peer-to-peer architecture, there is no always-on server; arbitrary end systems can communicate directly and peers both request and provide service. P2P can be self-scalable but is more complex to manage because peers can join, leave, and change IP addresses.",
+      "concepts": [
+        [
+          "client-server"
+        ],
+        [
+          "always-on server"
+        ],
+        [
+          "clients",
+          "client"
+        ],
+        [
+          "peer-to-peer"
+        ],
+        [
+          "no always-on server"
+        ],
+        [
+          "direct communication",
+          "communicate directly",
+          "directly communicate"
+        ],
+        [
+          "self scalability",
+          "self scalable"
+        ]
+      ]
+    },
+    {
+      "id": "OE12",
+      "type": "open_ended",
+      "prompt": "Explain how processes on different hosts communicate and how sockets fit into this communication.",
+      "explanation": "A process is a program running on a host. Processes on different hosts communicate by exchanging messages. Each process sends and receives messages through a socket, which acts as the interface between the application process and the transport-layer infrastructure. A receiving process is identified using an IP address and port number.",
+      "topic": "Application layer",
+      "modelAnswer": "A process is a program running on a host. Processes on different hosts communicate by exchanging messages. Each process sends and receives messages through a socket, which acts as the interface between the application process and the transport-layer infrastructure. A receiving process is identified using an IP address and port number.",
+      "concepts": [
+        [
+          "process"
+        ],
+        [
+          "messages",
+          "message"
+        ],
+        [
+          "socket"
+        ],
+        [
+          "transport layer",
+          "transport layer infrastructure"
+        ],
+        [
+          "IP address"
+        ],
+        [
+          "port number"
+        ]
+      ]
+    },
+    {
+      "id": "OE13",
+      "type": "open_ended",
+      "prompt": "Compare the transport services of TCP and UDP as presented in the lecture.",
+      "explanation": "TCP is connection-oriented and provides reliable transport, flow control, and congestion control. It does not guarantee timing, minimum throughput, or security by itself. UDP provides unreliable data transfer and does not provide connection setup, reliability, flow control, congestion control, timing, throughput guarantees, or security.",
+      "topic": "Transport",
+      "modelAnswer": "TCP is connection-oriented and provides reliable transport, flow control, and congestion control. It does not guarantee timing, minimum throughput, or security by itself. UDP provides unreliable data transfer and does not provide connection setup, reliability, flow control, congestion control, timing, throughput guarantees, or security.",
+      "concepts": [
+        [
+          "TCP"
+        ],
+        [
+          "connection-oriented"
+        ],
+        [
+          "reliable transport",
+          "reliable delivery",
+          "reliable data transfer"
+        ],
+        [
+          "flow control"
+        ],
+        [
+          "congestion control"
+        ],
+        [
+          "UDP"
+        ],
+        [
+          "unreliable"
+        ],
+        [
+          "no connection setup",
+          "without connection setup",
+          "does not provide connection setup",
+          "connectionless"
+        ]
+      ]
+    },
+    {
+      "id": "OE14",
+      "type": "open_ended",
+      "prompt": "Explain why HTTP is described as stateless and how cookies can still support user state.",
+      "explanation": "HTTP is stateless because the server does not automatically remember past client requests. Cookies add state across transactions by sending a cookie identifier in HTTP response and request headers, storing the identifier in a browser-managed cookie file, and associating it with information in a backend database.",
+      "topic": "HTTP",
+      "modelAnswer": "HTTP is stateless because the server does not automatically remember past client requests. Cookies add state across transactions by sending a cookie identifier in HTTP response and request headers, storing the identifier in a browser-managed cookie file, and associating it with information in a backend database.",
+      "concepts": [
+        [
+          "HTTP"
+        ],
+        [
+          "stateless"
+        ],
+        [
+          "cookies",
+          "cookie",
+          "cookie identifier"
+        ],
+        [
+          "cookie header",
+          "response and request headers",
+          "cookie headers"
+        ],
+        [
+          "cookie file"
+        ],
+        [
+          "backend database"
+        ],
+        [
+          "state"
+        ]
+      ]
+    },
+    {
+      "id": "OE15",
+      "type": "open_ended",
+      "prompt": "Compare non-persistent HTTP and persistent HTTP in terms of TCP connections and response time.",
+      "explanation": "Non-persistent HTTP opens a TCP connection, sends at most one object, and closes the connection, so each object generally costs two RTTs plus transmission time. Persistent HTTP keeps the TCP connection open so multiple objects can use the same connection, reducing repeated connection setup and often lowering response time.",
+      "topic": "HTTP",
+      "modelAnswer": "Non-persistent HTTP opens a TCP connection, sends at most one object, and closes the connection, so each object generally costs two RTTs plus transmission time. Persistent HTTP keeps the TCP connection open so multiple objects can use the same connection, reducing repeated connection setup and often lowering response time.",
+      "concepts": [
+        [
+          "non-persistent HTTP"
+        ],
+        [
+          "persistent HTTP",
+          "persistent pipelining"
+        ],
+        [
+          "TCP connection"
+        ],
+        [
+          "2 RTT",
+          "two RTTs",
+          "2 RTTs",
+          "two RTT",
+          "2RTT"
+        ],
+        [
+          "multiple objects"
+        ],
+        [
+          "response time"
+        ]
+      ]
+    },
+    {
+      "id": "OE16",
+      "type": "open_ended",
+      "prompt": "A base HTML file references eight very small objects on the same server. Ignoring transmission time, explain why non-persistent HTTP without parallel connections takes 18 RTT units, while persistent HTTP with pipelining takes 3 RTT units in the lecture exercise.",
+      "explanation": "With non-persistent HTTP, the base HTML costs 2 RTTs and each of the eight referenced objects costs another 2 RTTs, giving 2 + 8×2 = 18 RTTs. With persistent pipelining, the base HTML costs 2 RTTs and the pipelined requests for all eight objects can be handled with about 1 additional RTT, giving 3 RTTs total.",
+      "topic": "HTTP",
+      "modelAnswer": "With non-persistent HTTP, the base HTML costs 2 RTTs and each of the eight referenced objects costs another 2 RTTs, giving 2 + 8×2 = 18 RTTs. With persistent pipelining, the base HTML costs 2 RTTs and the pipelined requests for all eight objects can be handled with about 1 additional RTT, giving 3 RTTs total.",
+      "concepts": [
+        [
+          "non-persistent HTTP"
+        ],
+        [
+          "persistent HTTP",
+          "persistent pipelining"
+        ],
+        [
+          "pipelining",
+          "pipelined"
+        ],
+        [
+          "RTT"
+        ],
+        [
+          "18 RTT",
+          "18 RTTs",
+          "18RTT"
+        ],
+        [
+          "3 RTT",
+          "3 RTTs",
+          "3RTT"
+        ]
+      ]
+    },
+    {
+      "id": "OE17",
+      "type": "open_ended",
+      "prompt": "Explain the roles of GET, POST, HEAD, and PUT HTTP methods as presented in the lecture.",
+      "explanation": "GET retrieves a resource and can include user data in the URL. POST sends user input in the entity body. HEAD requests only the headers that a corresponding GET would return. PUT uploads a file or replaces the object at the specified URL with the content in the entity body.",
+      "topic": "HTTP",
+      "modelAnswer": "GET retrieves a resource and can include user data in the URL. POST sends user input in the entity body. HEAD requests only the headers that a corresponding GET would return. PUT uploads a file or replaces the object at the specified URL with the content in the entity body.",
+      "concepts": [
+        [
+          "GET"
+        ],
+        [
+          "POST"
+        ],
+        [
+          "HEAD"
+        ],
+        [
+          "PUT"
+        ],
+        [
+          "URL"
+        ],
+        [
+          "entity body"
+        ],
+        [
+          "headers",
+          "header"
+        ]
+      ]
+    },
+    {
+      "id": "OE18",
+      "type": "open_ended",
+      "prompt": "Explain how a web cache works and why it can improve performance.",
+      "explanation": "A browser can send requests to a web cache. If the object is already cached, the cache returns it directly. Otherwise, the cache requests the object from the origin server, stores it, and forwards it to the client. Because the cache can be closer to the client and can reduce traffic on the access link, it can lower response time and network load.",
+      "topic": "HTTP",
+      "modelAnswer": "A browser can send requests to a web cache. If the object is already cached, the cache returns it directly. Otherwise, the cache requests the object from the origin server, stores it, and forwards it to the client. Because the cache can be closer to the client and can reduce traffic on the access link, it can lower response time and network load.",
+      "concepts": [
+        [
+          "web cache"
+        ],
+        [
+          "proxy server",
+          "web cache",
+          "cache"
+        ],
+        [
+          "origin server"
+        ],
+        [
+          "cache hit",
+          "already cached",
+          "cached object",
+          "object is cached"
+        ],
+        [
+          "response time"
+        ],
+        [
+          "access link traffic",
+          "traffic on the access link",
+          "traffic on the institution s access link",
+          "access link"
+        ]
+      ]
+    },
+    {
+      "id": "OE19",
+      "type": "open_ended",
+      "prompt": "Explain how Conditional GET works and why HTTP 304 is useful.",
+      "explanation": "The browser sends an If-Modified-Since header containing the date of its cached copy. If the object has not changed, the server can return 304 Not Modified without sending the object. This avoids object transmission delay and saves network resources. If the object has changed, the server can return 200 OK with the updated data.",
+      "topic": "HTTP",
+      "modelAnswer": "The browser sends an If-Modified-Since header containing the date of its cached copy. If the object has not changed, the server can return 304 Not Modified without sending the object. This avoids object transmission delay and saves network resources. If the object has changed, the server can return 200 OK with the updated data.",
+      "concepts": [
+        [
+          "Conditional GET",
+          "If Modified Since"
+        ],
+        [
+          "If-Modified-Since"
+        ],
+        [
+          "304 Not Modified"
+        ],
+        [
+          "200 OK"
+        ],
+        [
+          "cached copy"
+        ],
+        [
+          "network resources"
+        ]
+      ]
+    },
+    {
+      "id": "OE20",
+      "type": "open_ended",
+      "prompt": "Explain the head-of-line blocking problem in HTTP/1.1 and how HTTP/2 reduces it at the application layer.",
+      "explanation": "With pipelined HTTP/1.1, responses are sent in order, so a small object may have to wait behind a large object, producing head-of-line blocking. HTTP/2 divides objects into frames and can interleave frame transmission, allowing smaller or higher-priority objects to make progress instead of waiting for a full large object to finish.",
+      "topic": "HTTP",
+      "modelAnswer": "With pipelined HTTP/1.1, responses are sent in order, so a small object may have to wait behind a large object, producing head-of-line blocking. HTTP/2 divides objects into frames and can interleave frame transmission, allowing smaller or higher-priority objects to make progress instead of waiting for a full large object to finish.",
+      "concepts": [
+        [
+          "HTTP/1.1"
+        ],
+        [
+          "head-of-line blocking",
+          "HOL blocking",
+          "head of line blocking"
+        ],
+        [
+          "HTTP/2"
+        ],
+        [
+          "frames"
+        ],
+        [
+          "interleaving",
+          "interleave",
+          "interleaved"
+        ],
+        [
+          "priority",
+          "higher priority",
+          "prioritization"
+        ]
+      ]
+    },
+    {
+      "id": "OE21",
+      "type": "open_ended",
+      "prompt": "Explain the three major components of e-mail and how a message moves from sender to receiver.",
+      "explanation": "The major components are user agents, mail servers, and SMTP. The sender composes a message in a user agent, which sends it to the sender's mail server. SMTP transfers the message between mail servers. The receiver then retrieves the stored message from the receiver's mail server using a mail access protocol such as IMAP or a web interface.",
+      "topic": "E-mail",
+      "modelAnswer": "The major components are user agents, mail servers, and SMTP. The sender composes a message in a user agent, which sends it to the sender's mail server. SMTP transfers the message between mail servers. The receiver then retrieves the stored message from the receiver's mail server using a mail access protocol such as IMAP or a web interface.",
+      "concepts": [
+        [
+          "user agent",
+          "user agents"
+        ],
+        [
+          "mail server",
+          "mail servers"
+        ],
+        [
+          "SMTP"
+        ],
+        [
+          "mail access protocol"
+        ],
+        [
+          "IMAP"
+        ]
+      ]
+    },
+    {
+      "id": "OE22",
+      "type": "open_ended",
+      "prompt": "Compare SMTP and HTTP using the comparisons given in the lecture.",
+      "explanation": "HTTP is mainly a pull protocol, while SMTP is a push protocol. Both use ASCII command/response interactions and status codes. HTTP normally puts each object in its own response message, while SMTP can send multiple objects as parts of a multipart message. SMTP also uses persistent connections.",
+      "topic": "HTTP",
+      "modelAnswer": "HTTP is mainly a pull protocol, while SMTP is a push protocol. Both use ASCII command/response interactions and status codes. HTTP normally puts each object in its own response message, while SMTP can send multiple objects as parts of a multipart message. SMTP also uses persistent connections.",
+      "concepts": [
+        [
+          "SMTP"
+        ],
+        [
+          "HTTP"
+        ],
+        [
+          "push"
+        ],
+        [
+          "pull"
+        ],
+        [
+          "ASCII"
+        ],
+        [
+          "status codes"
+        ],
+        [
+          "persistent connection",
+          "persistent connections"
+        ]
+      ]
+    },
+    {
+      "id": "OE23",
+      "type": "open_ended",
+      "prompt": "Explain why DNS is implemented as a distributed hierarchical system rather than a single centralized server.",
+      "explanation": "A centralized DNS would create a single point of failure, enormous traffic volume, long delays for distant users, and difficult maintenance. DNS therefore distributes the database across many name servers organized hierarchically, improving scalability and avoiding dependence on one central machine.",
+      "topic": "DNS",
+      "modelAnswer": "A centralized DNS would create a single point of failure, enormous traffic volume, long delays for distant users, and difficult maintenance. DNS therefore distributes the database across many name servers organized hierarchically, improving scalability and avoiding dependence on one central machine.",
+      "concepts": [
+        [
+          "DNS"
+        ],
+        [
+          "distributed",
+          "distributes",
+          "distributing"
+        ],
+        [
+          "hierarchical",
+          "hierarchically",
+          "hierarchy"
+        ],
+        [
+          "single point of failure"
+        ],
+        [
+          "traffic volume"
+        ],
+        [
+          "distance",
+          "distant users",
+          "distant",
+          "link distance"
+        ],
+        [
+          "maintenance",
+          "maintain",
+          "maintaining"
+        ],
+        [
+          "scalability"
+        ]
+      ]
+    },
+    {
+      "id": "OE24",
+      "type": "open_ended",
+      "prompt": "Describe the DNS hierarchy and the basic steps used to resolve a hostname such as www.amazon.com.",
+      "explanation": "A resolver can first contact a root DNS server, which points toward the appropriate TLD server such as .com. The TLD server points toward the authoritative DNS server for the target domain. The authoritative server provides the final hostname-to-IP mapping. A local DNS server usually performs or assists with this process on behalf of the host.",
+      "topic": "DNS",
+      "modelAnswer": "A resolver can first contact a root DNS server, which points toward the appropriate TLD server such as .com. The TLD server points toward the authoritative DNS server for the target domain. The authoritative server provides the final hostname-to-IP mapping. A local DNS server usually performs or assists with this process on behalf of the host.",
+      "concepts": [
+        [
+          "root DNS server",
+          "root DNS servers",
+          "root server",
+          "root servers"
+        ],
+        [
+          "TLD DNS server",
+          "TLD DNS servers",
+          "TLD server",
+          "TLD servers"
+        ],
+        [
+          "authoritative DNS server",
+          "authoritative DNS servers",
+          "authoritative server",
+          "authoritative servers"
+        ],
+        [
+          "local DNS server"
+        ],
+        [
+          "hostname-to-IP",
+          "hostname to IP translation",
+          "hostname to IP mapping",
+          "name address translation"
+        ]
+      ]
+    },
+    {
+      "id": "OE25",
+      "type": "open_ended",
+      "prompt": "Compare a local DNS server and an authoritative DNS server.",
+      "explanation": "A local DNS server, also called a default name server, is typically operated by an ISP or organization. It receives DNS queries from hosts, uses a cache, and forwards unresolved queries into the DNS hierarchy. An authoritative DNS server stores the official hostname-to-IP mappings for an organization's named hosts.",
+      "topic": "DNS",
+      "modelAnswer": "A local DNS server, also called a default name server, is typically operated by an ISP or organization. It receives DNS queries from hosts, uses a cache, and forwards unresolved queries into the DNS hierarchy. An authoritative DNS server stores the official hostname-to-IP mappings for an organization's named hosts.",
+      "concepts": [
+        [
+          "local DNS server"
+        ],
+        [
+          "default name server"
+        ],
+        [
+          "cache",
+          "caches",
+          "cached",
+          "caching"
+        ],
+        [
+          "proxy",
+          "forwards unresolved queries",
+          "forwards queries",
+          "forward queries"
+        ],
+        [
+          "authoritative DNS server",
+          "authoritative DNS servers",
+          "authoritative server",
+          "authoritative servers"
+        ],
+        [
+          "official mapping",
+          "official hostname to IP mappings",
+          "official mappings",
+          "authoritative mapping"
+        ]
+      ]
+    },
+    {
+      "id": "OE26",
+      "type": "open_ended",
+      "prompt": "Compare iterative and recursive DNS queries.",
+      "explanation": "In an iterative query, a contacted DNS server can reply with a referral to another server, and the requester continues the process. In a recursive query, the contacted server takes responsibility for continuing the name-resolution process and returning the final result, which can create heavier load at higher levels of the hierarchy.",
+      "topic": "DNS",
+      "modelAnswer": "In an iterative query, a contacted DNS server can reply with a referral to another server, and the requester continues the process. In a recursive query, the contacted server takes responsibility for continuing the name-resolution process and returning the final result, which can create heavier load at higher levels of the hierarchy.",
+      "concepts": [
+        [
+          "iterative query"
+        ],
+        [
+          "referral",
+          "referrals"
+        ],
+        [
+          "recursive query"
+        ],
+        [
+          "name resolution",
+          "name resolution process",
+          "resolution"
+        ],
+        [
+          "load"
+        ]
+      ]
+    },
+    {
+      "id": "OE27",
+      "type": "open_ended",
+      "prompt": "Explain DNS caching, TTL, and why cached information can become stale.",
+      "explanation": "When a DNS server learns a mapping, it can cache it. Each cached entry has a TTL and disappears after that time. Caching reduces repeated queries and means root servers are contacted less often. However, if a host's IP address changes, old cached mappings can remain until their TTLs expire, so cached data may temporarily be stale.",
+      "topic": "DNS",
+      "modelAnswer": "When a DNS server learns a mapping, it can cache it. Each cached entry has a TTL and disappears after that time. Caching reduces repeated queries and means root servers are contacted less often. However, if a host's IP address changes, old cached mappings can remain until their TTLs expire, so cached data may temporarily be stale.",
+      "concepts": [
+        [
+          "DNS caching",
+          "caching",
+          "cache"
+        ],
+        [
+          "TTL"
+        ],
+        [
+          "cache",
+          "caches",
+          "cached",
+          "caching"
+        ],
+        [
+          "root server",
+          "root servers"
+        ],
+        [
+          "stale"
+        ],
+        [
+          "IP address"
+        ]
+      ]
+    },
+    {
+      "id": "OE28",
+      "type": "open_ended",
+      "prompt": "Explain the meanings of DNS resource record types A, NS, CNAME, and MX.",
+      "explanation": "An A record maps a hostname to an IP address. An NS record maps a domain to the hostname of its authoritative name server. A CNAME record maps an alias name to its canonical name. An MX record gives the name of a mail server associated with a domain.",
+      "topic": "DNS",
+      "modelAnswer": "An A record maps a hostname to an IP address. An NS record maps a domain to the hostname of its authoritative name server. A CNAME record maps an alias name to its canonical name. An MX record gives the name of a mail server associated with a domain.",
+      "concepts": [
+        [
+          "A record",
+          "A resource records",
+          "A records"
+        ],
+        [
+          "IP address"
+        ],
+        [
+          "NS record",
+          "NS and A resource records",
+          "NS resource records",
+          "NS records"
+        ],
+        [
+          "authoritative name server",
+          "authoritative name servers"
+        ],
+        [
+          "CNAME"
+        ],
+        [
+          "canonical name"
+        ],
+        [
+          "MX"
+        ],
+        [
+          "mail server",
+          "mail servers"
+        ]
+      ]
+    },
+    {
+      "id": "OE29",
+      "type": "open_ended",
+      "prompt": "Describe the main fields of a DNS query/reply message shown in the lecture.",
+      "explanation": "DNS query and reply messages use the same general format. The header contains a 16-bit identification value and flags such as query/reply, recursion desired, recursion available, and authoritative reply. The message also includes counts and sections for questions, answers, authority resource records, and additional resource records.",
+      "topic": "DNS",
+      "modelAnswer": "DNS query and reply messages use the same general format. The header contains a 16-bit identification value and flags such as query/reply, recursion desired, recursion available, and authoritative reply. The message also includes counts and sections for questions, answers, authority resource records, and additional resource records.",
+      "concepts": [
+        [
+          "DNS message",
+          "DNS query and reply messages",
+          "DNS messages",
+          "DNS query",
+          "DNS reply"
+        ],
+        [
+          "identification"
+        ],
+        [
+          "flags"
+        ],
+        [
+          "questions"
+        ],
+        [
+          "answer RRs",
+          "answers",
+          "answer records"
+        ],
+        [
+          "authority RRs",
+          "authority resource records",
+          "authority records"
+        ],
+        [
+          "additional RRs",
+          "additional resource records",
+          "additional records"
+        ]
+      ]
+    },
+    {
+      "id": "OE30",
+      "type": "open_ended",
+      "prompt": "Explain the basic steps for inserting records for a new domain into DNS, using the lecture's startup example as a model.",
+      "explanation": "The organization registers its domain name with a DNS registrar and supplies the names and IP addresses of its primary and secondary authoritative name servers. The registrar inserts appropriate NS and A resource records into the TLD server. The organization then configures its authoritative DNS server with records such as an A record for its Web host and an MX record for its mail domain.",
+      "topic": "DNS",
+      "modelAnswer": "The organization registers its domain name with a DNS registrar and supplies the names and IP addresses of its primary and secondary authoritative name servers. The registrar inserts appropriate NS and A resource records into the TLD server. The organization then configures its authoritative DNS server with records such as an A record for its Web host and an MX record for its mail domain.",
+      "concepts": [
+        [
+          "DNS registrar"
+        ],
+        [
+          "authoritative name server",
+          "authoritative name servers"
+        ],
+        [
+          "NS record",
+          "NS and A resource records",
+          "NS resource records",
+          "NS records"
+        ],
+        [
+          "A record",
+          "A resource records",
+          "A records"
+        ],
+        [
+          "TLD server"
+        ],
+        [
+          "MX record",
+          "MX records"
+        ]
+      ]
+    }
+  ]
+}

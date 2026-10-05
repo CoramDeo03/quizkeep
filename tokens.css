@@ -1,0 +1,38 @@
+/* QUIZKEEP · cartoon fantasy tower defense tokens */
+:root {
+  --ink: #2b1a0d;
+  --ink-soft: #5a3d22;
+  --parchment: #f6e7c1;
+  --parchment-light: #fff6dc;
+  --parchment-dark: #e2c88f;
+  --parchment-edge: #b48a4a;
+  --wood: #8a5427;
+  --wood-light: #b8763a;
+  --wood-dark: #5a3216;
+  --wood-deep: #3a1f0c;
+  --stone: #6b6f7a;
+  --stone-dark: #3c3f48;
+  --gold: #ffd23f;
+  --gold-dark: #c48a12;
+  --green: #6cc63a;
+  --green-dark: #3f8a1f;
+  --red: #e8473a;
+  --red-dark: #9c2318;
+  --blue: #3f9be0;
+  --sky: #2a5a3a;
+
+  --archer: #7ed957;
+  --cannon: #ff9a3c;
+  --sniper: #5cc8ff;
+  --magic: #ff4fd8;
+  --c: var(--gold);
+  --c-dark: var(--gold-dark);
+
+  --font-game: 'Lilita One', 'Jua', sans-serif;
+  --font-ko: 'Jua', 'Lilita One', sans-serif;
+  --font-body: 'IBM Plex Sans', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+
+  --radius: 14px;
+  --shadow-chunky: 0 4px 0 var(--wood-deep), 0 8px 18px rgba(0, 0, 0, .35);
+  --ease-pop: cubic-bezier(.2, 1.6, .4, 1);
+}

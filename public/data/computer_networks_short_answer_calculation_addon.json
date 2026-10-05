@@ -1,0 +1,265 @@
+{
+  "metadata": {
+    "title": "Computer Networks Midterm - Calculation Short Answer Add-on",
+    "language": "English",
+    "source_policy": "Based only on the uploaded lecture PDFs and the stated midterm coverage.",
+    "coverage": {
+      "chapter_1": "Chapter 1, excluding Internet history",
+      "chapter_2": "Chapter 2 Part 1 + Chapter 2 Part 2 through DNS only, up to page 17"
+    },
+    "type": "Short Answer - Calculation Only",
+    "counts": {
+      "chapter_1": 20,
+      "chapter_2": 20,
+      "total": 40
+    }
+  },
+  "chapter_1": {
+    "short_answer_calculation": [
+      {
+        "id": "C1_SA_CALC01",
+        "question": "A packet has length 12,000 bits and is transmitted over a 3 Mbps link. What is the transmission delay?",
+        "answer": "4 ms",
+        "solution": "d_trans = L/R = 12,000 / 3,000,000 = 0.004 s = 4 ms"
+      },
+      {
+        "id": "C1_SA_CALC02",
+        "question": "A 1.5 Mbit packet is transmitted over a 10 Mbps link. What is the transmission delay?",
+        "answer": "0.15 s",
+        "solution": "d_trans = L/R = 1.5 Mbits / 10 Mbps = 0.15 s"
+      },
+      {
+        "id": "C1_SA_CALC03",
+        "question": "A link is 600 km long and the propagation speed is 2 × 10^8 m/s. What is the propagation delay?",
+        "answer": "3 ms",
+        "solution": "d_prop = d/s = 600,000 / (2 × 10^8) = 0.003 s = 3 ms"
+      },
+      {
+        "id": "C1_SA_CALC04",
+        "question": "A physical link is 2,000 km long and the propagation speed is 2 × 10^8 m/s. What is the propagation delay?",
+        "answer": "10 ms",
+        "solution": "d_prop = 2,000,000 / (2 × 10^8) = 0.01 s = 10 ms"
+      },
+      {
+        "id": "C1_SA_CALC05",
+        "question": "At a router, processing delay is 0.5 ms, queueing delay is 1.5 ms, transmission delay is 2 ms, and propagation delay is 5 ms. What is the total nodal delay?",
+        "answer": "9 ms",
+        "solution": "d_nodal = 0.5 + 1.5 + 2 + 5 = 9 ms"
+      },
+      {
+        "id": "C1_SA_CALC06",
+        "question": "A 10 Kbit packet crosses two 100 Mbps links using store-and-forward. Ignore propagation, processing, and queueing delays. What is the end-to-end delay?",
+        "answer": "0.2 ms",
+        "solution": "One-link transmission delay = 10,000 / 100,000,000 = 0.1 ms. Two links: 2 × 0.1 = 0.2 ms"
+      },
+      {
+        "id": "C1_SA_CALC07",
+        "question": "A 1 Mbit packet crosses three 10 Mbps links using store-and-forward. Ignore propagation, processing, and queueing delays. What is the end-to-end delay?",
+        "answer": "0.3 s",
+        "solution": "Each transmission delay = 1/10 s = 0.1 s. Three links: 3 × 0.1 = 0.3 s"
+      },
+      {
+        "id": "C1_SA_CALC08",
+        "question": "A 1 Mbit packet crosses two links with rates 5 Mbps and 2 Mbps. Each link has a propagation delay of 10 ms. Ignore processing and queueing delays. What is the total end-to-end delay?",
+        "answer": "0.72 s",
+        "solution": "Transmission = 1/5 + 1/2 = 0.2 + 0.5 = 0.7 s. Propagation = 0.01 + 0.01 = 0.02 s. Total = 0.72 s"
+      },
+      {
+        "id": "C1_SA_CALC09",
+        "question": "Packets are 10,000 bits long, the average arrival rate is 80 packets/s, and the link rate is 1 Mbps. What is the traffic intensity La/R?",
+        "answer": "0.8",
+        "solution": "La/R = (10,000 × 80) / 1,000,000 = 0.8"
+      },
+      {
+        "id": "C1_SA_CALC10",
+        "question": "A link rate is 2 Mbps and each packet is 8,000 bits. What is the maximum average packet arrival rate a such that La/R = 1?",
+        "answer": "250 packets/s",
+        "solution": "a = R/L = 2,000,000 / 8,000 = 250 packets/s"
+      },
+      {
+        "id": "C1_SA_CALC11",
+        "question": "Packets are 12,000 bits long and arrive at 100 packets/s to a 1 Mbps link. What is the traffic intensity?",
+        "answer": "1.2",
+        "solution": "La/R = (12,000 × 100) / 1,000,000 = 1.2"
+      },
+      {
+        "id": "C1_SA_CALC12",
+        "question": "A sender access link has rate Rs = 10 Mbps and a receiver access link has rate Rc = 40 Mbps. What is the end-to-end throughput?",
+        "answer": "10 Mbps",
+        "solution": "Throughput = min(Rs, Rc) = min(10, 40) = 10 Mbps"
+      },
+      {
+        "id": "C1_SA_CALC13",
+        "question": "A sender access link has rate Rs = 50 Mbps and a receiver access link has rate Rc = 20 Mbps. What is the end-to-end throughput?",
+        "answer": "20 Mbps",
+        "solution": "Throughput = min(Rs, Rc) = min(50, 20) = 20 Mbps"
+      },
+      {
+        "id": "C1_SA_CALC14",
+        "question": "Ten connections fairly share a 100 Mbps backbone link. For each connection, Rs = 15 Mbps and Rc = 20 Mbps. What is the per-connection end-to-end throughput?",
+        "answer": "10 Mbps",
+        "solution": "Throughput = min(Rc, Rs, R/10) = min(20, 15, 10) = 10 Mbps"
+      },
+      {
+        "id": "C1_SA_CALC15",
+        "question": "Eight connections fairly share a 96 Mbps backbone link. For each connection, Rs = 20 Mbps and Rc = 15 Mbps. What is the per-connection end-to-end throughput?",
+        "answer": "12 Mbps",
+        "solution": "Shared backbone rate = 96/8 = 12 Mbps. Throughput = min(20, 15, 12) = 12 Mbps"
+      },
+      {
+        "id": "C1_SA_CALC16",
+        "question": "A 600 Mbit file is transferred over a path whose end-to-end throughput is 20 Mbps. How long does the transfer take?",
+        "answer": "30 s",
+        "solution": "Time = F/throughput = 600 Mbits / 20 Mbps = 30 s"
+      },
+      {
+        "id": "C1_SA_CALC17",
+        "question": "A 1 Gbps link uses circuit switching. Each user requires a dedicated 100 Mbps circuit while active. What is the maximum number of simultaneous users?",
+        "answer": "10 users",
+        "solution": "1,000 Mbps / 100 Mbps = 10"
+      },
+      {
+        "id": "C1_SA_CALC18",
+        "question": "A 200 Mbps circuit-switched link allocates 25 Mbps to each call. How many calls can be supported simultaneously?",
+        "answer": "8 calls",
+        "solution": "200 / 25 = 8"
+      },
+      {
+        "id": "C1_SA_CALC19",
+        "question": "In the caravan analogy, there are 10 cars, a toll booth needs 12 seconds to service each car, the distance to the next booth is 100 km, and cars travel at 100 km/h. How long until the entire caravan is lined up at the second booth?",
+        "answer": "62 minutes",
+        "solution": "Transmission-like time = 10 × 12 s = 120 s = 2 min. Propagation time = 100 km / 100 km/h = 60 min. Total = 62 min"
+      },
+      {
+        "id": "C1_SA_CALC20",
+        "question": "In the lecture's second caravan example, the booth needs 1 minute per car and cars travel 100 km at 1,000 km/h. When the first car reaches the second booth after 7 minutes, how many of the 10 cars are still at the first booth?",
+        "answer": "3 cars",
+        "solution": "By 7 minutes, 7 cars have been serviced at the first booth, so 10 - 7 = 3 cars remain"
+      }
+    ]
+  },
+  "chapter_2": {
+    "short_answer_calculation": [
+      {
+        "id": "C2_SA_CALC01",
+        "question": "For non-persistent HTTP, RTT is 40 ms and the file transmission time is 20 ms. What is the response time for one object?",
+        "answer": "100 ms",
+        "solution": "Response time = 2RTT + transmission time = 2(40) + 20 = 100 ms"
+      },
+      {
+        "id": "C2_SA_CALC02",
+        "question": "An HTML file references 4 very small objects on the same server. RTT is 25 ms. Using non-persistent HTTP with no parallel connections and neglecting transmission times, how long does it take to retrieve the HTML file and all 4 objects?",
+        "answer": "250 ms",
+        "solution": "There are 5 objects total, each requiring 2RTT. Time = 5 × 2 × 25 = 250 ms"
+      },
+      {
+        "id": "C2_SA_CALC03",
+        "question": "An HTML file references 8 very small objects on the same server. RTT is 30 ms. Using non-persistent HTTP with no parallel connections and neglecting transmission times, what is the total time?",
+        "answer": "540 ms",
+        "solution": "Lecture result is 18RTT. Time = 18 × 30 = 540 ms"
+      },
+      {
+        "id": "C2_SA_CALC04",
+        "question": "An HTML file references 8 very small objects on the same server. RTT is 50 ms. The browser uses non-persistent HTTP with 5 parallel TCP connections. Neglect transmission times. What is the total time?",
+        "answer": "300 ms",
+        "solution": "Lecture result is 6RTT. Time = 6 × 50 = 300 ms"
+      },
+      {
+        "id": "C2_SA_CALC05",
+        "question": "An HTML file references 8 very small objects on the same server. RTT is 20 ms. Using persistent HTTP with pipelining and neglecting transmission times, what is the total time?",
+        "answer": "60 ms",
+        "solution": "Lecture result is 3RTT. Time = 3 × 20 = 60 ms"
+      },
+      {
+        "id": "C2_SA_CALC06",
+        "question": "An HTML file references 8 very small objects on the same server. RTT is 20 ms. Using persistent HTTP without pipelining and without parallel connections, what is the total time?",
+        "answer": "200 ms",
+        "solution": "Lecture result is 10RTT. Time = 10 × 20 = 200 ms"
+      },
+      {
+        "id": "C2_SA_CALC07",
+        "question": "An HTML file references 12 very small objects on the same server. RTT is 15 ms. Using persistent HTTP without pipelining and without parallel connections, neglect transmission times. What is the total time?",
+        "answer": "210 ms",
+        "solution": "1RTT for TCP setup + 1RTT for the base HTML + 12RTT for 12 referenced objects = 14RTT. 14 × 15 = 210 ms"
+      },
+      {
+        "id": "C2_SA_CALC08",
+        "question": "For one object using non-persistent HTTP, RTT is 50 ms, the object size is 2 Mbits, and the link rate is 10 Mbps. What is the total response time?",
+        "answer": "300 ms",
+        "solution": "Transmission time = 2/10 = 0.2 s = 200 ms. Total = 2RTT + transmission = 100 + 200 = 300 ms"
+      },
+      {
+        "id": "C2_SA_CALC09",
+        "question": "The average Web object size is 100 Kbits and browsers make 15 requests per second. What is the average data rate to browsers?",
+        "answer": "1.50 Mbps",
+        "solution": "100,000 bits × 15/s = 1,500,000 bits/s = 1.50 Mbps"
+      },
+      {
+        "id": "C2_SA_CALC10",
+        "question": "The data rate over an access link is 1.50 Mbps and the access link rate is 1.54 Mbps. What is the access-link utilization?",
+        "answer": "About 0.97",
+        "solution": "Utilization = 1.50 / 1.54 = 0.974 ≈ 0.97"
+      },
+      {
+        "id": "C2_SA_CALC11",
+        "question": "The original data rate to browsers is 1.50 Mbps. A Web cache has a hit rate of 0.40. What data rate must cross the access link?",
+        "answer": "0.90 Mbps",
+        "solution": "Miss rate = 1 - 0.40 = 0.60. Access-link data rate = 0.60 × 1.50 = 0.90 Mbps"
+      },
+      {
+        "id": "C2_SA_CALC12",
+        "question": "After installing a cache, the access-link data rate is 0.90 Mbps and the access-link rate is 1.54 Mbps. What is the access-link utilization?",
+        "answer": "About 0.58",
+        "solution": "Utilization = 0.90 / 1.54 = 0.584 ≈ 0.58"
+      },
+      {
+        "id": "C2_SA_CALC13",
+        "question": "A Web cache has a hit rate of 0.40. A cache miss takes 2.01 s and a cache hit takes 0.005 s. What is the average response time?",
+        "answer": "About 1.21 s",
+        "solution": "Average = 0.60(2.01) + 0.40(0.005) = 1.208 s ≈ 1.21 s"
+      },
+      {
+        "id": "C2_SA_CALC14",
+        "question": "An access link has rate 15 Mbps, the average object size is 850,000 bits, and the object arrival rate is 16/s. Using average access delay = t/(1 - t·a), find the average access delay.",
+        "answer": "About 0.61 s",
+        "solution": "t = 850,000/15,000,000 = 0.0567 s. t·a = 0.9067. Delay = 0.0567/(1 - 0.9067) = 0.607 s ≈ 0.61 s"
+      },
+      {
+        "id": "C2_SA_CALC15",
+        "question": "Using the same scenario as the lecture exercise, RTT to the origin server is 3 s and the average access delay is about 0.61 s. What is the total average response time without a cache?",
+        "answer": "About 3.61 s",
+        "solution": "Total response time ≈ RTT + access delay = 3 + 0.61 = 3.61 s"
+      },
+      {
+        "id": "C2_SA_CALC16",
+        "question": "An institutional cache has a miss rate of 0.40. The original browser request rate is 16 requests/s. What is the arrival rate of objects to the access link?",
+        "answer": "6.4 requests/s",
+        "solution": "Only misses use the access link: 0.40 × 16 = 6.4 requests/s"
+      },
+      {
+        "id": "C2_SA_CALC17",
+        "question": "For DNS, the RTT between the client and local DNS server is 10 ms, and the RTT between the local DNS server and each other DNS server is 20 ms. Assume no DNS caching and the lecture's three external DNS lookups. What is the total DNS response time?",
+        "answer": "70 ms",
+        "solution": "Total = RTT_client-local + 3RTT_other = 10 + 3(20) = 70 ms"
+      },
+      {
+        "id": "C2_SA_CALC18",
+        "question": "The requested DNS record is cached at the local DNS server. If the RTT between the client and local DNS server is 12 ms, what is the DNS response time?",
+        "answer": "12 ms",
+        "solution": "With a local DNS cache hit, only RTT_client-local is needed: 12 ms"
+      },
+      {
+        "id": "C2_SA_CALC19",
+        "question": "For a DNS lookup, RTT_client-local = 5 ms and RTT_other = 15 ms. How much time is saved if the requested record is cached at the local DNS server compared with no caching?",
+        "answer": "45 ms",
+        "solution": "No cache = 5 + 3(15) = 50 ms. Local cache hit = 5 ms. Saved time = 50 - 5 = 45 ms"
+      },
+      {
+        "id": "C2_SA_CALC20",
+        "question": "Suppose 40% of DNS requests are answered from the local DNS cache. RTT_client-local = 10 ms and a cache miss takes RTT_client-local + 3RTT_other with RTT_other = 20 ms. What is the average DNS lookup time?",
+        "answer": "46 ms",
+        "solution": "Cache hit = 10 ms. Cache miss = 10 + 3(20) = 70 ms. Average = 0.40(10) + 0.60(70) = 46 ms"
+      }
+    ]
+  }
+}

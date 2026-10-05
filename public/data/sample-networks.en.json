@@ -1,0 +1,1488 @@
+{
+  "version": 1,
+  "title": "Computer Networks · Exam Essentials",
+  "questions": [
+    {
+      "id": "true_false-01",
+      "type": "true_false",
+      "topic": "TCP",
+      "prompt": "TCP provides an ordered byte stream.",
+      "explanation": "TCP presents bytes to the application in sequence.",
+      "source": "https://www.rfc-editor.org/rfc/rfc9293.html",
+      "answer": true
+    },
+    {
+      "id": "true_false-02",
+      "type": "true_false",
+      "topic": "UDP",
+      "prompt": "UDP guarantees that every datagram arrives.",
+      "explanation": "Applications must handle loss when using UDP.",
+      "source": "https://www.rfc-editor.org/rfc/rfc768.html",
+      "answer": false
+    },
+    {
+      "id": "true_false-03",
+      "type": "true_false",
+      "topic": "IPv4",
+      "prompt": "An IPv4 address contains 32 bits.",
+      "explanation": "IPv4 addresses have four 8-bit octets.",
+      "source": "https://www.rfc-editor.org/rfc/rfc791.html",
+      "answer": true
+    },
+    {
+      "id": "true_false-04",
+      "type": "true_false",
+      "topic": "IPv6",
+      "prompt": "An IPv6 address contains 64 bits.",
+      "explanation": "An IPv6 address is 128 bits long.",
+      "source": "https://www.rfc-editor.org/rfc/rfc8200.html",
+      "answer": false
+    },
+    {
+      "id": "true_false-05",
+      "type": "true_false",
+      "topic": "DNS",
+      "prompt": "DNS can cache answers to reduce repeated lookups.",
+      "explanation": "Cached records remain usable according to their TTL.",
+      "source": "https://www.rfc-editor.org/rfc/rfc1034.html",
+      "answer": true
+    },
+    {
+      "id": "true_false-06",
+      "type": "true_false",
+      "topic": "HTTP",
+      "prompt": "An HTTP 404 response indicates a successful request.",
+      "explanation": "404 means the requested resource was not found.",
+      "source": "https://www.rfc-editor.org/rfc/rfc9110.html",
+      "answer": false
+    },
+    {
+      "id": "true_false-07",
+      "type": "true_false",
+      "topic": "ARP",
+      "prompt": "ARP can resolve an IPv4 address to an Ethernet address on a local link.",
+      "explanation": "ARP discovers the link-layer address of an IPv4 neighbor.",
+      "source": "https://www.rfc-editor.org/rfc/rfc826.html",
+      "answer": true
+    },
+    {
+      "id": "true_false-08",
+      "type": "true_false",
+      "topic": "Subnetting",
+      "prompt": "A /24 IPv4 prefix leaves 8 bits outside the network prefix.",
+      "explanation": "32 minus 24 leaves 8 host bits.",
+      "source": "https://www.rfc-editor.org/rfc/rfc4632.html",
+      "answer": true
+    },
+    {
+      "id": "true_false-09",
+      "type": "true_false",
+      "topic": "TCP",
+      "prompt": "TCP sequence numbers normally count bytes, not packets.",
+      "explanation": "The sequence space tracks stream bytes; SYN and FIN also consume sequence space.",
+      "source": "https://www.rfc-editor.org/rfc/rfc9293.html",
+      "answer": true
+    },
+    {
+      "id": "true_false-10",
+      "type": "true_false",
+      "topic": "UDP",
+      "prompt": "The UDP header is 8 bytes long.",
+      "explanation": "Four 16-bit fields make an 8-byte header.",
+      "source": "https://www.rfc-editor.org/rfc/rfc768.html",
+      "answer": true
+    },
+    {
+      "id": "true_false-11",
+      "type": "true_false",
+      "topic": "Routing",
+      "prompt": "OSPF is a link-state routing protocol.",
+      "explanation": "OSPF routers exchange link-state information.",
+      "source": "https://www.rfc-editor.org/rfc/rfc2328.html",
+      "answer": true
+    },
+    {
+      "id": "true_false-12",
+      "type": "true_false",
+      "topic": "Routing",
+      "prompt": "BGP is primarily used to exchange routes between autonomous systems.",
+      "explanation": "BGP supports inter-domain routing and policy.",
+      "source": "https://www.rfc-editor.org/rfc/rfc4271.html",
+      "answer": true
+    },
+    {
+      "id": "true_false-13",
+      "type": "true_false",
+      "topic": "IPv4",
+      "prompt": "IPv4 TTL increases at each router hop.",
+      "explanation": "Forwarding routers decrease TTL, preventing indefinite circulation.",
+      "source": "https://www.rfc-editor.org/rfc/rfc791.html",
+      "answer": false
+    },
+    {
+      "id": "true_false-14",
+      "type": "true_false",
+      "topic": "HTTP",
+      "prompt": "HTTP GET is intended to retrieve a representation of a resource.",
+      "explanation": "GET requests transfer of a selected representation.",
+      "source": "https://www.rfc-editor.org/rfc/rfc9110.html",
+      "answer": true
+    },
+    {
+      "id": "true_false-15",
+      "type": "true_false",
+      "topic": "DNS",
+      "prompt": "A DNS MX record identifies a mail exchanger for a domain.",
+      "explanation": "MX records describe mail delivery destinations.",
+      "source": "https://www.rfc-editor.org/rfc/rfc1035.html",
+      "answer": true
+    },
+    {
+      "id": "true_false-16",
+      "type": "true_false",
+      "topic": "DHCP",
+      "prompt": "DHCP can automatically assign an IPv4 address to a host.",
+      "explanation": "DHCP offers address leases and other configuration.",
+      "source": "https://www.rfc-editor.org/rfc/rfc2131.html",
+      "answer": true
+    },
+    {
+      "id": "true_false-17",
+      "type": "true_false",
+      "topic": "TCP",
+      "prompt": "TCP flow control and congestion control protect exactly the same resource.",
+      "explanation": "Flow control protects the receiver; congestion control responds to network capacity.",
+      "source": "https://www.rfc-editor.org/rfc/rfc5681.html",
+      "answer": false
+    },
+    {
+      "id": "true_false-18",
+      "type": "true_false",
+      "topic": "Ethernet",
+      "prompt": "The standard Ethernet MTU for an IP datagram is 1500 bytes.",
+      "explanation": "This limit concerns the IP datagram, excluding the Ethernet header.",
+      "source": "https://www.rfc-editor.org/rfc/rfc894.html",
+      "answer": true
+    },
+    {
+      "id": "true_false-19",
+      "type": "true_false",
+      "topic": "IPv6",
+      "prompt": "IPv6 routers fragment packets while forwarding them.",
+      "explanation": "IPv6 fragmentation is performed by the source, not intermediate routers.",
+      "source": "https://www.rfc-editor.org/rfc/rfc8200.html",
+      "answer": false
+    },
+    {
+      "id": "true_false-20",
+      "type": "true_false",
+      "topic": "Subnetting",
+      "prompt": "An IPv4 /26 block contains 64 total addresses.",
+      "explanation": "Six host bits allow 2^6 addresses.",
+      "source": "https://www.rfc-editor.org/rfc/rfc4632.html",
+      "answer": true
+    },
+    {
+      "id": "multiple_choice-01",
+      "type": "multiple_choice",
+      "topic": "Layers",
+      "prompt": "Which layer provides process-to-process communication?",
+      "explanation": "Transport protocols use ports to distinguish application endpoints.",
+      "source": "https://www.rfc-editor.org/rfc/rfc1122.html",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Link"
+        },
+        {
+          "id": "b",
+          "text": "Transport"
+        },
+        {
+          "id": "c",
+          "text": "Physical"
+        },
+        {
+          "id": "d",
+          "text": "Internet"
+        }
+      ],
+      "answer": "b"
+    },
+    {
+      "id": "multiple_choice-02",
+      "type": "multiple_choice",
+      "topic": "TCP",
+      "prompt": "Which sequence establishes a typical TCP connection?",
+      "explanation": "The three-way handshake synchronizes sequence numbers.",
+      "source": "https://www.rfc-editor.org/rfc/rfc9293.html",
+      "choices": [
+        {
+          "id": "a",
+          "text": "ACK → SYN → FIN"
+        },
+        {
+          "id": "b",
+          "text": "FIN → ACK → SYN"
+        },
+        {
+          "id": "c",
+          "text": "SYN → SYN-ACK → ACK"
+        },
+        {
+          "id": "d",
+          "text": "SYN → FIN → ACK"
+        }
+      ],
+      "answer": "c"
+    },
+    {
+      "id": "multiple_choice-03",
+      "type": "multiple_choice",
+      "topic": "DNS",
+      "prompt": "Which DNS record type maps a name to an IPv4 address?",
+      "explanation": "An A record carries an IPv4 address.",
+      "source": "https://www.rfc-editor.org/rfc/rfc1035.html",
+      "choices": [
+        {
+          "id": "a",
+          "text": "MX"
+        },
+        {
+          "id": "b",
+          "text": "AAAA"
+        },
+        {
+          "id": "c",
+          "text": "CNAME"
+        },
+        {
+          "id": "d",
+          "text": "A"
+        }
+      ],
+      "answer": "d"
+    },
+    {
+      "id": "multiple_choice-04",
+      "type": "multiple_choice",
+      "topic": "Subnetting",
+      "prompt": "What subnet mask corresponds to /26?",
+      "explanation": "The final octet has two prefix bits: 11000000.",
+      "source": "https://www.rfc-editor.org/rfc/rfc4632.html",
+      "choices": [
+        {
+          "id": "a",
+          "text": "255.255.255.0"
+        },
+        {
+          "id": "b",
+          "text": "255.255.255.192"
+        },
+        {
+          "id": "c",
+          "text": "255.255.255.224"
+        },
+        {
+          "id": "d",
+          "text": "255.255.255.128"
+        }
+      ],
+      "answer": "b"
+    },
+    {
+      "id": "multiple_choice-05",
+      "type": "multiple_choice",
+      "topic": "HTTP",
+      "prompt": "Which response code normally means Not Found?",
+      "explanation": "404 reports that a current representation was not found.",
+      "source": "https://www.rfc-editor.org/rfc/rfc9110.html",
+      "choices": [
+        {
+          "id": "a",
+          "text": "200"
+        },
+        {
+          "id": "b",
+          "text": "301"
+        },
+        {
+          "id": "c",
+          "text": "404"
+        },
+        {
+          "id": "d",
+          "text": "500"
+        }
+      ],
+      "answer": "c"
+    },
+    {
+      "id": "multiple_choice-06",
+      "type": "multiple_choice",
+      "topic": "UDP",
+      "prompt": "Which application requirement most directly favors TCP over UDP?",
+      "explanation": "TCP supplies reliable ordered delivery as part of the transport.",
+      "source": "https://www.rfc-editor.org/rfc/rfc9293.html",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Reliable ordered delivery"
+        },
+        {
+          "id": "b",
+          "text": "No transport connection setup"
+        },
+        {
+          "id": "c",
+          "text": "Independent datagrams"
+        },
+        {
+          "id": "d",
+          "text": "Minimal transport header"
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "id": "multiple_choice-07",
+      "type": "multiple_choice",
+      "topic": "Routing",
+      "prompt": "Which algorithm is used to compute OSPF shortest paths?",
+      "explanation": "OSPF builds a shortest-path tree from its link-state database.",
+      "source": "https://www.rfc-editor.org/rfc/rfc2328.html",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Binary search"
+        },
+        {
+          "id": "b",
+          "text": "Bellman-Ford only"
+        },
+        {
+          "id": "c",
+          "text": "Dijkstra"
+        },
+        {
+          "id": "d",
+          "text": "Round-robin"
+        }
+      ],
+      "answer": "c"
+    },
+    {
+      "id": "multiple_choice-08",
+      "type": "multiple_choice",
+      "topic": "IPv4",
+      "prompt": "Which IPv4 field limits the lifetime of a packet?",
+      "explanation": "TTL is reduced during forwarding.",
+      "source": "https://www.rfc-editor.org/rfc/rfc791.html",
+      "choices": [
+        {
+          "id": "a",
+          "text": "IHL"
+        },
+        {
+          "id": "b",
+          "text": "TTL"
+        },
+        {
+          "id": "c",
+          "text": "Source port"
+        },
+        {
+          "id": "d",
+          "text": "Window"
+        }
+      ],
+      "answer": "b"
+    },
+    {
+      "id": "multiple_choice-09",
+      "type": "multiple_choice",
+      "topic": "DHCP",
+      "prompt": "What is the usual initial DHCP exchange?",
+      "explanation": "A client discovers servers, accepts an offer, and receives acknowledgment.",
+      "source": "https://www.rfc-editor.org/rfc/rfc2131.html",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Offer → Discover → ACK → Request"
+        },
+        {
+          "id": "b",
+          "text": "Request → ACK → Discover → Offer"
+        },
+        {
+          "id": "c",
+          "text": "Discover → Offer → Request → ACK"
+        },
+        {
+          "id": "d",
+          "text": "ACK → Request → Offer → Discover"
+        }
+      ],
+      "answer": "c"
+    },
+    {
+      "id": "multiple_choice-10",
+      "type": "multiple_choice",
+      "topic": "DNS",
+      "prompt": "Which DNS record represents an alias?",
+      "explanation": "CNAME identifies a canonical name for an alias.",
+      "source": "https://www.rfc-editor.org/rfc/rfc1034.html",
+      "choices": [
+        {
+          "id": "a",
+          "text": "A"
+        },
+        {
+          "id": "b",
+          "text": "MX"
+        },
+        {
+          "id": "c",
+          "text": "NS"
+        },
+        {
+          "id": "d",
+          "text": "CNAME"
+        }
+      ],
+      "answer": "d"
+    },
+    {
+      "id": "multiple_choice-11",
+      "type": "multiple_choice",
+      "topic": "ARP",
+      "prompt": "What does an ARP request on Ethernet normally use as its destination?",
+      "explanation": "The request reaches local nodes so the address owner can reply.",
+      "source": "https://www.rfc-editor.org/rfc/rfc826.html",
+      "choices": [
+        {
+          "id": "a",
+          "text": "The local broadcast address"
+        },
+        {
+          "id": "b",
+          "text": "The remote web server MAC"
+        },
+        {
+          "id": "c",
+          "text": "The DNS server IP"
+        },
+        {
+          "id": "d",
+          "text": "A TCP port"
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "id": "multiple_choice-12",
+      "type": "multiple_choice",
+      "topic": "TCP",
+      "prompt": "What does the TCP receive window primarily support?",
+      "explanation": "The advertised window limits data according to receiver capacity.",
+      "source": "https://www.rfc-editor.org/rfc/rfc9293.html",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Routing"
+        },
+        {
+          "id": "b",
+          "text": "Name resolution"
+        },
+        {
+          "id": "c",
+          "text": "Flow control"
+        },
+        {
+          "id": "d",
+          "text": "Ethernet switching"
+        }
+      ],
+      "answer": "c"
+    },
+    {
+      "id": "multiple_choice-13",
+      "type": "multiple_choice",
+      "topic": "Subnetting",
+      "prompt": "What is the network address of 192.168.1.77/26?",
+      "explanation": "/26 boundaries occur every 64 addresses in the last octet.",
+      "source": "https://www.rfc-editor.org/rfc/rfc4632.html",
+      "choices": [
+        {
+          "id": "a",
+          "text": "192.168.1.0"
+        },
+        {
+          "id": "b",
+          "text": "192.168.1.64"
+        },
+        {
+          "id": "c",
+          "text": "192.168.1.77"
+        },
+        {
+          "id": "d",
+          "text": "192.168.1.128"
+        }
+      ],
+      "answer": "b"
+    },
+    {
+      "id": "multiple_choice-14",
+      "type": "multiple_choice",
+      "topic": "IPv6",
+      "prompt": "How long is an IPv6 address?",
+      "explanation": "IPv6 expands the address size to 128 bits.",
+      "source": "https://www.rfc-editor.org/rfc/rfc8200.html",
+      "choices": [
+        {
+          "id": "a",
+          "text": "32 bits"
+        },
+        {
+          "id": "b",
+          "text": "48 bits"
+        },
+        {
+          "id": "c",
+          "text": "64 bits"
+        },
+        {
+          "id": "d",
+          "text": "128 bits"
+        }
+      ],
+      "answer": "d"
+    },
+    {
+      "id": "multiple_choice-15",
+      "type": "multiple_choice",
+      "topic": "HTTP",
+      "prompt": "Which HTTP method requests headers without the response content of GET?",
+      "explanation": "HEAD has GET-like semantics but no response content.",
+      "source": "https://www.rfc-editor.org/rfc/rfc9110.html",
+      "choices": [
+        {
+          "id": "a",
+          "text": "POST"
+        },
+        {
+          "id": "b",
+          "text": "HEAD"
+        },
+        {
+          "id": "c",
+          "text": "PUT"
+        },
+        {
+          "id": "d",
+          "text": "CONNECT"
+        }
+      ],
+      "answer": "b"
+    },
+    {
+      "id": "multiple_choice-16",
+      "type": "multiple_choice",
+      "topic": "Routing",
+      "prompt": "Which BGP attribute lists autonomous systems along a route?",
+      "explanation": "AS_PATH records AS traversal information.",
+      "source": "https://www.rfc-editor.org/rfc/rfc4271.html",
+      "choices": [
+        {
+          "id": "a",
+          "text": "AS_PATH"
+        },
+        {
+          "id": "b",
+          "text": "TTL"
+        },
+        {
+          "id": "c",
+          "text": "MAC_PATH"
+        },
+        {
+          "id": "d",
+          "text": "TCP_WINDOW"
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "id": "multiple_choice-17",
+      "type": "multiple_choice",
+      "topic": "UDP",
+      "prompt": "Which field is absent from the UDP header?",
+      "explanation": "UDP does not include TCP-style sequence numbering.",
+      "source": "https://www.rfc-editor.org/rfc/rfc768.html",
+      "choices": [
+        {
+          "id": "a",
+          "text": "Source port"
+        },
+        {
+          "id": "b",
+          "text": "Length"
+        },
+        {
+          "id": "c",
+          "text": "Sequence number"
+        },
+        {
+          "id": "d",
+          "text": "Checksum"
+        }
+      ],
+      "answer": "c"
+    },
+    {
+      "id": "multiple_choice-18",
+      "type": "multiple_choice",
+      "topic": "TCP",
+      "prompt": "Which mechanism detects missing acknowledgments and triggers retransmission?",
+      "explanation": "TCP retransmits when its retransmission timer expires.",
+      "source": "https://www.rfc-editor.org/rfc/rfc6298.html",
+      "choices": [
+        {
+          "id": "a",
+          "text": "ARP cache"
+        },
+        {
+          "id": "b",
+          "text": "Retransmission timer"
+        },
+        {
+          "id": "c",
+          "text": "DNS TTL"
+        },
+        {
+          "id": "d",
+          "text": "Subnet mask"
+        }
+      ],
+      "answer": "b"
+    },
+    {
+      "id": "multiple_choice-19",
+      "type": "multiple_choice",
+      "topic": "Ethernet",
+      "prompt": "Which EtherType identifies IPv4?",
+      "explanation": "IPv4 over Ethernet uses EtherType 0x0800.",
+      "source": "https://www.rfc-editor.org/rfc/rfc894.html",
+      "choices": [
+        {
+          "id": "a",
+          "text": "0x86DD"
+        },
+        {
+          "id": "b",
+          "text": "0x0806"
+        },
+        {
+          "id": "c",
+          "text": "0x0800"
+        },
+        {
+          "id": "d",
+          "text": "0x8100"
+        }
+      ],
+      "answer": "c"
+    },
+    {
+      "id": "multiple_choice-20",
+      "type": "multiple_choice",
+      "topic": "Subnetting",
+      "prompt": "How many conventional usable host addresses are in an IPv4 /27 subnet?",
+      "explanation": "There are 32 total addresses; the network and broadcast addresses leave 30.",
+      "source": "https://www.rfc-editor.org/rfc/rfc4632.html",
+      "choices": [
+        {
+          "id": "a",
+          "text": "32"
+        },
+        {
+          "id": "b",
+          "text": "30"
+        },
+        {
+          "id": "c",
+          "text": "64"
+        },
+        {
+          "id": "d",
+          "text": "62"
+        }
+      ],
+      "answer": "b"
+    },
+    {
+      "id": "short_answer-01",
+      "type": "short_answer",
+      "topic": "TCP",
+      "prompt": "What does TCP stand for?",
+      "explanation": "TCP is the Transmission Control Protocol.",
+      "source": "https://www.rfc-editor.org/rfc/rfc9293.html",
+      "answers": [
+        "Transmission Control Protocol"
+      ]
+    },
+    {
+      "id": "short_answer-02",
+      "type": "short_answer",
+      "topic": "UDP",
+      "prompt": "What does UDP stand for?",
+      "explanation": "UDP is the User Datagram Protocol.",
+      "source": "https://www.rfc-editor.org/rfc/rfc768.html",
+      "answers": [
+        "User Datagram Protocol"
+      ]
+    },
+    {
+      "id": "short_answer-03",
+      "type": "short_answer",
+      "topic": "DNS",
+      "prompt": "What does DNS stand for?",
+      "explanation": "DNS is the Domain Name System.",
+      "source": "https://www.rfc-editor.org/rfc/rfc1034.html",
+      "answers": [
+        "Domain Name System"
+      ]
+    },
+    {
+      "id": "short_answer-04",
+      "type": "short_answer",
+      "topic": "IPv4",
+      "prompt": "How many bits are in an IPv4 address? Enter a number.",
+      "explanation": "Four octets contain 32 bits.",
+      "source": "https://www.rfc-editor.org/rfc/rfc791.html",
+      "answers": [
+        "32",
+        "32 bits"
+      ]
+    },
+    {
+      "id": "short_answer-05",
+      "type": "short_answer",
+      "topic": "IPv6",
+      "prompt": "How many bits are in an IPv6 address? Enter a number.",
+      "explanation": "IPv6 uses 128-bit addresses.",
+      "source": "https://www.rfc-editor.org/rfc/rfc8200.html",
+      "answers": [
+        "128",
+        "128 bits"
+      ]
+    },
+    {
+      "id": "short_answer-06",
+      "type": "short_answer",
+      "topic": "Subnetting",
+      "prompt": "How many total addresses are in an IPv4 /24 block?",
+      "explanation": "2^(32−24) equals 256.",
+      "source": "https://www.rfc-editor.org/rfc/rfc4632.html",
+      "answers": [
+        "256",
+        "256 addresses"
+      ]
+    },
+    {
+      "id": "short_answer-07",
+      "type": "short_answer",
+      "topic": "Subnetting",
+      "prompt": "Write the dotted-decimal subnet mask for /24.",
+      "explanation": "The first 24 bits are set.",
+      "source": "https://www.rfc-editor.org/rfc/rfc4632.html",
+      "answers": [
+        "255.255.255.0"
+      ]
+    },
+    {
+      "id": "short_answer-08",
+      "type": "short_answer",
+      "topic": "Subnetting",
+      "prompt": "What is the network address of 10.0.0.37/24?",
+      "explanation": "Zeroing the 8 host bits gives 10.0.0.0.",
+      "source": "https://www.rfc-editor.org/rfc/rfc4632.html",
+      "answers": [
+        "10.0.0.0",
+        "10.0.0.0/24"
+      ]
+    },
+    {
+      "id": "short_answer-09",
+      "type": "short_answer",
+      "topic": "DNS",
+      "prompt": "Which DNS record type stores a mail exchanger? Give the abbreviation.",
+      "explanation": "MX records identify mail exchangers.",
+      "source": "https://www.rfc-editor.org/rfc/rfc1035.html",
+      "answers": [
+        "MX"
+      ]
+    },
+    {
+      "id": "short_answer-10",
+      "type": "short_answer",
+      "topic": "ARP",
+      "prompt": "Which protocol resolves an IPv4 neighbor to its Ethernet address?",
+      "explanation": "ARP obtains a local link-layer address.",
+      "source": "https://www.rfc-editor.org/rfc/rfc826.html",
+      "answers": [
+        "ARP",
+        "Address Resolution Protocol"
+      ]
+    },
+    {
+      "id": "short_answer-11",
+      "type": "short_answer",
+      "topic": "HTTP",
+      "prompt": "Which HTTP status code means Not Found?",
+      "explanation": "404 is the Not Found status.",
+      "source": "https://www.rfc-editor.org/rfc/rfc9110.html",
+      "answers": [
+        "404",
+        "404 Not Found"
+      ]
+    },
+    {
+      "id": "short_answer-12",
+      "type": "short_answer",
+      "topic": "TCP",
+      "prompt": "Which TCP flag initiates a typical connection?",
+      "explanation": "SYN initiates sequence-number synchronization.",
+      "source": "https://www.rfc-editor.org/rfc/rfc9293.html",
+      "answers": [
+        "SYN",
+        "synchronize"
+      ]
+    },
+    {
+      "id": "short_answer-13",
+      "type": "short_answer",
+      "topic": "TCP",
+      "prompt": "Which TCP flag indicates that the sender has no more data to send?",
+      "explanation": "FIN closes one direction of the byte stream.",
+      "source": "https://www.rfc-editor.org/rfc/rfc9293.html",
+      "answers": [
+        "FIN",
+        "finish"
+      ]
+    },
+    {
+      "id": "short_answer-14",
+      "type": "short_answer",
+      "topic": "UDP",
+      "prompt": "How many bytes are in the UDP header?",
+      "explanation": "The UDP header has four 2-byte fields.",
+      "source": "https://www.rfc-editor.org/rfc/rfc768.html",
+      "answers": [
+        "8",
+        "8 bytes"
+      ]
+    },
+    {
+      "id": "short_answer-15",
+      "type": "short_answer",
+      "topic": "IPv4",
+      "prompt": "Which IPv4 field prevents packets from circulating indefinitely? Give its abbreviation.",
+      "explanation": "Routers decrease TTL during forwarding.",
+      "source": "https://www.rfc-editor.org/rfc/rfc791.html",
+      "answers": [
+        "TTL",
+        "Time To Live",
+        "Time-to-live"
+      ]
+    },
+    {
+      "id": "short_answer-16",
+      "type": "short_answer",
+      "topic": "DHCP",
+      "prompt": "Which protocol dynamically leases IPv4 addresses to hosts?",
+      "explanation": "DHCP distributes leased addresses and configuration.",
+      "source": "https://www.rfc-editor.org/rfc/rfc2131.html",
+      "answers": [
+        "DHCP",
+        "Dynamic Host Configuration Protocol"
+      ]
+    },
+    {
+      "id": "short_answer-17",
+      "type": "short_answer",
+      "topic": "Routing",
+      "prompt": "Which routing protocol uses an AS_PATH attribute?",
+      "explanation": "BGP carries AS-path information for inter-domain routing.",
+      "source": "https://www.rfc-editor.org/rfc/rfc4271.html",
+      "answers": [
+        "BGP",
+        "Border Gateway Protocol"
+      ]
+    },
+    {
+      "id": "short_answer-18",
+      "type": "short_answer",
+      "topic": "Routing",
+      "prompt": "Which shortest-path algorithm does OSPF use?",
+      "explanation": "OSPF computes a shortest-path tree.",
+      "source": "https://www.rfc-editor.org/rfc/rfc2328.html",
+      "answers": [
+        "Dijkstra",
+        "Dijkstra algorithm",
+        "Dijkstra's algorithm",
+        "Dijkstra’s algorithm"
+      ]
+    },
+    {
+      "id": "short_answer-19",
+      "type": "short_answer",
+      "topic": "Ethernet",
+      "prompt": "What is the standard Ethernet MTU for IP, in bytes?",
+      "explanation": "An IP datagram normally fits in 1500 Ethernet payload bytes.",
+      "source": "https://www.rfc-editor.org/rfc/rfc894.html",
+      "answers": [
+        "1500",
+        "1500 bytes",
+        "1,500"
+      ]
+    },
+    {
+      "id": "short_answer-20",
+      "type": "short_answer",
+      "topic": "Subnetting",
+      "prompt": "How many conventional usable host addresses are in an IPv4 /26 subnet?",
+      "explanation": "64 total addresses minus network and broadcast leaves 62.",
+      "source": "https://www.rfc-editor.org/rfc/rfc4632.html",
+      "answers": [
+        "62",
+        "62 hosts",
+        "62 addresses"
+      ]
+    },
+    {
+      "id": "open_ended-01",
+      "type": "open_ended",
+      "topic": "TCP vs UDP",
+      "prompt": "Contrast TCP and UDP in terms of delivery guarantees. Write 1–2 sentences.",
+      "explanation": "TCP tracks a byte stream; UDP offers independent datagrams.",
+      "source": "https://www.rfc-editor.org/rfc/rfc768.html",
+      "modelAnswer": "TCP provides reliable, ordered delivery. UDP does not guarantee delivery or ordering.",
+      "concepts": [
+        [
+          "TCP",
+          "Transmission Control Protocol"
+        ],
+        [
+          "reliable",
+          "reliability"
+        ],
+        [
+          "ordered",
+          "ordering",
+          "in order"
+        ],
+        [
+          "UDP",
+          "User Datagram Protocol"
+        ],
+        [
+          "not guarantee",
+          "does not guarantee",
+          "no guarantee",
+          "unreliable",
+          "best effort"
+        ]
+      ]
+    },
+    {
+      "id": "open_ended-02",
+      "type": "open_ended",
+      "topic": "TCP",
+      "prompt": "How does TCP recover from a lost segment? Mention acknowledgments and retransmission.",
+      "explanation": "Missing acknowledgments can cause retransmission.",
+      "source": "https://www.rfc-editor.org/rfc/rfc9293.html",
+      "modelAnswer": "TCP uses acknowledgments to track received data and retransmits missing data after a timeout or loss detection.",
+      "concepts": [
+        [
+          "acknowledgments",
+          "acknowledgements",
+          "ACK",
+          "ACKs"
+        ],
+        [
+          "retransmit",
+          "retransmits",
+          "retransmission",
+          "resend",
+          "resends"
+        ]
+      ]
+    },
+    {
+      "id": "open_ended-03",
+      "type": "open_ended",
+      "topic": "Flow control",
+      "prompt": "What is the purpose of TCP flow control, and which window supports it?",
+      "explanation": "The receiver advertises how much more data it can accept.",
+      "source": "https://www.rfc-editor.org/rfc/rfc9293.html",
+      "modelAnswer": "Flow control protects the receiver from being overwhelmed by using the receive window.",
+      "concepts": [
+        [
+          "receiver",
+          "receiving host",
+          "receiving endpoint"
+        ],
+        [
+          "receive window",
+          "receiver window",
+          "advertised window",
+          "rwnd"
+        ]
+      ]
+    },
+    {
+      "id": "open_ended-04",
+      "type": "open_ended",
+      "topic": "Congestion control",
+      "prompt": "What does congestion control protect, and what happens to the sending rate when congestion is detected?",
+      "explanation": "A congestion signal leads the sender to back off.",
+      "source": "https://www.rfc-editor.org/rfc/rfc5681.html",
+      "modelAnswer": "Congestion control protects the network by reducing the sending rate when congestion is detected.",
+      "concepts": [
+        [
+          "network",
+          "routers",
+          "router"
+        ],
+        [
+          "reduce",
+          "reduces",
+          "reducing",
+          "decrease",
+          "decreases",
+          "decreasing",
+          "lower",
+          "lowers"
+        ]
+      ]
+    },
+    {
+      "id": "open_ended-05",
+      "type": "open_ended",
+      "topic": "DNS",
+      "prompt": "Why does DNS caching help? Mention repeated queries and latency.",
+      "explanation": "Cached answers can avoid another DNS exchange until expiration.",
+      "source": "https://www.rfc-editor.org/rfc/rfc1034.html",
+      "modelAnswer": "Caching avoids repeated DNS queries and reduces lookup latency.",
+      "concepts": [
+        [
+          "queries",
+          "query",
+          "lookups",
+          "lookup"
+        ],
+        [
+          "latency",
+          "delay",
+          "response time"
+        ],
+        [
+          "reduce",
+          "reduces",
+          "avoid",
+          "avoids",
+          "fewer",
+          "lower"
+        ]
+      ]
+    },
+    {
+      "id": "open_ended-06",
+      "type": "open_ended",
+      "topic": "DNS",
+      "prompt": "What is the role of an authoritative DNS server?",
+      "explanation": "Authority belongs to the server responsible for the zone data.",
+      "source": "https://www.rfc-editor.org/rfc/rfc1034.html",
+      "modelAnswer": "An authoritative DNS server provides authoritative records for its zone.",
+      "concepts": [
+        [
+          "records",
+          "record",
+          "answers",
+          "answer"
+        ],
+        [
+          "zone",
+          "zones"
+        ]
+      ]
+    },
+    {
+      "id": "open_ended-07",
+      "type": "open_ended",
+      "topic": "Subnetting",
+      "prompt": "What does an IPv4 /24 prefix say about network bits and host bits?",
+      "explanation": "IPv4 has 32 bits in total.",
+      "source": "https://www.rfc-editor.org/rfc/rfc4632.html",
+      "modelAnswer": "It reserves 24 bits for the network prefix and leaves 8 host bits.",
+      "concepts": [
+        [
+          "24"
+        ],
+        [
+          "network",
+          "prefix"
+        ],
+        [
+          "8"
+        ],
+        [
+          "host",
+          "hosts"
+        ]
+      ]
+    },
+    {
+      "id": "open_ended-08",
+      "type": "open_ended",
+      "topic": "ARP",
+      "prompt": "Explain why a host uses ARP before sending an IPv4 packet to a local Ethernet neighbor.",
+      "explanation": "The Ethernet frame needs a local destination hardware address.",
+      "source": "https://www.rfc-editor.org/rfc/rfc826.html",
+      "modelAnswer": "ARP maps the neighbor’s IPv4 address to a MAC address for local Ethernet delivery.",
+      "concepts": [
+        [
+          "IPv4",
+          "IP address",
+          "IP addresses"
+        ],
+        [
+          "MAC",
+          "Ethernet address",
+          "hardware address"
+        ],
+        [
+          "local",
+          "neighbor",
+          "neighbour",
+          "link"
+        ]
+      ]
+    },
+    {
+      "id": "open_ended-09",
+      "type": "open_ended",
+      "topic": "HTTP",
+      "prompt": "Explain the difference between HTTP GET and POST at a high level.",
+      "explanation": "POST semantics depend on the target resource.",
+      "source": "https://www.rfc-editor.org/rfc/rfc9110.html",
+      "modelAnswer": "GET retrieves a representation, while POST asks a resource to process the supplied content.",
+      "concepts": [
+        [
+          "GET"
+        ],
+        [
+          "retrieve",
+          "retrieves",
+          "retrieving",
+          "fetch",
+          "fetches",
+          "read"
+        ],
+        [
+          "POST"
+        ],
+        [
+          "process",
+          "processes",
+          "processing"
+        ]
+      ]
+    },
+    {
+      "id": "open_ended-10",
+      "type": "open_ended",
+      "topic": "HTTP",
+      "prompt": "What does an HTTP 301 response indicate?",
+      "explanation": "301 is a permanent redirect status.",
+      "source": "https://www.rfc-editor.org/rfc/rfc9110.html",
+      "modelAnswer": "It indicates that the resource has moved permanently to a different URI.",
+      "concepts": [
+        [
+          "permanent",
+          "permanently"
+        ],
+        [
+          "moved",
+          "redirect",
+          "redirection",
+          "redirected"
+        ],
+        [
+          "URI",
+          "URL",
+          "location",
+          "address"
+        ]
+      ]
+    },
+    {
+      "id": "open_ended-11",
+      "type": "open_ended",
+      "topic": "IPv4",
+      "prompt": "Why is TTL important when a routing loop occurs?",
+      "explanation": "TTL bounds the packet lifetime.",
+      "source": "https://www.rfc-editor.org/rfc/rfc791.html",
+      "modelAnswer": "Routers decrement TTL until it reaches zero, then discard the packet so it cannot loop forever.",
+      "concepts": [
+        [
+          "TTL",
+          "time to live"
+        ],
+        [
+          "zero",
+          "0"
+        ],
+        [
+          "discard",
+          "discarded",
+          "drop",
+          "dropped"
+        ]
+      ]
+    },
+    {
+      "id": "open_ended-12",
+      "type": "open_ended",
+      "topic": "Routing",
+      "prompt": "Explain the purpose of a default route.",
+      "explanation": "The least-specific prefix is the fallback match.",
+      "source": "https://www.rfc-editor.org/rfc/rfc4632.html",
+      "modelAnswer": "A default route is used when no more specific route matches the destination.",
+      "concepts": [
+        [
+          "default"
+        ],
+        [
+          "no more specific",
+          "no specific",
+          "no other",
+          "otherwise",
+          "unmatched"
+        ]
+      ]
+    },
+    {
+      "id": "open_ended-13",
+      "type": "open_ended",
+      "topic": "Routing",
+      "prompt": "How does OSPF use link-state information?",
+      "explanation": "A shared topology view enables shortest-path calculation.",
+      "source": "https://www.rfc-editor.org/rfc/rfc2328.html",
+      "modelAnswer": "OSPF builds a topology database and computes shortest paths with Dijkstra’s algorithm.",
+      "concepts": [
+        [
+          "topology",
+          "database",
+          "graph"
+        ],
+        [
+          "Dijkstra"
+        ],
+        [
+          "shortest path",
+          "shortest paths",
+          "shortest path tree"
+        ]
+      ]
+    },
+    {
+      "id": "open_ended-14",
+      "type": "open_ended",
+      "topic": "Routing",
+      "prompt": "How can BGP use AS_PATH to detect a loop?",
+      "explanation": "An AS normally rejects routes containing itself in the path.",
+      "source": "https://www.rfc-editor.org/rfc/rfc4271.html",
+      "modelAnswer": "A BGP router checks whether its own AS appears in the AS_PATH and rejects the looping route.",
+      "concepts": [
+        [
+          "own AS",
+          "own autonomous system",
+          "local AS"
+        ],
+        [
+          "AS_PATH",
+          "AS path"
+        ],
+        [
+          "reject",
+          "rejects",
+          "discard",
+          "discards",
+          "ignore",
+          "ignores"
+        ]
+      ]
+    },
+    {
+      "id": "open_ended-15",
+      "type": "open_ended",
+      "topic": "DHCP",
+      "prompt": "Describe the four-message exchange used to obtain an initial DHCP lease.",
+      "explanation": "The usual exchange is often called DORA.",
+      "source": "https://www.rfc-editor.org/rfc/rfc2131.html",
+      "modelAnswer": "The client sends Discover, the server sends Offer, the client sends Request, and the server sends ACK.",
+      "concepts": [
+        [
+          "Discover",
+          "DHCPDISCOVER"
+        ],
+        [
+          "Offer",
+          "DHCPOFFER"
+        ],
+        [
+          "Request",
+          "DHCPREQUEST"
+        ],
+        [
+          "ACK",
+          "DHCPACK",
+          "acknowledgment",
+          "acknowledgement"
+        ]
+      ]
+    },
+    {
+      "id": "open_ended-16",
+      "type": "open_ended",
+      "topic": "TCP",
+      "prompt": "Why does TCP use a three-way handshake?",
+      "explanation": "Each endpoint communicates its initial sequence number.",
+      "source": "https://www.rfc-editor.org/rfc/rfc9293.html",
+      "modelAnswer": "The handshake synchronizes sequence numbers and establishes a connection between both endpoints.",
+      "concepts": [
+        [
+          "sequence number",
+          "sequence numbers"
+        ],
+        [
+          "synchronize",
+          "synchronizes",
+          "synchronization",
+          "sync",
+          "agree"
+        ],
+        [
+          "connection",
+          "endpoints"
+        ]
+      ]
+    },
+    {
+      "id": "open_ended-17",
+      "type": "open_ended",
+      "topic": "UDP",
+      "prompt": "Why might a real-time application choose UDP and handle loss itself?",
+      "explanation": "The application can choose how to react to missing datagrams.",
+      "source": "https://www.rfc-editor.org/rfc/rfc768.html",
+      "modelAnswer": "UDP avoids a connection handshake and transport retransmission delays, which can help latency-sensitive applications.",
+      "concepts": [
+        [
+          "UDP"
+        ],
+        [
+          "handshake",
+          "connection setup"
+        ],
+        [
+          "latency",
+          "delay",
+          "delays"
+        ]
+      ]
+    },
+    {
+      "id": "open_ended-18",
+      "type": "open_ended",
+      "topic": "IPv6",
+      "prompt": "Who performs fragmentation in IPv6, and do routers fragment packets?",
+      "explanation": "An IPv6 source may use a Fragment header.",
+      "source": "https://www.rfc-editor.org/rfc/rfc8200.html",
+      "modelAnswer": "Only the source performs IPv6 fragmentation; routers do not fragment packets.",
+      "concepts": [
+        [
+          "source",
+          "sender",
+          "sending host"
+        ],
+        [
+          "routers",
+          "router"
+        ],
+        [
+          "do not",
+          "does not",
+          "never",
+          "cannot",
+          "not fragment"
+        ]
+      ]
+    },
+    {
+      "id": "open_ended-19",
+      "type": "open_ended",
+      "topic": "Ethernet",
+      "prompt": "Why does IP encapsulation over Ethernet need both IP and MAC addresses?",
+      "explanation": "An IP datagram is carried inside an Ethernet frame.",
+      "source": "https://www.rfc-editor.org/rfc/rfc894.html",
+      "modelAnswer": "IP addresses support delivery across networks, while MAC addresses identify endpoints on the local Ethernet link.",
+      "concepts": [
+        [
+          "IP"
+        ],
+        [
+          "networks",
+          "network",
+          "routing"
+        ],
+        [
+          "MAC"
+        ],
+        [
+          "local",
+          "link"
+        ]
+      ]
+    },
+    {
+      "id": "open_ended-20",
+      "type": "open_ended",
+      "topic": "Subnetting",
+      "prompt": "How do you calculate the number of total addresses in an IPv4 /n block?",
+      "explanation": "Total block size includes reserved addresses where applicable.",
+      "source": "https://www.rfc-editor.org/rfc/rfc4632.html",
+      "modelAnswer": "There are 32 minus n host bits, so the total is 2 raised to the power of 32 minus n.",
+      "concepts": [
+        [
+          "32"
+        ],
+        [
+          "n"
+        ],
+        [
+          "2"
+        ],
+        [
+          "host",
+          "power",
+          "raised",
+          "exponent"
+        ]
+      ]
+    }
+  ]
+}

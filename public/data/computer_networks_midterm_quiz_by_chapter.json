@@ -1,0 +1,2580 @@
+{
+  "metadata": {
+    "title": "Computer Networks Midterm Practice Bank by Chapter",
+    "language": "English",
+    "source_policy": "Based only on the uploaded lecture PDFs within the stated midterm coverage.",
+    "exam_formats": [
+      "True/False",
+      "Multiple Choice",
+      "Short Answer",
+      "Open-ended"
+    ],
+    "per_chapter_counts": {
+      "true_false": 50,
+      "multiple_choice": 40,
+      "short_answer": 20,
+      "open_ended": 20
+    },
+    "total_questions": 260,
+    "answer_policy": "Answers are included. Open-ended questions include required English keywords."
+  },
+  "chapter_1": {
+    "metadata": {
+      "title": "Chapter 1 - Computer Networks and the Internet",
+      "coverage": "Chapter 1, excluding Internet history",
+      "sources": [
+        "Chapter_1-1.pdf",
+        "Chapter_1-2.pdf"
+      ],
+      "counts": {
+        "true_false": 50,
+        "multiple_choice": 40,
+        "short_answer": 20,
+        "open_ended": 20
+      }
+    },
+    "true_false": [
+      {
+        "id": "C1_TF01",
+        "question": "The Internet can be viewed as a network of interconnected networks.",
+        "answer": true,
+        "explanation": "The lecture describes the Internet as a 'network of networks' built from interconnected ISPs."
+      },
+      {
+        "id": "C1_TF02",
+        "question": "A protocol defines only the format of messages, not their order or the actions taken when messages are sent or received.",
+        "answer": false,
+        "explanation": "A protocol defines the format and order of messages and the actions taken on message transmission or receipt."
+      },
+      {
+        "id": "C1_TF03",
+        "question": "Hosts and end systems are located at the network edge.",
+        "answer": true,
+        "explanation": "Hosts, including clients and servers, are end systems at the Internet edge."
+      },
+      {
+        "id": "C1_TF04",
+        "question": "Packet switches include routers and switches.",
+        "answer": true,
+        "explanation": "The lecture lists routers and switches as packet switches that forward packets."
+      },
+      {
+        "id": "C1_TF05",
+        "question": "In DSL access, the line from a home to the central office is shared by all neighboring homes.",
+        "answer": false,
+        "explanation": "DSL uses the existing telephone line as a dedicated line from the home to the central office DSLAM."
+      },
+      {
+        "id": "C1_TF06",
+        "question": "Cable-based access commonly uses a shared access network among homes connected to the same cable headend.",
+        "answer": true,
+        "explanation": "The cable distribution network is shared among homes."
+      },
+      {
+        "id": "C1_TF07",
+        "question": "Frequency Division Multiplexing assigns different users periodic time slots on the same frequency band.",
+        "answer": false,
+        "explanation": "That describes TDM. FDM divides the available spectrum into different frequency bands."
+      },
+      {
+        "id": "C1_TF08",
+        "question": "Time Division Multiplexing divides time into slots and assigns periodic slots to calls.",
+        "answer": true,
+        "explanation": "TDM allocates periodic time slots to each call."
+      },
+      {
+        "id": "C1_TF09",
+        "question": "In store-and-forward packet switching, a router can begin forwarding a packet before receiving the entire packet.",
+        "answer": false,
+        "explanation": "With store-and-forward, the entire packet must arrive before it is transmitted on the next link."
+      },
+      {
+        "id": "C1_TF10",
+        "question": "Transmission delay depends on packet length and link transmission rate.",
+        "answer": true,
+        "explanation": "Transmission delay is L/R."
+      },
+      {
+        "id": "C1_TF11",
+        "question": "Propagation delay depends on packet length.",
+        "answer": false,
+        "explanation": "Propagation delay depends on physical distance and propagation speed, d/s, not packet length."
+      },
+      {
+        "id": "C1_TF12",
+        "question": "Queueing delay generally increases as traffic intensity approaches 1.",
+        "answer": true,
+        "explanation": "The lecture shows average queueing delay becoming large as La/R approaches 1."
+      },
+      {
+        "id": "C1_TF13",
+        "question": "A packet arriving at a full finite buffer may be dropped.",
+        "answer": true,
+        "explanation": "Packet loss occurs when an arriving packet finds no free buffer space."
+      },
+      {
+        "id": "C1_TF14",
+        "question": "End-to-end throughput is limited by the fastest link on the path.",
+        "answer": false,
+        "explanation": "End-to-end throughput is constrained by the bottleneck link, the slowest limiting rate."
+      },
+      {
+        "id": "C1_TF15",
+        "question": "Forwarding is a local router action, while routing determines source-to-destination paths globally.",
+        "answer": true,
+        "explanation": "Forwarding moves a packet to an output link locally; routing computes paths across the network."
+      },
+      {
+        "id": "C1_TF16",
+        "question": "Circuit switching reserves end-to-end resources for a call.",
+        "answer": true,
+        "explanation": "Circuit switching allocates dedicated resources along the path."
+      },
+      {
+        "id": "C1_TF17",
+        "question": "Packet switching is especially suitable for bursty data because resources can be shared on demand.",
+        "answer": true,
+        "explanation": "The lecture highlights resource sharing and no call setup as advantages for bursty traffic."
+      },
+      {
+        "id": "C1_TF18",
+        "question": "The Internet protocol stack contains application, transport, network, link, and physical layers.",
+        "answer": true,
+        "explanation": "These are the five layers shown in the Internet protocol stack."
+      },
+      {
+        "id": "C1_TF19",
+        "question": "The transport-layer PDU is called a frame.",
+        "answer": false,
+        "explanation": "The transport-layer PDU is a segment; a frame is the link-layer PDU."
+      },
+      {
+        "id": "C1_TF20",
+        "question": "IP spoofing means injecting a packet with a false source address.",
+        "answer": true,
+        "explanation": "That is the definition given in the security section."
+      },
+      {
+        "question": "The transmission rate of a communication link is also called its bandwidth in the lecture.",
+        "answer": true,
+        "explanation": "The lecture uses transmission rate, link capacity, and link bandwidth for the rate R of a link.",
+        "id": "C1_TF21"
+      },
+      {
+        "question": "Cable-based access sends all services over one shared cable using only time division multiplexing.",
+        "answer": false,
+        "explanation": "The lecture shows cable access using Frequency Division Multiplexing (FDM), with different channels transmitted in different frequency bands.",
+        "id": "C1_TF22"
+      },
+      {
+        "question": "In HFC cable access, neighboring homes can share the access network to the cable headend.",
+        "answer": true,
+        "explanation": "HFC uses a shared cable distribution network from homes toward the cable headend.",
+        "id": "C1_TF23"
+      },
+      {
+        "question": "DSL uses an existing telephone line and carries voice and data at different frequencies.",
+        "answer": true,
+        "explanation": "The DSL slides show voice and data transmitted at different frequencies over the existing telephone line.",
+        "id": "C1_TF24"
+      },
+      {
+        "question": "DSL provides a shared line from all neighboring homes to the central office.",
+        "answer": false,
+        "explanation": "The lecture describes the DSL line from a home to the central office as dedicated.",
+        "id": "C1_TF25"
+      },
+      {
+        "question": "FTTH uses optical fiber from the home toward the central office.",
+        "answer": true,
+        "explanation": "Fiber to the Home (FTTH) uses optical fiber links between homes and the provider infrastructure.",
+        "id": "C1_TF26"
+      },
+      {
+        "question": "A wireless LAN connects end systems to a router through an access point and uses a shared wireless access network.",
+        "answer": true,
+        "explanation": "The lecture describes WLAN access as shared wireless access through a base station or access point.",
+        "id": "C1_TF27"
+      },
+      {
+        "question": "Enterprise networks use only wired Ethernet and do not use WiFi.",
+        "answer": false,
+        "explanation": "Enterprise networks are shown as a mix of wired and wireless technologies, including Ethernet and WiFi.",
+        "id": "C1_TF28"
+      },
+      {
+        "question": "Data center networks use high-bandwidth links to connect many servers together and to the Internet.",
+        "answer": true,
+        "explanation": "The data-center slide describes high-bandwidth links connecting hundreds to thousands of servers.",
+        "id": "C1_TF29"
+      },
+      {
+        "question": "Fiber, copper, and coax are examples of unguided media.",
+        "answer": false,
+        "explanation": "They are guided media because signals propagate through solid media.",
+        "id": "C1_TF30"
+      },
+      {
+        "question": "Twisted pair consists of two insulated copper wires.",
+        "answer": true,
+        "explanation": "The physical-media slide defines twisted pair as two insulated copper wires.",
+        "id": "C1_TF31"
+      },
+      {
+        "question": "Fiber optic cable is especially vulnerable to electromagnetic noise.",
+        "answer": false,
+        "explanation": "The lecture lists immunity to electromagnetic noise as an advantage of fiber optic cable.",
+        "id": "C1_TF32"
+      },
+      {
+        "question": "Wireless radio propagation can be affected by reflection, obstruction, and interference.",
+        "answer": true,
+        "explanation": "Those three effects are explicitly listed for wireless radio propagation.",
+        "id": "C1_TF33"
+      },
+      {
+        "question": "In packet switching, each packet is transmitted at the full link capacity when it is being sent on that link.",
+        "answer": true,
+        "explanation": "The network-core slide states that each packet is transmitted at full link capacity.",
+        "id": "C1_TF34"
+      },
+      {
+        "question": "Queueing can occur when packets arrive for an output link faster than the link can serve them.",
+        "answer": true,
+        "explanation": "The lecture describes queueing as occurring when work arrives faster than it can be serviced.",
+        "id": "C1_TF35"
+      },
+      {
+        "question": "If a router has an infinite buffer and traffic intensity is greater than 1, average queueing delay remains bounded.",
+        "answer": false,
+        "explanation": "For an infinite queue, the lecture states that delay becomes infinite when La/R is greater than 1.",
+        "id": "C1_TF36"
+      },
+      {
+        "question": "A circuit-switched connection can leave reserved capacity idle when the call is not using it.",
+        "answer": true,
+        "explanation": "Circuit switching reserves resources, and an unused reserved circuit segment remains idle.",
+        "id": "C1_TF37"
+      },
+      {
+        "question": "Packet switching always guarantees bandwidth to each active user.",
+        "answer": false,
+        "explanation": "Packet switching shares resources on demand and does not provide the dedicated bandwidth guarantee of circuit switching.",
+        "id": "C1_TF38"
+      },
+      {
+        "question": "Packet switching requires call setup before any packet can be sent.",
+        "answer": false,
+        "explanation": "The lecture lists no call setup as an advantage of packet switching.",
+        "id": "C1_TF39"
+      },
+      {
+        "question": "Access ISPs must be interconnected so that hosts attached to different ISPs can exchange packets.",
+        "answer": true,
+        "explanation": "The Internet is a network of networks because access ISPs are interconnected.",
+        "id": "C1_TF40"
+      },
+      {
+        "question": "Tier-1 ISPs are described as large, well-connected networks with national or international coverage.",
+        "answer": true,
+        "explanation": "The Internet-structure slides describe tier-1 commercial ISPs in this way.",
+        "id": "C1_TF41"
+      },
+      {
+        "question": "Content provider networks must always send traffic through a tier-1 ISP and cannot bypass regional ISPs.",
+        "answer": false,
+        "explanation": "The lecture notes that content provider networks may connect their data centers directly and often bypass tier-1 or regional ISPs.",
+        "id": "C1_TF42"
+      },
+      {
+        "question": "Traceroute uses packets with increasing Time-To-Live values to obtain delay measurements to routers along a path.",
+        "answer": true,
+        "explanation": "The traceroute slide explains that probes use TTL values that cause successive routers to return replies.",
+        "id": "C1_TF43"
+      },
+      {
+        "question": "An asterisk in traceroute output necessarily proves that the destination host is down.",
+        "answer": false,
+        "explanation": "The lecture says an asterisk can mean a probe was lost or a router did not reply.",
+        "id": "C1_TF44"
+      },
+      {
+        "question": "Nodal processing can include checking bit errors and determining the output link.",
+        "answer": true,
+        "explanation": "Those are the two processing-delay tasks listed in the lecture.",
+        "id": "C1_TF45"
+      },
+      {
+        "question": "Propagation delay is calculated as packet length divided by link transmission rate.",
+        "answer": false,
+        "explanation": "That formula is for transmission delay. Propagation delay is distance divided by propagation speed.",
+        "id": "C1_TF46"
+      },
+      {
+        "question": "Instantaneous throughput is measured at a given point in time, while average throughput is measured over a longer period.",
+        "answer": true,
+        "explanation": "The throughput slides distinguish instantaneous and average throughput in exactly this way.",
+        "id": "C1_TF47"
+      },
+      {
+        "question": "If ten connections fairly share a backbone bottleneck of rate R, the backbone contribution to each connection's throughput is R/10.",
+        "answer": true,
+        "explanation": "The lecture gives per-connection throughput as min(Rc, Rs, R/10) in that scenario.",
+        "id": "C1_TF48"
+      },
+      {
+        "question": "The Internet protocol stack includes separate presentation and session layers.",
+        "answer": false,
+        "explanation": "Presentation and session are in the seven-layer ISO/OSI model but not as separate layers in the Internet protocol stack.",
+        "id": "C1_TF49"
+      },
+      {
+        "question": "Digital signatures are presented as a mechanism for preventing or detecting tampering.",
+        "answer": true,
+        "explanation": "The security slides associate digital signatures with integrity checks.",
+        "id": "C1_TF50"
+      }
+    ],
+    "multiple_choice": [
+      {
+        "id": "C1_MC01",
+        "question": "Which statement best describes a network protocol?",
+        "options": {
+          "A": "It specifies only physical media.",
+          "B": "It defines message format, order, and actions on transmission or receipt.",
+          "C": "It assigns IP addresses to all hosts.",
+          "D": "It guarantees zero packet loss."
+        },
+        "answer": "B",
+        "explanation": "Protocols define the format and order of messages and the actions taken when messages are transmitted or received."
+      },
+      {
+        "id": "C1_MC02",
+        "question": "Which device is located at the network edge?",
+        "options": {
+          "A": "End host",
+          "B": "Core router only",
+          "C": "IXP only",
+          "D": "TLD server only"
+        },
+        "answer": "A",
+        "explanation": "Hosts and end systems are at the network edge."
+      },
+      {
+        "id": "C1_MC03",
+        "question": "Which access technology uses an existing telephone line to a central-office DSLAM?",
+        "options": {
+          "A": "Cable HFC",
+          "B": "DSL",
+          "C": "FTTH",
+          "D": "Satellite"
+        },
+        "answer": "B",
+        "explanation": "DSL uses the existing telephone line and a DSLAM at the central office."
+      },
+      {
+        "id": "C1_MC04",
+        "question": "Which access technology commonly has homes sharing a cable distribution network to a cable headend?",
+        "options": {
+          "A": "DSL",
+          "B": "FTTH only",
+          "C": "Cable HFC",
+          "D": "Dedicated Ethernet only"
+        },
+        "answer": "C",
+        "explanation": "Cable-based HFC access is shared among homes connected to the headend."
+      },
+      {
+        "id": "C1_MC05",
+        "question": "Which medium is unguided?",
+        "options": {
+          "A": "Fiber optic cable",
+          "B": "Twisted pair",
+          "C": "Coaxial cable",
+          "D": "Radio"
+        },
+        "answer": "D",
+        "explanation": "Radio propagates without a physical wire and is an unguided medium."
+      },
+      {
+        "id": "C1_MC06",
+        "question": "What is the transmission delay for an L-bit packet on a link with rate R bps?",
+        "options": {
+          "A": "R/L",
+          "B": "L/R",
+          "C": "d/s",
+          "D": "s/d"
+        },
+        "answer": "B",
+        "explanation": "Transmission delay is L/R."
+      },
+      {
+        "id": "C1_MC07",
+        "question": "What determines propagation delay?",
+        "options": {
+          "A": "Packet length and queue size",
+          "B": "Link distance and propagation speed",
+          "C": "Packet length and transmission rate",
+          "D": "Number of routers only"
+        },
+        "answer": "B",
+        "explanation": "Propagation delay is d/s."
+      },
+      {
+        "id": "C1_MC08",
+        "question": "Which condition causes queueing to build up at a router?",
+        "options": {
+          "A": "Work arrives faster than the output link can serve it.",
+          "B": "Propagation speed increases.",
+          "C": "Packet length becomes zero.",
+          "D": "The buffer is empty."
+        },
+        "answer": "A",
+        "explanation": "Queueing occurs when arriving work temporarily exceeds service capacity."
+      },
+      {
+        "id": "C1_MC09",
+        "question": "Which statement describes store-and-forward packet switching?",
+        "options": {
+          "A": "A router forwards the first bit immediately without receiving the rest.",
+          "B": "The entire packet must arrive before transmission on the next link.",
+          "C": "Each flow reserves a fixed circuit.",
+          "D": "Only one router may exist on the path."
+        },
+        "answer": "B",
+        "explanation": "Store-and-forward requires the full packet to arrive first."
+      },
+      {
+        "id": "C1_MC10",
+        "question": "Which is a local action performed at a router?",
+        "options": {
+          "A": "Routing",
+          "B": "Forwarding",
+          "C": "Name resolution",
+          "D": "Mail retrieval"
+        },
+        "answer": "B",
+        "explanation": "Forwarding moves an arriving packet from an input link to the appropriate output link."
+      },
+      {
+        "id": "C1_MC11",
+        "question": "Which is a global network-core function?",
+        "options": {
+          "A": "Forwarding",
+          "B": "Routing",
+          "C": "Socket creation",
+          "D": "Cookie storage"
+        },
+        "answer": "B",
+        "explanation": "Routing determines source-to-destination paths through the network."
+      },
+      {
+        "id": "C1_MC12",
+        "question": "In circuit switching, what happens to reserved resources when the call is idle?",
+        "options": {
+          "A": "They are always shared with other calls.",
+          "B": "They may remain idle because they are dedicated to the call.",
+          "C": "They are converted into DNS cache entries.",
+          "D": "They are used only for routing tables."
+        },
+        "answer": "B",
+        "explanation": "Circuit resources are dedicated and can be unused when the call has nothing to send."
+      },
+      {
+        "id": "C1_MC13",
+        "question": "Which multiplexing technique divides the spectrum into frequency bands?",
+        "options": {
+          "A": "TDM",
+          "B": "FDM",
+          "C": "HTTP",
+          "D": "IMAP"
+        },
+        "answer": "B",
+        "explanation": "FDM allocates different frequency bands to calls."
+      },
+      {
+        "id": "C1_MC14",
+        "question": "Which multiplexing technique assigns periodic time slots?",
+        "options": {
+          "A": "FDM",
+          "B": "TDM",
+          "C": "DNS",
+          "D": "SMTP"
+        },
+        "answer": "B",
+        "explanation": "TDM divides time into slots and assigns periodic slots to calls."
+      },
+      {
+        "id": "C1_MC15",
+        "question": "If a path has link rates 20 Mbps, 5 Mbps, and 10 Mbps, what is the maximum end-to-end throughput assuming no other bottleneck?",
+        "options": {
+          "A": "20 Mbps",
+          "B": "15 Mbps",
+          "C": "10 Mbps",
+          "D": "5 Mbps"
+        },
+        "answer": "D",
+        "explanation": "The 5 Mbps link is the bottleneck."
+      },
+      {
+        "id": "C1_MC16",
+        "question": "Which layer is responsible for process-to-process data transfer?",
+        "options": {
+          "A": "Application",
+          "B": "Transport",
+          "C": "Network",
+          "D": "Physical"
+        },
+        "answer": "B",
+        "explanation": "The transport layer provides process-to-process data transfer."
+      },
+      {
+        "id": "C1_MC17",
+        "question": "Which PDU name belongs to the network layer in the lecture?",
+        "options": {
+          "A": "Message",
+          "B": "Segment",
+          "C": "Datagram",
+          "D": "Frame"
+        },
+        "answer": "C",
+        "explanation": "The network-layer PDU is a datagram."
+      },
+      {
+        "id": "C1_MC18",
+        "question": "Which PDU name belongs to the link layer?",
+        "options": {
+          "A": "Frame",
+          "B": "Segment",
+          "C": "Message",
+          "D": "Datagram only"
+        },
+        "answer": "A",
+        "explanation": "The link-layer PDU is a frame."
+      },
+      {
+        "id": "C1_MC19",
+        "question": "Which attack injects packets with a false source address?",
+        "options": {
+          "A": "Packet sniffing",
+          "B": "IP spoofing",
+          "C": "DoS only",
+          "D": "Encapsulation"
+        },
+        "answer": "B",
+        "explanation": "IP spoofing uses a false source address."
+      },
+      {
+        "id": "C1_MC20",
+        "question": "Which defense is mainly associated with confidentiality?",
+        "options": {
+          "A": "Encryption",
+          "B": "Routing",
+          "C": "FDM",
+          "D": "Caching"
+        },
+        "answer": "A",
+        "explanation": "The lecture lists encryption as a mechanism for confidentiality."
+      },
+      {
+        "question": "Which technique is used in the cable-access slide to place different channels in different frequency bands?",
+        "options": {
+          "A": "FDM",
+          "B": "TDM",
+          "C": "Store-and-forward",
+          "D": "Encapsulation"
+        },
+        "answer": "A",
+        "explanation": "Frequency Division Multiplexing (FDM) separates channels by frequency band.",
+        "id": "C1_MC21"
+      },
+      {
+        "question": "Which device at a telephone company's central office aggregates DSL subscriber lines?",
+        "options": {
+          "A": "CMTS",
+          "B": "DSLAM",
+          "C": "OLT",
+          "D": "IXP"
+        },
+        "answer": "B",
+        "explanation": "DSL uses a Digital Subscriber Line Access Multiplexer (DSLAM) at the central office.",
+        "id": "C1_MC22"
+      },
+      {
+        "question": "In the FTTH diagram, which device is located at the user's home?",
+        "options": {
+          "A": "ONT",
+          "B": "DSLAM",
+          "C": "CMTS",
+          "D": "TLD server"
+        },
+        "answer": "A",
+        "explanation": "The Optical Network Terminator (ONT) is shown at the customer premises.",
+        "id": "C1_MC23"
+      },
+      {
+        "question": "Which is an example of guided physical media?",
+        "options": {
+          "A": "Radio",
+          "B": "Satellite",
+          "C": "Fiber optic cable",
+          "D": "WiFi"
+        },
+        "answer": "C",
+        "explanation": "Fiber is guided media because the signal propagates through a solid medium.",
+        "id": "C1_MC24"
+      },
+      {
+        "question": "Which property is associated with fiber optic cable in the lecture?",
+        "options": {
+          "A": "High sensitivity to electromagnetic noise",
+          "B": "Low error rate",
+          "C": "Only half-duplex operation",
+          "D": "Very low transmission rate"
+        },
+        "answer": "B",
+        "explanation": "Fiber is described as high speed, low error rate, and immune to electromagnetic noise.",
+        "id": "C1_MC25"
+      },
+      {
+        "question": "Which factor is listed as an effect on wireless radio propagation?",
+        "options": {
+          "A": "Reflection",
+          "B": "DNS caching",
+          "C": "Encapsulation",
+          "D": "Flow control"
+        },
+        "answer": "A",
+        "explanation": "Reflection, obstruction, and interference are listed as wireless propagation effects.",
+        "id": "C1_MC26"
+      },
+      {
+        "question": "What happens when a packet arrives at a router whose finite buffer is full?",
+        "options": {
+          "A": "It is automatically compressed",
+          "B": "It is dropped",
+          "C": "It becomes a circuit",
+          "D": "It bypasses the router"
+        },
+        "answer": "B",
+        "explanation": "An arriving packet is lost when no free buffer space is available.",
+        "id": "C1_MC27"
+      },
+      {
+        "question": "What is the traffic intensity expression used in the lecture?",
+        "options": {
+          "A": "R/(La)",
+          "B": "L/(Ra)",
+          "C": "La/R",
+          "D": "d/s"
+        },
+        "answer": "C",
+        "explanation": "Traffic intensity is La/R, where L is packet length, a is average packet arrival rate, and R is link rate.",
+        "id": "C1_MC28"
+      },
+      {
+        "question": "Which task contributes to nodal processing delay?",
+        "options": {
+          "A": "Checking bit errors",
+          "B": "Reserving a TDM slot",
+          "C": "Encrypting every application message by definition",
+          "D": "Resolving a DNS name"
+        },
+        "answer": "A",
+        "explanation": "The lecture lists checking bit errors and determining the output link as processing tasks.",
+        "id": "C1_MC29"
+      },
+      {
+        "question": "Which expression gives propagation delay?",
+        "options": {
+          "A": "L/R",
+          "B": "d/s",
+          "C": "La/R",
+          "D": "F/R"
+        },
+        "answer": "B",
+        "explanation": "Propagation delay equals physical link length d divided by propagation speed s.",
+        "id": "C1_MC30"
+      },
+      {
+        "question": "What field does traceroute vary so probes reach successive routers along a path?",
+        "options": {
+          "A": "Port number",
+          "B": "Time-To-Live (TTL)",
+          "C": "HTTP status code",
+          "D": "DNS type"
+        },
+        "answer": "B",
+        "explanation": "Traceroute sends probes with increasing TTL values.",
+        "id": "C1_MC31"
+      },
+      {
+        "question": "Which statement best describes a tier-1 ISP in the lecture?",
+        "options": {
+          "A": "A home WiFi router",
+          "B": "A large, well-connected commercial ISP with broad coverage",
+          "C": "A single end system",
+          "D": "A DNS cache inside a browser"
+        },
+        "answer": "B",
+        "explanation": "Tier-1 ISPs are large well-connected networks with national or international reach.",
+        "id": "C1_MC32"
+      },
+      {
+        "question": "Which is an advantage of packet switching for bursty traffic?",
+        "options": {
+          "A": "Dedicated idle capacity for every user",
+          "B": "Resource sharing",
+          "C": "Guaranteed zero queueing",
+          "D": "Mandatory call setup"
+        },
+        "answer": "B",
+        "explanation": "Packet switching shares resources among users and is efficient for bursty data.",
+        "id": "C1_MC33"
+      },
+      {
+        "question": "Which is a possible disadvantage of packet switching under congestion?",
+        "options": {
+          "A": "Packet delay and loss",
+          "B": "Unused dedicated circuits only",
+          "C": "No ability to route packets",
+          "D": "No link sharing"
+        },
+        "answer": "A",
+        "explanation": "Congestion can create queueing delay and buffer overflow, causing packet loss.",
+        "id": "C1_MC34"
+      },
+      {
+        "question": "If ten connections fairly share a backbone of rate R, and each endpoint link rate is Rs and Rc, what is the per-connection throughput?",
+        "options": {
+          "A": "max(Rc, Rs, R/10)",
+          "B": "min(Rc, Rs, R/10)",
+          "C": "R + Rc + Rs",
+          "D": "R/2"
+        },
+        "answer": "B",
+        "explanation": "The lecture gives the per-connection throughput as min(Rc, Rs, R/10).",
+        "id": "C1_MC35"
+      },
+      {
+        "question": "Which two layers appear in the ISO/OSI reference model but not as separate layers in the Internet protocol stack?",
+        "options": {
+          "A": "Application and transport",
+          "B": "Network and link",
+          "C": "Presentation and session",
+          "D": "Link and physical"
+        },
+        "answer": "C",
+        "explanation": "Presentation and session are the two additional OSI layers.",
+        "id": "C1_MC36"
+      },
+      {
+        "question": "What is a main role of the presentation layer in the OSI model?",
+        "options": {
+          "A": "Routing datagrams",
+          "B": "Interpreting data formats such as encryption and compression",
+          "C": "Moving frames between neighboring nodes",
+          "D": "Allocating DNS records"
+        },
+        "answer": "B",
+        "explanation": "The presentation layer handles interpretation of data, including encryption, compression, and machine-specific conventions.",
+        "id": "C1_MC37"
+      },
+      {
+        "question": "What is a main role of the session layer in the OSI model?",
+        "options": {
+          "A": "Synchronization and checkpointing",
+          "B": "Packet forwarding",
+          "C": "Frequency division multiplexing",
+          "D": "IP spoofing"
+        },
+        "answer": "A",
+        "explanation": "The lecture associates the session layer with synchronization, checkpointing, and recovery of data exchange.",
+        "id": "C1_MC38"
+      },
+      {
+        "question": "Which security property is mainly provided by encryption?",
+        "options": {
+          "A": "Confidentiality",
+          "B": "Routing",
+          "C": "Throughput",
+          "D": "Queueing"
+        },
+        "answer": "A",
+        "explanation": "Encryption is listed as the mechanism for confidentiality.",
+        "id": "C1_MC39"
+      },
+      {
+        "question": "Which security mechanism is associated with integrity checks in the lecture?",
+        "options": {
+          "A": "Digital signatures",
+          "B": "FDM",
+          "C": "Traceroute",
+          "D": "Circuit switching"
+        },
+        "answer": "A",
+        "explanation": "Digital signatures are listed as helping prevent or detect tampering.",
+        "id": "C1_MC40"
+      }
+    ],
+    "short_answer": [
+      {
+        "id": "C1_SA01",
+        "question": "Define a network protocol in one sentence.",
+        "answer": "A protocol defines the format and order of messages exchanged among network entities and the actions taken when messages are transmitted or received.",
+        "keywords": [
+          "protocol",
+          "format",
+          "order",
+          "messages",
+          "actions"
+        ]
+      },
+      {
+        "id": "C1_SA02",
+        "question": "What is an end system also called?",
+        "answer": "A host.",
+        "keywords": [
+          "host",
+          "end system"
+        ]
+      },
+      {
+        "id": "C1_SA03",
+        "question": "Name two examples of packet switches.",
+        "answer": "Routers and switches.",
+        "keywords": [
+          "router",
+          "switch"
+        ]
+      },
+      {
+        "id": "C1_SA04",
+        "question": "What is the difference between the network edge and the network core?",
+        "answer": "The network edge contains hosts/end systems, while the network core contains interconnected routers that forward packets.",
+        "keywords": [
+          "network edge",
+          "hosts",
+          "network core",
+          "routers"
+        ]
+      },
+      {
+        "id": "C1_SA05",
+        "question": "What does FDM stand for, and what does it divide?",
+        "answer": "Frequency Division Multiplexing; it divides the available frequency spectrum into separate frequency bands.",
+        "keywords": [
+          "Frequency Division Multiplexing",
+          "frequency bands"
+        ]
+      },
+      {
+        "id": "C1_SA06",
+        "question": "What does TDM stand for, and what does it divide?",
+        "answer": "Time Division Multiplexing; it divides time into periodic slots assigned to calls.",
+        "keywords": [
+          "Time Division Multiplexing",
+          "time slots"
+        ]
+      },
+      {
+        "id": "C1_SA07",
+        "question": "State the formula for transmission delay.",
+        "answer": "d_trans = L/R.",
+        "keywords": [
+          "transmission delay",
+          "L/R"
+        ]
+      },
+      {
+        "id": "C1_SA08",
+        "question": "State the formula for propagation delay.",
+        "answer": "d_prop = d/s.",
+        "keywords": [
+          "propagation delay",
+          "d/s"
+        ]
+      },
+      {
+        "id": "C1_SA09",
+        "question": "List the four sources of nodal delay.",
+        "answer": "Processing delay, queueing delay, transmission delay, and propagation delay.",
+        "keywords": [
+          "processing delay",
+          "queueing delay",
+          "transmission delay",
+          "propagation delay"
+        ]
+      },
+      {
+        "id": "C1_SA10",
+        "question": "What is traffic intensity in the lecture notation?",
+        "answer": "La/R, where L is packet length, a is average packet arrival rate, and R is link bandwidth.",
+        "keywords": [
+          "traffic intensity",
+          "La/R"
+        ]
+      },
+      {
+        "id": "C1_SA11",
+        "question": "What happens to queueing delay as traffic intensity approaches 1?",
+        "answer": "Average queueing delay becomes very large.",
+        "keywords": [
+          "queueing delay",
+          "traffic intensity"
+        ]
+      },
+      {
+        "id": "C1_SA12",
+        "question": "What is packet loss?",
+        "answer": "Packet loss occurs when an arriving packet is dropped, typically because the router's finite buffer is full.",
+        "keywords": [
+          "packet loss",
+          "buffer",
+          "dropped"
+        ]
+      },
+      {
+        "id": "C1_SA13",
+        "question": "Define throughput.",
+        "answer": "Throughput is the rate, in bits per unit time, at which bits are successfully sent from sender to receiver.",
+        "keywords": [
+          "throughput",
+          "rate",
+          "bits"
+        ]
+      },
+      {
+        "id": "C1_SA14",
+        "question": "What is a bottleneck link?",
+        "answer": "The link on an end-to-end path that constrains the end-to-end throughput.",
+        "keywords": [
+          "bottleneck link",
+          "throughput"
+        ]
+      },
+      {
+        "id": "C1_SA15",
+        "question": "Differentiate forwarding from routing in one sentence.",
+        "answer": "Forwarding is a local router action that selects an output link, while routing is the global process of determining source-to-destination paths.",
+        "keywords": [
+          "forwarding",
+          "local",
+          "routing",
+          "global",
+          "path"
+        ]
+      },
+      {
+        "id": "C1_SA16",
+        "question": "What is store-and-forward?",
+        "answer": "A router must receive the entire packet before transmitting it on the next link.",
+        "keywords": [
+          "store-and-forward",
+          "entire packet"
+        ]
+      },
+      {
+        "id": "C1_SA17",
+        "question": "Name the five layers of the Internet protocol stack in order from top to bottom.",
+        "answer": "Application, transport, network, link, physical.",
+        "keywords": [
+          "application",
+          "transport",
+          "network",
+          "link",
+          "physical"
+        ]
+      },
+      {
+        "id": "C1_SA18",
+        "question": "Name the PDU at the application, transport, network, and link layers.",
+        "answer": "Message, segment, datagram, frame.",
+        "keywords": [
+          "message",
+          "segment",
+          "datagram",
+          "frame"
+        ]
+      },
+      {
+        "id": "C1_SA19",
+        "question": "What is encapsulation?",
+        "answer": "Encapsulation is the process of adding lower-layer headers to higher-layer data as it moves down the protocol stack.",
+        "keywords": [
+          "encapsulation",
+          "header",
+          "protocol stack"
+        ]
+      },
+      {
+        "id": "C1_SA20",
+        "question": "What is IP spoofing?",
+        "answer": "Injecting a packet with a false source IP address.",
+        "keywords": [
+          "IP spoofing",
+          "false source address"
+        ]
+      }
+    ],
+    "open_ended": [
+      {
+        "id": "C1_OE01",
+        "question": "Compare packet switching and circuit switching. Explain one major advantage and one major disadvantage of packet switching.",
+        "sample_answer": "Packet switching shares link resources among users on demand and does not require call setup, so it works well for bursty traffic. However, when many packets arrive at once, queues can build and packets may experience delay or be lost if buffers overflow. Circuit switching instead reserves end-to-end resources for a call and can provide more predictable performance, but reserved capacity can sit idle.",
+        "required_keywords": [
+          "packet switching",
+          "circuit switching",
+          "resource sharing",
+          "bursty traffic",
+          "queueing delay",
+          "packet loss",
+          "reserved resources"
+        ]
+      },
+      {
+        "id": "C1_OE02",
+        "question": "Explain the difference between transmission delay and propagation delay, including the factors that determine each one.",
+        "sample_answer": "Transmission delay is the time required to push all packet bits onto a link and is L/R, so it depends on packet length L and link rate R. Propagation delay is the time for a bit to travel across the physical link and is d/s, so it depends on link distance d and propagation speed s. The two delays are conceptually different.",
+        "required_keywords": [
+          "transmission delay",
+          "L/R",
+          "packet length",
+          "link rate",
+          "propagation delay",
+          "d/s",
+          "distance",
+          "propagation speed"
+        ]
+      },
+      {
+        "id": "C1_OE03",
+        "question": "Explain the four components of nodal delay and how congestion affects them.",
+        "sample_answer": "Nodal delay is the sum of processing delay, queueing delay, transmission delay, and propagation delay. Processing delay covers tasks such as checking bit errors and choosing an output link. Queueing delay is the waiting time before transmission and grows with congestion. Transmission delay is L/R, and propagation delay is d/s.",
+        "required_keywords": [
+          "nodal delay",
+          "processing delay",
+          "queueing delay",
+          "transmission delay",
+          "propagation delay",
+          "congestion"
+        ]
+      },
+      {
+        "id": "C1_OE04",
+        "question": "Explain why packet loss can occur in a router and what may happen to a lost packet afterward.",
+        "sample_answer": "A router has a finite buffer. When packets arrive faster than the output link can transmit them, packets queue. If the buffer becomes full, a newly arriving packet can be dropped, causing packet loss. A lost packet may later be retransmitted by a previous node or the source end system, or it may not be retransmitted at all.",
+        "required_keywords": [
+          "finite buffer",
+          "queue",
+          "packet loss",
+          "dropped",
+          "retransmission"
+        ]
+      },
+      {
+        "id": "C1_OE05",
+        "question": "Explain forwarding and routing and why both are needed in the network core.",
+        "sample_answer": "Forwarding is the local action inside a router that moves an arriving packet from an input link to the proper output link, usually using a forwarding table. Routing is the global process that determines the source-to-destination paths packets should follow. Routing creates the path information that forwarding uses hop by hop.",
+        "required_keywords": [
+          "forwarding",
+          "local action",
+          "routing",
+          "global action",
+          "forwarding table",
+          "path"
+        ]
+      },
+      {
+        "id": "C1_OE06",
+        "question": "Explain the purpose of layering in computer networks and one benefit of modularization.",
+        "sample_answer": "Layering organizes a complex network system into modules in which each layer implements a service using its own actions and the services of the layer below. This explicit structure makes the system easier to understand, maintain, and update because changes inside one layer can often be transparent to the rest of the system.",
+        "required_keywords": [
+          "layering",
+          "service",
+          "lower layer",
+          "modularization",
+          "maintenance",
+          "transparent"
+        ]
+      },
+      {
+        "id": "C1_OE07",
+        "question": "Explain encapsulation from the application layer down to the link layer.",
+        "sample_answer": "The application creates a message M. The transport layer adds a transport header Ht to form a segment. The network layer adds a network header Hn to form a datagram. The link layer adds a link header Hl to form a frame. At the destination, decapsulation removes these headers as data moves up the stack.",
+        "required_keywords": [
+          "encapsulation",
+          "message",
+          "segment",
+          "datagram",
+          "frame",
+          "header",
+          "decapsulation"
+        ]
+      },
+      {
+        "id": "C1_OE08",
+        "question": "Explain how throughput is determined on an end-to-end path and define a bottleneck link.",
+        "sample_answer": "End-to-end throughput is limited by the slowest constraining rate along the path. In a simple path with link rates Rs and Rc, throughput is approximately min(Rs, Rc). With additional shared links, the fair share of a shared bottleneck can also limit throughput. The bottleneck link is the link that constrains the end-to-end throughput.",
+        "required_keywords": [
+          "throughput",
+          "bottleneck link",
+          "minimum rate",
+          "end-to-end"
+        ]
+      },
+      {
+        "id": "C1_OE09",
+        "question": "Describe packet sniffing, IP spoofing, and DoS as three different network security threats.",
+        "sample_answer": "Packet sniffing captures packets passing over a medium, especially shared or broadcast media. IP spoofing injects packets with a false source address. A Denial of Service attack overwhelms a resource such as a server or bandwidth with bogus traffic so legitimate users cannot access it.",
+        "required_keywords": [
+          "packet sniffing",
+          "IP spoofing",
+          "false source address",
+          "Denial of Service",
+          "bogus traffic"
+        ]
+      },
+      {
+        "id": "C1_OE10",
+        "question": "Explain the difference between FDM and TDM in circuit-switched networks.",
+        "sample_answer": "Frequency Division Multiplexing divides the available spectrum into frequency bands and assigns a band to each call. Time Division Multiplexing divides time into slots and assigns periodic slots to each call. FDM separates users by frequency, while TDM separates them by time.",
+        "required_keywords": [
+          "FDM",
+          "frequency bands",
+          "TDM",
+          "time slots",
+          "circuit switching"
+        ]
+      },
+      {
+        "question": "Compare cable-based access, DSL, and FTTH in terms of the physical medium and whether access capacity is shared or dedicated as presented in the lecture.",
+        "sample_answer": "Cable-based access uses a hybrid fiber coax infrastructure and homes share the cable distribution network toward the cable headend. DSL uses the existing telephone line, with a dedicated line from each home to the central office DSLAM and separate frequencies for voice and data. FTTH uses optical fiber from the home toward the central office and can provide very high transmission rates.",
+        "required_keywords": [
+          "cable access",
+          "HFC",
+          "shared access",
+          "DSL",
+          "dedicated line",
+          "DSLAM",
+          "FTTH",
+          "optical fiber"
+        ],
+        "id": "C1_OE11"
+      },
+      {
+        "question": "Explain the difference between guided and unguided physical media and give examples from the lecture.",
+        "sample_answer": "Guided media carry signals through a solid medium, such as twisted pair, coaxial cable, and fiber optic cable. Unguided media allow signals to propagate freely through space, such as wireless radio. Wireless propagation can be affected by reflection, obstruction, and interference.",
+        "required_keywords": [
+          "guided media",
+          "unguided media",
+          "twisted pair",
+          "coaxial cable",
+          "fiber optic",
+          "wireless radio"
+        ],
+        "id": "C1_OE12"
+      },
+      {
+        "question": "Explain the Internet's 'network of networks' structure and the roles of access ISPs, regional ISPs, tier-1 ISPs, IXPs, and content provider networks.",
+        "sample_answer": "Hosts connect through access ISPs, and those ISPs must interconnect so any two hosts can communicate. Regional and tier-1 ISPs provide broader connectivity, while IXPs allow networks to interconnect or peer. Large content provider networks may operate private networks that connect their data centers and can bypass some traditional ISP hierarchy.",
+        "required_keywords": [
+          "network of networks",
+          "access ISP",
+          "regional ISP",
+          "tier-1 ISP",
+          "IXP",
+          "content provider network",
+          "interconnect"
+        ],
+        "id": "C1_OE13"
+      },
+      {
+        "question": "Explain traffic intensity and how it relates to queueing delay and packet loss.",
+        "sample_answer": "Traffic intensity is La/R, where L is packet length, a is the average packet arrival rate, and R is the link transmission rate. When La/R is near 0, average queueing delay is small. As it approaches 1, queueing delay becomes large. If it exceeds 1, incoming work exceeds service capacity; with an infinite queue delay grows without bound, while a finite queue can cause heavy packet loss.",
+        "required_keywords": [
+          "traffic intensity",
+          "La/R",
+          "queueing delay",
+          "arrival rate",
+          "link transmission rate",
+          "packet loss",
+          "buffer"
+        ],
+        "id": "C1_OE14"
+      },
+      {
+        "question": "Describe how traceroute measures the route and delays toward a destination.",
+        "sample_answer": "Traceroute sends probe packets with increasing Time-To-Live values. A probe with TTL i reaches router i along the path, and that router returns a response. The sender measures the time between transmission and reply to estimate delay to successive routers. A missing response can appear as an asterisk.",
+        "required_keywords": [
+          "traceroute",
+          "Time-To-Live",
+          "TTL",
+          "probe",
+          "router",
+          "delay measurement"
+        ],
+        "id": "C1_OE15"
+      },
+      {
+        "question": "Describe the main service provided by each layer of the five-layer Internet protocol stack.",
+        "sample_answer": "The application layer supports network applications. The transport layer provides process-to-process data transfer. The network layer routes datagrams from source to destination. The link layer transfers data between neighboring network elements. The physical layer carries bits on the physical medium.",
+        "required_keywords": [
+          "application layer",
+          "transport layer",
+          "network layer",
+          "link layer",
+          "physical layer",
+          "process-to-process",
+          "routing",
+          "neighboring network elements"
+        ],
+        "id": "C1_OE16"
+      },
+      {
+        "question": "Compare the five-layer Internet protocol stack with the seven-layer ISO/OSI reference model.",
+        "sample_answer": "Both models include application, transport, network, link/data-link, and physical functions. The ISO/OSI model additionally has presentation and session layers. In the Internet stack, presentation and session services, when needed, are implemented within the application layer rather than as separate layers.",
+        "required_keywords": [
+          "Internet protocol stack",
+          "ISO/OSI",
+          "presentation layer",
+          "session layer",
+          "application layer"
+        ],
+        "id": "C1_OE17"
+      },
+      {
+        "question": "Explain several lines of defense against network attacks as presented in the lecture.",
+        "sample_answer": "Authentication proves identity, confidentiality is provided through encryption, and integrity checks such as digital signatures help detect tampering. Access restrictions can use password-protected VPNs. Firewalls filter traffic and can help restrict senders, receivers, or applications and react to DoS attacks.",
+        "required_keywords": [
+          "authentication",
+          "confidentiality",
+          "encryption",
+          "integrity",
+          "digital signatures",
+          "VPN",
+          "firewall",
+          "DoS"
+        ],
+        "id": "C1_OE18"
+      },
+      {
+        "question": "Explain the Internet from both the 'nuts-and-bolts' view and the 'service' view.",
+        "sample_answer": "The nuts-and-bolts view describes hosts or end systems, packet switches such as routers and switches, communication links, and interconnected networks. The service view describes the Internet as infrastructure that provides services and programming interfaces to distributed applications.",
+        "required_keywords": [
+          "hosts",
+          "end systems",
+          "packet switches",
+          "routers",
+          "communication links",
+          "network of networks",
+          "services",
+          "programming interface"
+        ],
+        "id": "C1_OE19"
+      },
+      {
+        "question": "A source sends one L-bit packet through two R-bps links using store-and-forward, with zero propagation, processing, and queueing delays. Explain why the end-to-end delay is 2L/R.",
+        "sample_answer": "The source first needs L/R seconds to transmit the entire packet onto the first link. Because of store-and-forward, the router must receive the whole packet before transmitting it onto the second link, which takes another L/R seconds. Therefore the total end-to-end delay is 2L/R.",
+        "required_keywords": [
+          "store-and-forward",
+          "transmission delay",
+          "L/R",
+          "entire packet",
+          "2L/R"
+        ],
+        "id": "C1_OE20"
+      }
+    ]
+  },
+  "chapter_2": {
+    "metadata": {
+      "title": "Chapter 2 - Application Layer",
+      "coverage": "Chapter 2 Part 1 + Chapter 2 Part 2 through DNS only, up to page 17",
+      "sources": [
+        "Chapter_2-1.pdf",
+        "Chapter_2-2.pdf"
+      ],
+      "excluded": [
+        "P2P material after DNS in Chapter 2 Part 2",
+        "Video streaming",
+        "DASH",
+        "CDN"
+      ],
+      "counts": {
+        "true_false": 50,
+        "multiple_choice": 40,
+        "short_answer": 20,
+        "open_ended": 20
+      }
+    },
+    "true_false": [
+      {
+        "id": "C2_TF01",
+        "question": "Network applications must run on routers in the network core to communicate over the Internet.",
+        "answer": false,
+        "explanation": "Network applications run on end systems; network-core devices do not run user applications."
+      },
+      {
+        "id": "C2_TF02",
+        "question": "In the client-server paradigm, clients normally communicate directly with each other.",
+        "answer": false,
+        "explanation": "Clients contact the server and do not directly communicate with each other in the client-server model."
+      },
+      {
+        "id": "C2_TF03",
+        "question": "A process is a program running within a host.",
+        "answer": true,
+        "explanation": "That is the lecture definition of a process."
+      },
+      {
+        "id": "C2_TF04",
+        "question": "Processes on different hosts communicate by exchanging messages.",
+        "answer": true,
+        "explanation": "Inter-host process communication occurs through message exchange."
+      },
+      {
+        "id": "C2_TF05",
+        "question": "A socket can be viewed as the door through which a process sends and receives messages.",
+        "answer": true,
+        "explanation": "The lecture explicitly uses the door analogy for sockets."
+      },
+      {
+        "id": "C2_TF06",
+        "question": "An IP address alone is always sufficient to identify a receiving process on a host.",
+        "answer": false,
+        "explanation": "A process identifier needs both an IP address and a port number because many processes can run on one host."
+      },
+      {
+        "id": "C2_TF07",
+        "question": "TCP provides reliable transport, flow control, and congestion control.",
+        "answer": true,
+        "explanation": "These services are listed for TCP."
+      },
+      {
+        "id": "C2_TF08",
+        "question": "TCP guarantees a minimum throughput and a maximum delay.",
+        "answer": false,
+        "explanation": "The lecture states that TCP does not provide timing or minimum throughput guarantees."
+      },
+      {
+        "id": "C2_TF09",
+        "question": "UDP provides connection setup before data transfer.",
+        "answer": false,
+        "explanation": "UDP has no connection setup."
+      },
+      {
+        "id": "C2_TF10",
+        "question": "HTTP is an application-layer protocol that uses a client/server model.",
+        "answer": true,
+        "explanation": "Browsers act as HTTP clients and web servers respond to their requests."
+      },
+      {
+        "id": "C2_TF11",
+        "question": "HTTP is stateful because the server automatically remembers all past requests from a client.",
+        "answer": false,
+        "explanation": "HTTP is stateless; the server maintains no information about past client requests by default."
+      },
+      {
+        "id": "C2_TF12",
+        "question": "Non-persistent HTTP sends at most one object over each TCP connection.",
+        "answer": true,
+        "explanation": "Each non-persistent TCP connection carries at most one object."
+      },
+      {
+        "id": "C2_TF13",
+        "question": "Persistent HTTP can send multiple objects over a single TCP connection.",
+        "answer": true,
+        "explanation": "The connection remains open and can carry subsequent HTTP messages."
+      },
+      {
+        "id": "C2_TF14",
+        "question": "Ignoring transmission time, non-persistent HTTP requires two RTTs per object.",
+        "answer": true,
+        "explanation": "One RTT establishes TCP and one RTT carries the request and initial response."
+      },
+      {
+        "id": "C2_TF15",
+        "question": "The HTTP GET method normally places form data in the entity body rather than in the URL.",
+        "answer": false,
+        "explanation": "GET commonly includes user data in the URL after '?'; POST places input in the entity body."
+      },
+      {
+        "id": "C2_TF16",
+        "question": "The HTTP HEAD method requests only the headers that a GET request would return.",
+        "answer": true,
+        "explanation": "HEAD retrieves headers without the object body."
+      },
+      {
+        "id": "C2_TF17",
+        "question": "HTTP status code 404 means the requested document was not found on the server.",
+        "answer": true,
+        "explanation": "404 Not Found has that meaning."
+      },
+      {
+        "id": "C2_TF18",
+        "question": "Cookies can be used to maintain user/server state across otherwise stateless HTTP transactions.",
+        "answer": true,
+        "explanation": "Cookies carry identifiers and state across requests."
+      },
+      {
+        "id": "C2_TF19",
+        "question": "A web cache always contacts the origin server before replying to the client.",
+        "answer": false,
+        "explanation": "If the object is already cached, the cache can reply without involving the origin server."
+      },
+      {
+        "id": "C2_TF20",
+        "question": "A Conditional GET can avoid sending an object when the cached copy is still up to date.",
+        "answer": true,
+        "explanation": "The server can return 304 Not Modified with no object body."
+      },
+      {
+        "id": "C2_TF21",
+        "question": "HTTP/2 can divide objects into frames and interleave their transmission to reduce head-of-line blocking among objects.",
+        "answer": true,
+        "explanation": "The lecture presents frame interleaving as an HTTP/2 mechanism to mitigate HOL blocking."
+      },
+      {
+        "id": "C2_TF22",
+        "question": "SMTP is primarily a pull protocol used by a receiver to retrieve stored e-mail.",
+        "answer": false,
+        "explanation": "SMTP is a push protocol used to send mail; IMAP/POP3 are used for retrieval."
+      },
+      {
+        "id": "C2_TF23",
+        "question": "SMTP uses persistent connections between mail servers.",
+        "answer": true,
+        "explanation": "The lecture explicitly states that SMTP uses persistent connections."
+      },
+      {
+        "id": "C2_TF24",
+        "question": "IMAP keeps messages on the server and supports retrieval, deletion, and folders.",
+        "answer": true,
+        "explanation": "Those capabilities are listed for IMAP."
+      },
+      {
+        "id": "C2_TF25",
+        "question": "DNS is implemented as a single centralized database on one Internet server.",
+        "answer": false,
+        "explanation": "DNS is a distributed database implemented through a hierarchy of many name servers."
+      },
+      {
+        "id": "C2_TF26",
+        "question": "A local DNS server strictly belongs to the root-TLD-authoritative hierarchy.",
+        "answer": false,
+        "explanation": "The lecture says a local DNS server does not strictly belong to the hierarchy."
+      },
+      {
+        "id": "C2_TF27",
+        "question": "In an iterative DNS query, a contacted server may reply with the name of another server to contact.",
+        "answer": true,
+        "explanation": "The iterative behavior is summarized as 'I don't know this name, but ask this server.'"
+      },
+      {
+        "id": "C2_TF28",
+        "question": "In a recursive DNS query, the burden of name resolution is placed on the contacted name server.",
+        "answer": true,
+        "explanation": "The contacted server is responsible for continuing the resolution process."
+      },
+      {
+        "id": "C2_TF29",
+        "question": "A DNS A record maps a hostname to an IP address.",
+        "answer": true,
+        "explanation": "For type A, the name is a hostname and the value is its IP address."
+      },
+      {
+        "id": "C2_TF30",
+        "question": "DNS cache entries can remain valid forever and never expire.",
+        "answer": false,
+        "explanation": "DNS cache entries expire after their TTL."
+      },
+      {
+        "question": "Network applications are normally implemented on end systems rather than on network-core routers.",
+        "answer": true,
+        "explanation": "The lecture says application programs run on end systems and network-core devices do not run user applications.",
+        "id": "C2_TF31"
+      },
+      {
+        "question": "A peer-to-peer application cannot contain client processes and server processes.",
+        "answer": false,
+        "explanation": "The lecture explicitly notes that P2P applications still have client processes and server processes.",
+        "id": "C2_TF32"
+      },
+      {
+        "question": "A process can be identified for network communication using both an IP address and a port number.",
+        "answer": true,
+        "explanation": "The process identifier contains the host IP address and the port number associated with the process.",
+        "id": "C2_TF33"
+      },
+      {
+        "question": "The lecture uses port 80 as an example for an HTTP server and port 25 for a mail server.",
+        "answer": true,
+        "explanation": "Those example port numbers are shown on the addressing-processes slide.",
+        "id": "C2_TF34"
+      },
+      {
+        "question": "Open protocols are kept proprietary so that only one vendor can implement them.",
+        "answer": false,
+        "explanation": "Open protocols are defined in RFCs and publicly available, enabling interoperability.",
+        "id": "C2_TF35"
+      },
+      {
+        "question": "The lecture classifies file transfer and Web documents as applications that require no data loss.",
+        "answer": true,
+        "explanation": "They are listed as applications requiring reliable, no-loss delivery.",
+        "id": "C2_TF36"
+      },
+      {
+        "question": "TCP is connection-oriented, so setup is required between client and server processes before data transfer.",
+        "answer": true,
+        "explanation": "Connection-oriented setup is listed as part of TCP service.",
+        "id": "C2_TF37"
+      },
+      {
+        "question": "UDP provides reliable transfer, flow control, and congestion control.",
+        "answer": false,
+        "explanation": "The lecture states that UDP does not provide those services.",
+        "id": "C2_TF38"
+      },
+      {
+        "question": "Objects belonging to the same Web page may be stored on different Web servers.",
+        "answer": true,
+        "explanation": "The Web review slide states that Web-page objects can be stored on different servers.",
+        "id": "C2_TF39"
+      },
+      {
+        "question": "The HTTP request line contains a method, a URL, and an HTTP version.",
+        "answer": true,
+        "explanation": "The general request format is method SP URL SP version followed by CRLF.",
+        "id": "C2_TF40"
+      },
+      {
+        "question": "In the lecture, POST normally sends user form input in the entity body of the request.",
+        "answer": true,
+        "explanation": "The POST method slide places form input in the entity body.",
+        "id": "C2_TF41"
+      },
+      {
+        "question": "HTTP status code 400 means the requested object has moved permanently.",
+        "answer": false,
+        "explanation": "400 means Bad Request. 301 indicates Moved Permanently.",
+        "id": "C2_TF42"
+      },
+      {
+        "question": "HTTP status code 505 means that the HTTP version is not supported.",
+        "answer": true,
+        "explanation": "505 is listed as HTTP Version Not Supported.",
+        "id": "C2_TF43"
+      },
+      {
+        "question": "A Web cache can act as a server to the requesting client and as a client to the origin server.",
+        "answer": true,
+        "explanation": "The lecture explicitly describes this dual role for a Web cache.",
+        "id": "C2_TF44"
+      },
+      {
+        "question": "With a cache hit rate of 0.4, the lecture's example sends 100% of requests across the institutional access link.",
+        "answer": false,
+        "explanation": "Only the 60% cache misses use the access link in that example.",
+        "id": "C2_TF45"
+      },
+      {
+        "question": "HTTP/2 keeps methods, status codes, and most header fields largely unchanged from HTTP/1.1.",
+        "answer": true,
+        "explanation": "The HTTP/2 slide states that these elements remain mostly unchanged.",
+        "id": "C2_TF46"
+      },
+      {
+        "question": "HTTP/3 is described in the lecture as operating over UDP and adding security plus per-object error and congestion control.",
+        "answer": true,
+        "explanation": "That is the lecture's stated motivation for HTTP/3.",
+        "id": "C2_TF47"
+      },
+      {
+        "question": "SMTP requires the message header and body to be represented in 7-bit ASCII in the lecture.",
+        "answer": true,
+        "explanation": "The SMTP closing observations explicitly state the 7-bit ASCII requirement.",
+        "id": "C2_TF48"
+      },
+      {
+        "question": "A mail server's mailbox contains outgoing messages waiting to be sent, while its message queue stores incoming messages for users.",
+        "answer": false,
+        "explanation": "The lecture says the mailbox contains incoming messages and the outgoing message queue holds messages waiting to be sent.",
+        "id": "C2_TF49"
+      },
+      {
+        "question": "DNS query and reply messages use the same overall message format, including an identification field and flags.",
+        "answer": true,
+        "explanation": "The DNS protocol slide shows query and reply messages with the same format and a 16-bit identification field plus flags.",
+        "id": "C2_TF50"
+      }
+    ],
+    "multiple_choice": [
+      {
+        "id": "C2_MC01",
+        "question": "Where are network applications normally implemented?",
+        "options": {
+          "A": "Only in network-core routers",
+          "B": "On end systems",
+          "C": "Only at IXPs",
+          "D": "Only in root DNS servers"
+        },
+        "answer": "B",
+        "explanation": "Applications run on end systems, enabling rapid development and deployment."
+      },
+      {
+        "id": "C2_MC02",
+        "question": "Which process initiates communication?",
+        "options": {
+          "A": "Server process",
+          "B": "Client process",
+          "C": "Router process",
+          "D": "TLD process"
+        },
+        "answer": "B",
+        "explanation": "The client process initiates communication."
+      },
+      {
+        "id": "C2_MC03",
+        "question": "Which pair uniquely identifies a process endpoint in the lecture model?",
+        "options": {
+          "A": "MAC address and URL",
+          "B": "IP address and port number",
+          "C": "Hostname and RTT",
+          "D": "TTL and status code"
+        },
+        "answer": "B",
+        "explanation": "A process is addressed using the host IP address plus a port number."
+      },
+      {
+        "id": "C2_MC04",
+        "question": "Which TCP service prevents a sender from overwhelming the receiver?",
+        "options": {
+          "A": "Flow control",
+          "B": "DNS caching",
+          "C": "Packet sniffing",
+          "D": "FDM"
+        },
+        "answer": "A",
+        "explanation": "Flow control protects the receiver from an overly fast sender."
+      },
+      {
+        "id": "C2_MC05",
+        "question": "Which TCP service throttles the sender when the network is overloaded?",
+        "options": {
+          "A": "Congestion control",
+          "B": "Flow control only",
+          "C": "Mail access",
+          "D": "Name resolution"
+        },
+        "answer": "A",
+        "explanation": "Congestion control reduces sending rate when the network is congested."
+      },
+      {
+        "id": "C2_MC06",
+        "question": "Which statement about UDP is correct?",
+        "options": {
+          "A": "It guarantees reliable delivery.",
+          "B": "It requires connection setup.",
+          "C": "It provides unreliable data transfer without connection setup.",
+          "D": "It guarantees minimum throughput."
+        },
+        "answer": "C",
+        "explanation": "UDP does not provide reliability or connection setup."
+      },
+      {
+        "id": "C2_MC07",
+        "question": "Which is the Web's application-layer protocol?",
+        "options": {
+          "A": "HTTP",
+          "B": "IP",
+          "C": "Ethernet",
+          "D": "DNS only"
+        },
+        "answer": "A",
+        "explanation": "HTTP is the Web's application-layer protocol."
+      },
+      {
+        "id": "C2_MC08",
+        "question": "Which statement best describes HTTP's default state behavior?",
+        "options": {
+          "A": "HTTP automatically stores all client history on the server.",
+          "B": "HTTP is stateless.",
+          "C": "HTTP is always peer-to-peer.",
+          "D": "HTTP does not use TCP in the lecture material."
+        },
+        "answer": "B",
+        "explanation": "HTTP is stateless: the server keeps no information about past client requests by default."
+      },
+      {
+        "id": "C2_MC09",
+        "question": "In non-persistent HTTP, how many objects can be sent over one TCP connection at most?",
+        "options": {
+          "A": "One",
+          "B": "Two",
+          "C": "Eight",
+          "D": "Unlimited"
+        },
+        "answer": "A",
+        "explanation": "At most one object is sent per TCP connection."
+      },
+      {
+        "id": "C2_MC10",
+        "question": "Ignoring transmission time, what is the response time for one object with non-persistent HTTP?",
+        "options": {
+          "A": "0.5 RTT",
+          "B": "1 RTT",
+          "C": "2 RTT",
+          "D": "4 RTT"
+        },
+        "answer": "C",
+        "explanation": "One RTT establishes TCP and one RTT carries the request and beginning of the response."
+      },
+      {
+        "id": "C2_MC11",
+        "question": "Which HTTP method sends form input in the entity body?",
+        "options": {
+          "A": "HEAD",
+          "B": "POST",
+          "C": "GET only",
+          "D": "304"
+        },
+        "answer": "B",
+        "explanation": "POST commonly carries user input in the entity body."
+      },
+      {
+        "id": "C2_MC12",
+        "question": "Which HTTP method requests only the headers that would be returned by GET?",
+        "options": {
+          "A": "PUT",
+          "B": "POST",
+          "C": "HEAD",
+          "D": "DELETE"
+        },
+        "answer": "C",
+        "explanation": "HEAD requests the headers without the object body."
+      },
+      {
+        "id": "C2_MC13",
+        "question": "What does HTTP status code 301 indicate?",
+        "options": {
+          "A": "Bad Request",
+          "B": "Not Found",
+          "C": "Moved Permanently",
+          "D": "Version Not Supported"
+        },
+        "answer": "C",
+        "explanation": "301 Moved Permanently indicates the requested object has moved."
+      },
+      {
+        "id": "C2_MC14",
+        "question": "Which is NOT one of the four cookie components listed in the lecture?",
+        "options": {
+          "A": "A cookie header line in an HTTP response",
+          "B": "A cookie header line in a later HTTP request",
+          "C": "A cookie file on the user's host",
+          "D": "A mandatory DNS MX record for every cookie"
+        },
+        "answer": "D",
+        "explanation": "Cookies use response/request headers, a browser-managed cookie file, and a backend database, not DNS MX records."
+      },
+      {
+        "id": "C2_MC15",
+        "question": "What is a main goal of a web cache?",
+        "options": {
+          "A": "Force every request to reach the origin server",
+          "B": "Satisfy client requests without involving the origin server when possible",
+          "C": "Replace TCP with DNS",
+          "D": "Increase access-link utilization"
+        },
+        "answer": "B",
+        "explanation": "A cache can return stored objects directly and reduce delay and access-link traffic."
+      },
+      {
+        "id": "C2_MC16",
+        "question": "Which header is used in the lecture's Conditional GET example?",
+        "options": {
+          "A": "If-Modified-Since",
+          "B": "MAIL FROM",
+          "C": "RCPT TO",
+          "D": "Recursion Desired"
+        },
+        "answer": "A",
+        "explanation": "The client sends If-Modified-Since with the date of its cached copy."
+      },
+      {
+        "id": "C2_MC17",
+        "question": "Which status code can indicate that a browser-cached object is still current?",
+        "options": {
+          "A": "200 OK with a full object always",
+          "B": "304 Not Modified",
+          "C": "404 Not Found",
+          "D": "505 HTTP Version Not Supported"
+        },
+        "answer": "B",
+        "explanation": "304 Not Modified tells the client to use its cached copy."
+      },
+      {
+        "id": "C2_MC18",
+        "question": "What is a key HTTP/2 technique for reducing object-level HOL blocking?",
+        "options": {
+          "A": "Remove all headers",
+          "B": "Divide objects into frames and interleave frame transmission",
+          "C": "Use only one object per TCP connection",
+          "D": "Replace URLs with IP addresses"
+        },
+        "answer": "B",
+        "explanation": "HTTP/2 frames and schedules data from multiple objects flexibly."
+      },
+      {
+        "id": "C2_MC19",
+        "question": "Which protocol is used between mail servers to send e-mail?",
+        "options": {
+          "A": "SMTP",
+          "B": "IMAP only",
+          "C": "DNS",
+          "D": "HTTP HEAD"
+        },
+        "answer": "A",
+        "explanation": "SMTP is used between mail servers for mail delivery."
+      },
+      {
+        "id": "C2_MC20",
+        "question": "Which protocol is mainly used to retrieve and manage messages stored on a mail server?",
+        "options": {
+          "A": "FDM",
+          "B": "IMAP",
+          "C": "IP spoofing",
+          "D": "TDM"
+        },
+        "answer": "B",
+        "explanation": "IMAP supports retrieval, deletion, and folders while messages remain on the server."
+      },
+      {
+        "id": "C2_MC21",
+        "question": "What is the primary role of DNS?",
+        "options": {
+          "A": "Encrypt HTTP traffic",
+          "B": "Map hostnames and IP addresses",
+          "C": "Reserve circuits",
+          "D": "Transmit physical bits"
+        },
+        "answer": "B",
+        "explanation": "DNS performs name/address translation."
+      },
+      {
+        "id": "C2_MC22",
+        "question": "Why is DNS not centralized according to the lecture?",
+        "options": {
+          "A": "Centralization would eliminate all maintenance.",
+          "B": "A centralized design would suffer from issues such as a single point of failure, traffic volume, distance, and maintenance.",
+          "C": "DNS must run only in routers.",
+          "D": "A centralized DNS would always be faster."
+        },
+        "answer": "B",
+        "explanation": "The lecture gives those scalability problems as reasons not to centralize DNS."
+      },
+      {
+        "id": "C2_MC23",
+        "question": "Which DNS server type is responsible for top-level domains such as .com and .edu?",
+        "options": {
+          "A": "Local DNS server",
+          "B": "TLD server",
+          "C": "Web cache",
+          "D": "Mail user agent"
+        },
+        "answer": "B",
+        "explanation": "TLD servers are responsible for top-level domains."
+      },
+      {
+        "id": "C2_MC24",
+        "question": "Which DNS server provides authoritative hostname-to-IP mappings for an organization's named hosts?",
+        "options": {
+          "A": "Authoritative DNS server",
+          "B": "Any browser cache",
+          "C": "Root server only",
+          "D": "SMTP server"
+        },
+        "answer": "A",
+        "explanation": "An organization's authoritative DNS server stores the official mappings for its hosts."
+      },
+      {
+        "id": "C2_MC25",
+        "question": "What is another name for a local DNS server in the lecture?",
+        "options": {
+          "A": "Default name server",
+          "B": "Root-only server",
+          "C": "Mail reader",
+          "D": "Origin cache"
+        },
+        "answer": "A",
+        "explanation": "A local DNS server is also called a default name server."
+      },
+      {
+        "id": "C2_MC26",
+        "question": "In an iterative DNS query, what does a contacted server commonly return if it does not know the final answer?",
+        "options": {
+          "A": "A referral to another DNS server",
+          "B": "An HTTP cookie",
+          "C": "A reserved circuit",
+          "D": "A TCP congestion window"
+        },
+        "answer": "A",
+        "explanation": "The server can direct the requester to another server to contact."
+      },
+      {
+        "id": "C2_MC27",
+        "question": "Which DNS record type has an IP address as its value?",
+        "options": {
+          "A": "A",
+          "B": "NS",
+          "C": "CNAME",
+          "D": "MX"
+        },
+        "answer": "A",
+        "explanation": "An A record maps a hostname to an IP address."
+      },
+      {
+        "id": "C2_MC28",
+        "question": "Which DNS record type stores the canonical name corresponding to an alias?",
+        "options": {
+          "A": "A",
+          "B": "NS",
+          "C": "CNAME",
+          "D": "MX"
+        },
+        "answer": "C",
+        "explanation": "CNAME maps an alias name to its canonical name."
+      },
+      {
+        "id": "C2_MC29",
+        "question": "Which DNS record type identifies a mail server associated with a domain name?",
+        "options": {
+          "A": "MX",
+          "B": "A only",
+          "C": "CNAME only",
+          "D": "HTTP"
+        },
+        "answer": "A",
+        "explanation": "MX records identify mail servers."
+      },
+      {
+        "id": "C2_MC30",
+        "question": "What causes a cached DNS entry to disappear after some time?",
+        "options": {
+          "A": "RTT",
+          "B": "TTL expiration",
+          "C": "HTTP 301",
+          "D": "TDM slot expiration"
+        },
+        "answer": "B",
+        "explanation": "DNS cache entries time out according to their TTL."
+      },
+      {
+        "question": "Which information is needed to identify a specific receiving process on a host?",
+        "options": {
+          "A": "Only the hostname",
+          "B": "Only the IP address",
+          "C": "IP address and port number",
+          "D": "Only the MAC address"
+        },
+        "answer": "C",
+        "explanation": "The lecture identifies a process using the host IP address together with a port number.",
+        "id": "C2_MC31"
+      },
+      {
+        "question": "Which three fields appear in an HTTP request line?",
+        "options": {
+          "A": "Method, URL, version",
+          "B": "Status code, status phrase, data",
+          "C": "IP address, port, TTL",
+          "D": "Name, value, type"
+        },
+        "answer": "A",
+        "explanation": "The request-line format is method SP URL SP version.",
+        "id": "C2_MC32"
+      },
+      {
+        "question": "What does HTTP status code 505 mean?",
+        "options": {
+          "A": "OK",
+          "B": "Moved Permanently",
+          "C": "Not Found",
+          "D": "HTTP Version Not Supported"
+        },
+        "answer": "D",
+        "explanation": "505 is listed as HTTP Version Not Supported.",
+        "id": "C2_MC33"
+      },
+      {
+        "question": "How does a Web cache behave when the requested object is not in the cache?",
+        "options": {
+          "A": "It drops the request.",
+          "B": "It requests the object from the origin server, stores it, and returns it to the client.",
+          "C": "It redirects every request to DNS.",
+          "D": "It opens a circuit-switched connection."
+        },
+        "answer": "B",
+        "explanation": "On a cache miss, the cache fetches the object from the origin server, caches it, and forwards it to the client.",
+        "id": "C2_MC34"
+      },
+      {
+        "question": "Which HTTP/2 feature allows the server to send requested objects in an order that is not necessarily FCFS?",
+        "options": {
+          "A": "Client-specified object priority",
+          "B": "DNS TTL",
+          "C": "SMTP DATA",
+          "D": "TCP port 25"
+        },
+        "answer": "A",
+        "explanation": "HTTP/2 can schedule transmission based on client-specified object priority.",
+        "id": "C2_MC35"
+      },
+      {
+        "question": "According to the lecture, what marks the end of an SMTP message body?",
+        "options": {
+          "A": "CRLF.CRLF",
+          "B": "HTTP 304",
+          "C": "TTL = 0",
+          "D": "A blank DNS RR"
+        },
+        "answer": "A",
+        "explanation": "The SMTP slide states that CRLF.CRLF is used to determine the end of the message.",
+        "id": "C2_MC36"
+      },
+      {
+        "question": "Which component of a mail server stores incoming messages for a user?",
+        "options": {
+          "A": "Mailbox",
+          "B": "Outgoing message queue",
+          "C": "DNS cache",
+          "D": "Web cache"
+        },
+        "answer": "A",
+        "explanation": "The mailbox contains incoming messages for the user.",
+        "id": "C2_MC37"
+      },
+      {
+        "question": "Which statement best describes IMAP compared with POP3 in the lecture?",
+        "options": {
+          "A": "IMAP is only for sending mail.",
+          "B": "IMAP supports server-stored messages, retrieval, deletion, and folders.",
+          "C": "IMAP is a DNS record type.",
+          "D": "IMAP requires no mail server."
+        },
+        "answer": "B",
+        "explanation": "IMAP keeps messages on the server and supports retrieval, deletion, and folders; POP3 is described as simpler and limited.",
+        "id": "C2_MC38"
+      },
+      {
+        "question": "What is the purpose of the DNS message identification field?",
+        "options": {
+          "A": "It specifies the Ethernet frame length.",
+          "B": "It lets a reply use the same identifier as its query.",
+          "C": "It chooses the HTTP method.",
+          "D": "It stores the DNS TTL for every record."
+        },
+        "answer": "B",
+        "explanation": "The 16-bit identification number in the query is copied into the corresponding reply.",
+        "id": "C2_MC39"
+      },
+      {
+        "question": "When a new .com domain is registered in the lecture example, which records does the registrar insert into the .com TLD server?",
+        "options": {
+          "A": "MX and CNAME",
+          "B": "NS and A",
+          "C": "A and MX only",
+          "D": "CNAME and PTR"
+        },
+        "answer": "B",
+        "explanation": "The startup example shows the registrar inserting an NS record for the domain and an A record for the authoritative name server.",
+        "id": "C2_MC40"
+      }
+    ],
+    "short_answer": [
+      {
+        "id": "C2_SA01",
+        "question": "What is a process?",
+        "answer": "A program running within a host.",
+        "keywords": [
+          "process",
+          "program",
+          "host"
+        ]
+      },
+      {
+        "id": "C2_SA02",
+        "question": "What is a socket?",
+        "answer": "A socket is the interface through which a process sends and receives messages using the transport infrastructure.",
+        "keywords": [
+          "socket",
+          "process",
+          "messages"
+        ]
+      },
+      {
+        "id": "C2_SA03",
+        "question": "How is a receiving process identified on the Internet according to the lecture?",
+        "answer": "By the host's IP address and the process's port number.",
+        "keywords": [
+          "IP address",
+          "port number"
+        ]
+      },
+      {
+        "id": "C2_SA04",
+        "question": "List three services provided by TCP.",
+        "answer": "Reliable transport, flow control, and congestion control.",
+        "keywords": [
+          "reliable transport",
+          "flow control",
+          "congestion control"
+        ]
+      },
+      {
+        "id": "C2_SA05",
+        "question": "What type of transport does UDP provide?",
+        "answer": "Unreliable data transfer without connection setup.",
+        "keywords": [
+          "UDP",
+          "unreliable",
+          "no connection setup"
+        ]
+      },
+      {
+        "id": "C2_SA06",
+        "question": "Why is HTTP called stateless?",
+        "answer": "Because the server does not maintain information about a client's past requests by default.",
+        "keywords": [
+          "HTTP",
+          "stateless",
+          "past requests"
+        ]
+      },
+      {
+        "id": "C2_SA07",
+        "question": "What is the key difference between non-persistent and persistent HTTP?",
+        "answer": "Non-persistent HTTP uses a separate TCP connection for at most one object, while persistent HTTP can carry multiple objects over one TCP connection.",
+        "keywords": [
+          "non-persistent HTTP",
+          "persistent HTTP",
+          "TCP connection",
+          "multiple objects"
+        ]
+      },
+      {
+        "id": "C2_SA08",
+        "question": "Name the four components used by cookies in the lecture.",
+        "answer": "A cookie header in the HTTP response, a cookie header in a later HTTP request, a cookie file on the user's host, and a backend database at the Web site.",
+        "keywords": [
+          "cookie header",
+          "HTTP response",
+          "HTTP request",
+          "cookie file",
+          "backend database"
+        ]
+      },
+      {
+        "id": "C2_SA09",
+        "question": "Give two benefits of a web cache.",
+        "answer": "It can reduce client response time and reduce traffic on the institution's access link.",
+        "keywords": [
+          "web cache",
+          "response time",
+          "access link traffic"
+        ]
+      },
+      {
+        "id": "C2_SA10",
+        "question": "Name the three major components of e-mail described in the lecture.",
+        "answer": "User agents, mail servers, and SMTP.",
+        "keywords": [
+          "user agents",
+          "mail servers",
+          "SMTP"
+        ]
+      },
+      {
+        "id": "C2_SA11",
+        "question": "What is SMTP used for?",
+        "answer": "SMTP is used to send e-mail messages, especially between mail servers.",
+        "keywords": [
+          "SMTP",
+          "send",
+          "mail servers"
+        ]
+      },
+      {
+        "id": "C2_SA12",
+        "question": "What is IMAP used for?",
+        "answer": "IMAP retrieves and manages messages stored on a mail server, including deletion and folders.",
+        "keywords": [
+          "IMAP",
+          "retrieval",
+          "server",
+          "folders"
+        ]
+      },
+      {
+        "id": "C2_SA13",
+        "question": "What is DNS?",
+        "answer": "DNS is a distributed hierarchical database and application-layer protocol used for name/address translation.",
+        "keywords": [
+          "DNS",
+          "distributed",
+          "hierarchical",
+          "application-layer",
+          "name/address translation"
+        ]
+      },
+      {
+        "id": "C2_SA14",
+        "question": "Name four services provided by DNS from the lecture.",
+        "answer": "Hostname-to-IP translation, host aliasing, mail server aliasing, and load distribution.",
+        "keywords": [
+          "hostname-to-IP",
+          "host aliasing",
+          "mail server aliasing",
+          "load distribution"
+        ]
+      },
+      {
+        "id": "C2_SA15",
+        "question": "Name the main DNS hierarchy levels used to resolve a typical hostname.",
+        "answer": "Root DNS servers, TLD DNS servers, and authoritative DNS servers.",
+        "keywords": [
+          "root DNS server",
+          "TLD DNS server",
+          "authoritative DNS server"
+        ]
+      },
+      {
+        "id": "C2_SA16",
+        "question": "What is a local DNS server?",
+        "answer": "A default name server, usually operated by an ISP or organization, that receives host queries, caches mappings, and forwards queries into the DNS hierarchy.",
+        "keywords": [
+          "local DNS server",
+          "default name server",
+          "cache",
+          "proxy"
+        ]
+      },
+      {
+        "id": "C2_SA17",
+        "question": "What is the difference between iterative and recursive DNS queries?",
+        "answer": "In an iterative query, each contacted server may return a referral; in a recursive query, the contacted server continues the resolution on behalf of the requester.",
+        "keywords": [
+          "iterative query",
+          "referral",
+          "recursive query",
+          "resolution"
+        ]
+      },
+      {
+        "id": "C2_SA18",
+        "question": "What is TTL in DNS caching?",
+        "answer": "Time To Live; it determines how long a cached DNS record remains before expiring.",
+        "keywords": [
+          "TTL",
+          "Time To Live",
+          "cache",
+          "expire"
+        ]
+      },
+      {
+        "id": "C2_SA19",
+        "question": "Give the general format of a DNS resource record.",
+        "answer": "(name, value, type, ttl).",
+        "keywords": [
+          "resource record",
+          "name",
+          "value",
+          "type",
+          "ttl"
+        ]
+      },
+      {
+        "id": "C2_SA20",
+        "question": "Match the DNS record types A, NS, CNAME, and MX to their basic roles.",
+        "answer": "A: hostname to IP address; NS: domain to authoritative name server; CNAME: alias to canonical name; MX: domain to mail server.",
+        "keywords": [
+          "A",
+          "NS",
+          "CNAME",
+          "MX"
+        ]
+      }
+    ],
+    "open_ended": [
+      {
+        "id": "C2_OE01",
+        "question": "Compare the client-server paradigm with peer-to-peer architecture as introduced in Chapter 2 Part 1.",
+        "sample_answer": "In the client-server paradigm, an always-on server with a stable address provides service to clients, and clients normally do not communicate directly with each other. In peer-to-peer architecture, there is no always-on server; arbitrary end systems can communicate directly and peers both request and provide service. P2P can be self-scalable but is more complex to manage because peers can join, leave, and change IP addresses.",
+        "required_keywords": [
+          "client-server",
+          "always-on server",
+          "clients",
+          "peer-to-peer",
+          "no always-on server",
+          "direct communication",
+          "self scalability"
+        ]
+      },
+      {
+        "id": "C2_OE02",
+        "question": "Explain how processes on different hosts communicate and how sockets fit into this communication.",
+        "sample_answer": "A process is a program running on a host. Processes on different hosts communicate by exchanging messages. Each process sends and receives messages through a socket, which acts as the interface between the application process and the transport-layer infrastructure. A receiving process is identified using an IP address and port number.",
+        "required_keywords": [
+          "process",
+          "messages",
+          "socket",
+          "transport layer",
+          "IP address",
+          "port number"
+        ]
+      },
+      {
+        "id": "C2_OE03",
+        "question": "Compare the transport services of TCP and UDP as presented in the lecture.",
+        "sample_answer": "TCP is connection-oriented and provides reliable transport, flow control, and congestion control. It does not guarantee timing, minimum throughput, or security by itself. UDP provides unreliable data transfer and does not provide connection setup, reliability, flow control, congestion control, timing, throughput guarantees, or security.",
+        "required_keywords": [
+          "TCP",
+          "connection-oriented",
+          "reliable transport",
+          "flow control",
+          "congestion control",
+          "UDP",
+          "unreliable",
+          "no connection setup"
+        ]
+      },
+      {
+        "id": "C2_OE04",
+        "question": "Explain why HTTP is described as stateless and how cookies can still support user state.",
+        "sample_answer": "HTTP is stateless because the server does not automatically remember past client requests. Cookies add state across transactions by sending a cookie identifier in HTTP response and request headers, storing the identifier in a browser-managed cookie file, and associating it with information in a backend database.",
+        "required_keywords": [
+          "HTTP",
+          "stateless",
+          "cookies",
+          "cookie header",
+          "cookie file",
+          "backend database",
+          "state"
+        ]
+      },
+      {
+        "id": "C2_OE05",
+        "question": "Compare non-persistent HTTP and persistent HTTP in terms of TCP connections and response time.",
+        "sample_answer": "Non-persistent HTTP opens a TCP connection, sends at most one object, and closes the connection, so each object generally costs two RTTs plus transmission time. Persistent HTTP keeps the TCP connection open so multiple objects can use the same connection, reducing repeated connection setup and often lowering response time.",
+        "required_keywords": [
+          "non-persistent HTTP",
+          "persistent HTTP",
+          "TCP connection",
+          "2 RTT",
+          "multiple objects",
+          "response time"
+        ]
+      },
+      {
+        "id": "C2_OE06",
+        "question": "A base HTML file references eight very small objects on the same server. Ignoring transmission time, explain why non-persistent HTTP without parallel connections takes 18 RTT units, while persistent HTTP with pipelining takes 3 RTT units in the lecture exercise.",
+        "sample_answer": "With non-persistent HTTP, the base HTML costs 2 RTTs and each of the eight referenced objects costs another 2 RTTs, giving 2 + 8×2 = 18 RTTs. With persistent pipelining, the base HTML costs 2 RTTs and the pipelined requests for all eight objects can be handled with about 1 additional RTT, giving 3 RTTs total.",
+        "required_keywords": [
+          "non-persistent HTTP",
+          "persistent HTTP",
+          "pipelining",
+          "RTT",
+          "18 RTT",
+          "3 RTT"
+        ]
+      },
+      {
+        "id": "C2_OE07",
+        "question": "Explain the roles of GET, POST, HEAD, and PUT HTTP methods as presented in the lecture.",
+        "sample_answer": "GET retrieves a resource and can include user data in the URL. POST sends user input in the entity body. HEAD requests only the headers that a corresponding GET would return. PUT uploads a file or replaces the object at the specified URL with the content in the entity body.",
+        "required_keywords": [
+          "GET",
+          "POST",
+          "HEAD",
+          "PUT",
+          "URL",
+          "entity body",
+          "headers"
+        ]
+      },
+      {
+        "id": "C2_OE08",
+        "question": "Explain how a web cache works and why it can improve performance.",
+        "sample_answer": "A browser can send requests to a web cache. If the object is already cached, the cache returns it directly. Otherwise, the cache requests the object from the origin server, stores it, and forwards it to the client. Because the cache can be closer to the client and can reduce traffic on the access link, it can lower response time and network load.",
+        "required_keywords": [
+          "web cache",
+          "proxy server",
+          "origin server",
+          "cache hit",
+          "response time",
+          "access link traffic"
+        ]
+      },
+      {
+        "id": "C2_OE09",
+        "question": "Explain how Conditional GET works and why HTTP 304 is useful.",
+        "sample_answer": "The browser sends an If-Modified-Since header containing the date of its cached copy. If the object has not changed, the server can return 304 Not Modified without sending the object. This avoids object transmission delay and saves network resources. If the object has changed, the server can return 200 OK with the updated data.",
+        "required_keywords": [
+          "Conditional GET",
+          "If-Modified-Since",
+          "304 Not Modified",
+          "200 OK",
+          "cached copy",
+          "network resources"
+        ]
+      },
+      {
+        "id": "C2_OE10",
+        "question": "Explain the head-of-line blocking problem in HTTP/1.1 and how HTTP/2 reduces it at the application layer.",
+        "sample_answer": "With pipelined HTTP/1.1, responses are sent in order, so a small object may have to wait behind a large object, producing head-of-line blocking. HTTP/2 divides objects into frames and can interleave frame transmission, allowing smaller or higher-priority objects to make progress instead of waiting for a full large object to finish.",
+        "required_keywords": [
+          "HTTP/1.1",
+          "head-of-line blocking",
+          "HTTP/2",
+          "frames",
+          "interleaving",
+          "priority"
+        ]
+      },
+      {
+        "id": "C2_OE11",
+        "question": "Explain the three major components of e-mail and how a message moves from sender to receiver.",
+        "sample_answer": "The major components are user agents, mail servers, and SMTP. The sender composes a message in a user agent, which sends it to the sender's mail server. SMTP transfers the message between mail servers. The receiver then retrieves the stored message from the receiver's mail server using a mail access protocol such as IMAP or a web interface.",
+        "required_keywords": [
+          "user agent",
+          "mail server",
+          "SMTP",
+          "mail access protocol",
+          "IMAP"
+        ]
+      },
+      {
+        "id": "C2_OE12",
+        "question": "Compare SMTP and HTTP using the comparisons given in the lecture.",
+        "sample_answer": "HTTP is mainly a pull protocol, while SMTP is a push protocol. Both use ASCII command/response interactions and status codes. HTTP normally puts each object in its own response message, while SMTP can send multiple objects as parts of a multipart message. SMTP also uses persistent connections.",
+        "required_keywords": [
+          "SMTP",
+          "HTTP",
+          "push",
+          "pull",
+          "ASCII",
+          "status codes",
+          "persistent connection"
+        ]
+      },
+      {
+        "id": "C2_OE13",
+        "question": "Explain why DNS is implemented as a distributed hierarchical system rather than a single centralized server.",
+        "sample_answer": "A centralized DNS would create a single point of failure, enormous traffic volume, long delays for distant users, and difficult maintenance. DNS therefore distributes the database across many name servers organized hierarchically, improving scalability and avoiding dependence on one central machine.",
+        "required_keywords": [
+          "DNS",
+          "distributed",
+          "hierarchical",
+          "single point of failure",
+          "traffic volume",
+          "distance",
+          "maintenance",
+          "scalability"
+        ]
+      },
+      {
+        "id": "C2_OE14",
+        "question": "Describe the DNS hierarchy and the basic steps used to resolve a hostname such as www.amazon.com.",
+        "sample_answer": "A resolver can first contact a root DNS server, which points toward the appropriate TLD server such as .com. The TLD server points toward the authoritative DNS server for the target domain. The authoritative server provides the final hostname-to-IP mapping. A local DNS server usually performs or assists with this process on behalf of the host.",
+        "required_keywords": [
+          "root DNS server",
+          "TLD DNS server",
+          "authoritative DNS server",
+          "local DNS server",
+          "hostname-to-IP"
+        ]
+      },
+      {
+        "id": "C2_OE15",
+        "question": "Compare a local DNS server and an authoritative DNS server.",
+        "sample_answer": "A local DNS server, also called a default name server, is typically operated by an ISP or organization. It receives DNS queries from hosts, uses a cache, and forwards unresolved queries into the DNS hierarchy. An authoritative DNS server stores the official hostname-to-IP mappings for an organization's named hosts.",
+        "required_keywords": [
+          "local DNS server",
+          "default name server",
+          "cache",
+          "proxy",
+          "authoritative DNS server",
+          "official mapping"
+        ]
+      },
+      {
+        "id": "C2_OE16",
+        "question": "Compare iterative and recursive DNS queries.",
+        "sample_answer": "In an iterative query, a contacted DNS server can reply with a referral to another server, and the requester continues the process. In a recursive query, the contacted server takes responsibility for continuing the name-resolution process and returning the final result, which can create heavier load at higher levels of the hierarchy.",
+        "required_keywords": [
+          "iterative query",
+          "referral",
+          "recursive query",
+          "name resolution",
+          "load"
+        ]
+      },
+      {
+        "id": "C2_OE17",
+        "question": "Explain DNS caching, TTL, and why cached information can become stale.",
+        "sample_answer": "When a DNS server learns a mapping, it can cache it. Each cached entry has a TTL and disappears after that time. Caching reduces repeated queries and means root servers are contacted less often. However, if a host's IP address changes, old cached mappings can remain until their TTLs expire, so cached data may temporarily be stale.",
+        "required_keywords": [
+          "DNS caching",
+          "TTL",
+          "cache",
+          "root server",
+          "stale",
+          "IP address"
+        ]
+      },
+      {
+        "id": "C2_OE18",
+        "question": "Explain the meanings of DNS resource record types A, NS, CNAME, and MX.",
+        "sample_answer": "An A record maps a hostname to an IP address. An NS record maps a domain to the hostname of its authoritative name server. A CNAME record maps an alias name to its canonical name. An MX record gives the name of a mail server associated with a domain.",
+        "required_keywords": [
+          "A record",
+          "IP address",
+          "NS record",
+          "authoritative name server",
+          "CNAME",
+          "canonical name",
+          "MX",
+          "mail server"
+        ]
+      },
+      {
+        "id": "C2_OE19",
+        "question": "Describe the main fields of a DNS query/reply message shown in the lecture.",
+        "sample_answer": "DNS query and reply messages use the same general format. The header contains a 16-bit identification value and flags such as query/reply, recursion desired, recursion available, and authoritative reply. The message also includes counts and sections for questions, answers, authority resource records, and additional resource records.",
+        "required_keywords": [
+          "DNS message",
+          "identification",
+          "flags",
+          "questions",
+          "answer RRs",
+          "authority RRs",
+          "additional RRs"
+        ]
+      },
+      {
+        "id": "C2_OE20",
+        "question": "Explain the basic steps for inserting records for a new domain into DNS, using the lecture's startup example as a model.",
+        "sample_answer": "The organization registers its domain name with a DNS registrar and supplies the names and IP addresses of its primary and secondary authoritative name servers. The registrar inserts appropriate NS and A resource records into the TLD server. The organization then configures its authoritative DNS server with records such as an A record for its Web host and an MX record for its mail domain.",
+        "required_keywords": [
+          "DNS registrar",
+          "authoritative name server",
+          "NS record",
+          "A record",
+          "TLD server",
+          "MX record"
+        ]
+      }
+    ]
+  }
+}
