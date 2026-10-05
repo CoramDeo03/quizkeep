@@ -1,5 +1,6 @@
 import { adaptLectureBank } from './legacy';
 import { QUESTION_TYPES, type QuestionPack, type Question, type QuestionType } from './types';
+import { keepChance, priority, studyKey, type StudyLog } from './study';
 export class PackError extends Error { constructor(public issues: string[]) { super(issues.join('\n')); } }
 const text = (v: unknown): v is string => typeof v === 'string' && v.trim().length > 0;
 const list = (v: unknown): v is string[] => Array.isArray(v) && v.length > 0 && v.every(text);
@@ -52,15 +53,27 @@ export function parsePack(json: string, reference?: QuestionPack): QuestionPack 
   try { data = JSON.parse(json); } catch { throw new PackError(['JSON 문법을 확인하세요. 쉼표·따옴표가 잘못되었을 수 있습니다.']); }
   return validatePack(adaptLectureBank(data, reference));
 }
+/**
+ * Deals each question type in shuffled passes. With a study log, mastered questions are dealt less often
+ * and missed ones come first in each pass (the deck is popped from the end, so it is sorted weakest-last).
+ */
 export class QuestionDeck {
   private decks = new Map<QuestionType, Question[]>();
   private last = new Map<QuestionType, string>();
-  constructor(private pack: QuestionPack, private random: () => number = Math.random) {}
+  constructor(private pack: QuestionPack, private random: () => number = Math.random, private study?: () => StudyLog) {}
   next(type: QuestionType) {
     let deck = this.decks.get(type);
     if (!deck?.length) {
-      deck = this.pack.questions.filter(q => q.type === type);
-      for (let i = deck.length - 1; i > 0; i--) { const j = Math.floor(this.random() * (i + 1)); [deck[i], deck[j]] = [deck[j], deck[i]]; }
+      const all = this.pack.questions.filter(q => q.type === type), log = this.study?.();
+      if (log) {
+        const kept = all.filter(q => this.random() < keepChance(log[studyKey(q)]));
+        // Priority plus jitter: missed questions (4) always come before the rest (≤ 3); shaky, new and mastered ones mix a little.
+        // Sorted ascending because the deck is popped from the end.
+        deck = (kept.length ? kept : all).map(q => ({ q, key: priority(log[studyKey(q)]) + this.random() })).sort((a, b) => a.key - b.key).map(x => x.q);
+      } else {
+        deck = all;
+        for (let i = deck.length - 1; i > 0; i--) { const j = Math.floor(this.random() * (i + 1)); [deck[i], deck[j]] = [deck[j], deck[i]]; }
+      }
       if (deck.length > 1 && deck[deck.length - 1].id === this.last.get(type)) [deck[0], deck[deck.length - 1]] = [deck[deck.length - 1], deck[0]];
       this.decks.set(type, deck);
     }

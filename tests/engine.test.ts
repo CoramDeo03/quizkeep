@@ -3,15 +3,15 @@ import { readFileSync } from 'node:fs';
 import { Game, BOSS_SUMMON_INTERVAL, type Enemy } from '../src/game/engine';
 import { STAGES } from '../src/game/stages';
 import { validatePack } from '../src/quiz/loader';
-import { MAX_LEVEL, BALANCE_GAP, MAX_LEVEL_GOLD, TOWERS, WRONG_LOCKOUT, REVIEW_GOLD, laserMaxRamp, FREEZE, HEAL, BLINK, freezeSeconds, ENEMIES, tierOf, towerStats, upgradeGain } from '../src/game/config';
-const START_GOLD=STAGES[0].startGold,PATH_LENGTH=STAGES[0].route.length;
+import { MAX_LEVEL, BALANCE_GAP, MAX_LEVEL_GOLD, TOWERS, WRONG_LOCKOUT, REVIEW_GOLD, laserMaxRamp, wrongPenalty, FREEZE, HEAL, BLINK, freezeSeconds, ENEMIES, tierOf, towerStats, upgradeGain } from '../src/game/config';
+const START_GOLD=STAGES[0].startGold,PATH_LENGTH=STAGES[0].routes[0].length;
 import type { Question } from '../src/quiz/types';
 const pack=validatePack(JSON.parse(readFileSync('public/data/questions.en.json','utf8')));
 const answer=(q:Question)=>q.type==='short_answer'?q.answers[0]:q.type==='open_ended'?q.modelAnswer:q.answer;
 const wrong=(q:Question)=>q.type==='true_false'?!q.answer:q.type==='multiple_choice'?q.choices.find(c=>c.id!==q.answer)!.id:'no idea';
 const make=()=>new Game(pack,STAGES[0],()=>.4);
 function run(g:Game,seconds:number){for(let i=0;i<Math.ceil(seconds*60);i++)g.advance(1/60);}
-function enemy(id:number,x:number,y:number,hp=1000):Enemy{return {id,kind:'normal',x,y,distance:x+35,hp,maxHp:hp,hit:0,slow:0};}
+function enemy(id:number,x:number,y:number,hp=1000):Enemy{return {id,kind:"normal",lane:0,x,y,distance:x+35,hp,maxHp:hp,hit:0,slow:0};}
 function submit(g:Game,towerId:number,correct=true){const t=g.tower(towerId)!;const card=g.state.cards[t.type];const r=g.submit(towerId,card.token,correct?answer(card.question):wrong(card.question));if(r)g.nextQuestion(t.type);return r;}
 describe('construction',()=>{
  it('charges gold, prevents double building, and only sells during preparation',()=>{const g=make();expect(g.build(0,'true_false')).not.toBeNull();expect(g.state.gold).toBe(START_GOLD-70);expect(g.build(0,'multiple_choice')).toBeNull();expect(g.sell(0)).toBe(true);expect(g.state.gold).toBe(START_GOLD-70+49);g.build(1,'true_false');g.startWave();expect(g.sell(1)).toBe(false);});
@@ -22,20 +22,21 @@ describe('upgrades come from answers',()=>{
   const g=make();g.state.gold=1000;const a=g.build(0,'true_false')!,b=g.build(1,'true_false')!,c=g.build(2,'open_ended')!;g.startWave();
   const gains=[submit(g,a.id)!.gain,submit(g,a.id)!.gain,submit(g,a.id)!.gain,submit(g,c.id)!.gain];
   expect(gains).toEqual([1,1,2,upgradeGain('open_ended',4)]);
-  expect(a.level).toBe(5);expect(b.level).toBe(1);expect(c.level).toBe(1+TOWERS.open_ended.gain+1);
+  expect(a.level).toBe(5);expect(b.level).toBe(1);expect(c.level).toBe(1+upgradeGain('open_ended',4));
  });
- it('wrong answers cost one level of that tower, reset combo and lock answers briefly',()=>{
+ it('wrong answers cost that tower levels by question type, reset combo and lock answers briefly',()=>{
   const g=make();const t=g.build(0,'true_false')!;g.startWave();t.level=10;g.state.combo=6;
   expect(submit(g,t.id,false)!.gain).toBe(-1);expect(t.level).toBe(9);expect(g.state.combo).toBe(0);
   expect(g.blockReason(t.id)).toContain('패널티');run(g,WRONG_LOCKOUT+.1);expect(g.blockReason(t.id)).toBe('');
   t.level=1;expect(submit(g,t.id,false)!.gain).toBe(0);expect(t.level).toBe(1);
+  expect([1,11,21].map(l=>wrongPenalty('open_ended',l))).toEqual([TOWERS.open_ended.penalty,1,1]);expect(TOWERS.true_false.penalty).toBe(TOWERS.true_false.gain);
  });
  it('answering never fires a tower and is only possible during a wave',()=>{
   const g=make();const t=g.build(0,'true_false')!;expect(g.blockReason(t.id)).toContain('웨이브');g.startWave();
   const shots=g.state.shotCount;submit(g,t.id);expect(g.state.projectiles).toHaveLength(0);expect(g.state.shotCount).toBe(shots);
  });
  it('rejects stale tokens and repeated submissions',()=>{const g=make();const t=g.build(0,'true_false')!;g.startWave();const c=g.state.cards.true_false;expect(g.submit(t.id,c.token,answer(c.question))).not.toBeNull();expect(g.submit(t.id,c.token,answer(c.question))).toBeNull();g.nextQuestion('true_false');expect(g.submit(t.id,c.token,answer(c.question))).toBeNull();expect(g.state.history).toHaveLength(1);});
- it('higher tiers gain fewer levels per answer',()=>{expect([1,11,21,31].map(l=>upgradeGain('multiple_choice',0,l))).toEqual([2,1,1,1]);expect([1,11,21,31].map(l=>upgradeGain('open_ended',6,l))).toEqual([6,3,2,2]);});
+ it('higher tiers gain fewer levels per answer',()=>{expect([1,11,21,31].map(l=>upgradeGain('multiple_choice',0,l))).toEqual([2,1,1,1]);expect([1,11,21,31].map(l=>upgradeGain('open_ended',6,l))).toEqual([12,6,4,3]);});
  it('stops at the balance limit and at MAX, paying gold instead',()=>{
   const g=make();g.state.gold=1000;const a=g.build(0,'open_ended')!;g.build(1,'true_false');g.startWave();
   a.level=1+BALANCE_GAP;expect(g.levelCap(a)).toBe(1+BALANCE_GAP);const gold=g.state.gold;const r=submit(g,a.id)!;expect(r.gain).toBe(0);expect(r.gold).toBe(MAX_LEVEL_GOLD);expect(g.state.gold).toBe(gold+MAX_LEVEL_GOLD);
@@ -80,7 +81,7 @@ describe('special enemies',()=>{
  it('shamans heal hurt enemies nearby',()=>{const g=field();g.build(7,'true_false');quiet(g);const sh=mk(900,'shaman',100,145),hurt=mk(901,'normal',120,145,1000);hurt.hp=500;g.state.enemies=[sh,hurt];run(g,HEAL.every+.1);expect(hurt.hp).toBeGreaterThan(500);});
  it('engineers freeze the highest-level tower nearby; it stops attacking and a correct answer thaws it',()=>{
   const g=field(3);const low=g.build(0,'true_false')!,high=g.build(1,'true_false')!;high.level=20;quiet(g);
-  const p=STAGES[3].pads[1],route=STAGES[3].route;let near=0;for(let d=0;d<route.length;d+=5)if(Math.hypot(route.at(d).x-p.x,route.at(d).y-p.y)<Math.hypot(route.at(near).x-p.x,route.at(near).y-p.y))near=d;
+  const p=STAGES[3].pads[1],route=STAGES[3].routes[0];let near=0;for(let d=0;d<route.length;d+=5)if(Math.hypot(route.at(d).x-p.x,route.at(d).y-p.y)<Math.hypot(route.at(near).x-p.x,route.at(near).y-p.y))near=d;
   const eng=mk(900,'engineer',0,0,1e6);eng.distance=near;Object.assign(eng,route.at(near));g.state.enemies=[eng];
   run(g,FREEZE.first+.05);expect(high.frozen).toBeGreaterThan(0);expect(low.frozen).toBe(0);
   expect(high.frozen).toBeCloseTo(freezeSeconds(20,10.5)-.05,1);
@@ -89,7 +90,7 @@ describe('special enemies',()=>{
  });
  it('several engineers share one freeze cooldown',()=>{
   const g=new Game(pack,STAGES[3],()=>.4);g.state.gold=5000;STAGES[3].pads.forEach((_,i)=>g.build(i,'true_false'));g.startWave();g.state.spawned=g.state.roster.length;
-  const route=STAGES[3].route;g.state.enemies=[0,1,2].map(i=>{const e={...enemy(900+i,0,0,1e7),kind:'engineer' as const,distance:900+i*10};Object.assign(e,route.at(e.distance));return e;});
+  const route=STAGES[3].routes[0];g.state.enemies=[0,1,2].map(i=>{const e={...enemy(900+i,0,0,1e7),kind:'engineer' as const,distance:900+i*10};Object.assign(e,route.at(e.distance));return e;});
   run(g,FREEZE.first+.1);expect(g.state.towers.filter(t=>t.frozen>0)).toHaveLength(1);
   const frozenEver=new Set<number>();for(let t=0;t<FREEZE.shared-1;t+=.25){run(g,.25);g.state.towers.filter(x=>x.frozen>0).forEach(x=>frozenEver.add(x.id));}
   expect(frozenEver.size).toBe(1);
@@ -106,7 +107,7 @@ describe('stages',()=>{
   expect(STAGES.at(-1)!.waves.at(-1)!.enemies.some(([k])=>k==='boss')).toBe(true);
   expect(STAGES.slice(0,4).every(st=>st.waves.every(w=>w.enemies.every(([k])=>k!=='boss')))).toBe(true);
  });
- it('uses the stage map, gold and wave count',()=>{const st=STAGES[2],g=new Game(pack,st,()=>.4);expect(g.state.gold).toBe(st.startGold);expect(g.build(st.pads.length-1,'true_false')).not.toBeNull();g.startWave();run(g,1);expect(g.state.enemies[0].y).toBeCloseTo(st.route.at(g.state.enemies[0].distance).y);});
+ it('uses the stage map, gold and wave count',()=>{const st=STAGES[2],g=new Game(pack,st,()=>.4);expect(g.state.gold).toBe(st.startGold);expect(g.build(st.pads.length-1,'true_false')).not.toBeNull();g.startWave();run(g,1);expect(g.state.enemies[0].y).toBeCloseTo(st.routes[0].at(g.state.enemies[0].distance).y);});
  it('the boss summons minions behind itself',()=>{const st=STAGES[4],g=new Game(pack,st,()=>.4);g.build(0,'true_false');g.startWave();g.state.spawned=g.state.roster.length;
   const boss=enemy(900,0,0,1e6);boss.kind='boss';boss.distance=500;g.state.enemies=[boss];run(g,BOSS_SUMMON_INTERVAL+.1);
   const minions=g.state.enemies.filter(e=>e.kind!=='boss');expect(minions).toHaveLength(3);expect(minions.every(m=>m.distance<boss.distance)).toBe(true);});

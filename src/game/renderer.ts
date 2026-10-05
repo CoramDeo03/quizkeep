@@ -1,6 +1,6 @@
-import { WORLD, ENEMIES, towerStats, tierOf, laserRamp, laserMaxRamp, type Point, type EnemyKind } from './config';
+import { WORLD, ENEMIES, towerStats, tierOf, laserRamp, laserMaxRamp, perkRank, pendingPerks, type Point, type EnemyKind } from './config';
 import { STAGES, type StageDef, type ThemeId } from './stages';
-import type { GameState, Tower, Enemy, Effect, Projectile } from './engine';
+import type { GameState, Tower, Enemy, Effect, Projectile, Zone } from './engine';
 import type { QuestionType } from '../quiz/types';
 
 /** Cartoon palette for the battlefield. Kept here (not in CSS) because the canvas art is theme-independent. */
@@ -71,18 +71,22 @@ export const THEMES: Record<ThemeId, Theme> = {
 let map: StageDef = STAGES[0];
 let theme: Theme = THEMES.meadow;
 function useStage(stage: StageDef) { map = stage; theme = THEMES[stage.theme]; }
+/** Distance to the nearest road of the stage (every route). */
 function distanceToPath(p: Point) {
-  const pts = map.route.points;
   let best = Infinity;
-  for (let i = 1; i < pts.length; i++) {
-    const a = pts[i - 1], b = pts[i], dx = b.x - a.x, dy = b.y - a.y;
-    const t = Math.max(0, Math.min(1, ((p.x - a.x) * dx + (p.y - a.y) * dy) / (dx * dx + dy * dy)));
-    best = Math.min(best, Math.hypot(p.x - a.x - t * dx, p.y - a.y - t * dy));
+  for (const route of map.routes) {
+    const pts = route.points;
+    for (let i = 1; i < pts.length; i++) {
+      const a = pts[i - 1], b = pts[i], dx = b.x - a.x, dy = b.y - a.y;
+      const t = Math.max(0, Math.min(1, ((p.x - a.x) * dx + (p.y - a.y) * dy) / (dx * dx + dy * dy)));
+      best = Math.min(best, Math.hypot(p.x - a.x - t * dx, p.y - a.y - t * dy));
+    }
   }
   return best;
 }
-const castleAt = () => { const end = map.route.points.at(-1)!; return { x: end.x - 9, y: end.y - 33 }; };
-const caveAt = () => ({ x: 0, y: map.route.points[0].y });
+const castleAt = () => { const end = map.routes[0].points.at(-1)!; return { x: end.x - 9, y: end.y - 33 }; };
+/** One cave per distinct entrance (a road that splits later shares its cave). */
+const cavesAt = () => [...new Set(map.routes.map(r => r.points[0].y))].map(y => ({ x: 0, y }));
 
 function roundTree(c: Ctx, x: number, y: number, s: number, random: () => number) {
   shadow(c, x + s * .25, y + 2, s * .85, s * .32);
@@ -185,8 +189,8 @@ function castle(c: Ctx) {
   if (theme.snowCap) for (const [x0, x1, y] of [[-30, 30, -46], [-57, -31, -20], [31, 57, -20]]) shape(c, [[x0 + 4, y], [x0 + (x1 - x0) / 2, y - 12], [x1 - 4, y]], '#ffffff', null);
   c.restore();
 }
-function cave(c: Ctx) {
-  const at = caveAt(), dark = theme.particle === 'mote' ? '#120a22' : '#1d140c';
+function cave(c: Ctx, at: Point) {
+  const dark = theme.particle === 'mote' ? '#120a22' : '#1d140c';
   c.save(); c.translate(at.x, at.y);
   shape(c, [[-10, -70], [40, -78], [72, -48], [64, 54], [30, 70], [-10, 66]], theme.particle === 'snow' ? '#9fb3c2' : C.stoneDark);
   shape(c, [[0, -62], [36, -66], [58, -40], [48, -20], [0, -30]], theme.snowCap ? '#ffffff' : C.stone, null);
@@ -200,19 +204,20 @@ function cave(c: Ctx) {
 export function terrain(stage: StageDef): HTMLCanvasElement {
   useStage(stage);
   const canvas = document.createElement('canvas'); canvas.width = WORLD.width; canvas.height = WORLD.height;
-  const c = canvas.getContext('2d')!, random = rng(813 + stage.id * 97), pads = stage.pads, route = stage.route, castlePos = castleAt(), cavePos = caveAt();
+  const c = canvas.getContext('2d')!, random = rng(813 + stage.id * 97), pads = stage.pads, castlePos = castleAt(), caves = cavesAt();
   c.fillStyle = theme.ground; c.fillRect(0, 0, WORLD.width, WORLD.height);
   for (let i = 0; i < 90; i++) { const x = random() * 960, y = random() * 600; c.globalAlpha = .35; ellipse(c, x, y, 30 + random() * 70, 18 + random() * 40, random() > .5 ? theme.groundLight : theme.groundDark, null); }
   c.globalAlpha = 1;
   // Pool in the most open spot of the map
-  const openness = (x: number, y: number) => Math.min(distanceToPath({ x, y }) - 30, ...pads.map(p => Math.hypot(p.x - x, p.y - y) - 45), Math.hypot(x - castlePos.x, y - castlePos.y) - 90, Math.hypot(x - cavePos.x, y - cavePos.y) - 90);
+  const openness = (x: number, y: number) => Math.min(distanceToPath({ x, y }) - 30, ...pads.map(p => Math.hypot(p.x - x, p.y - y) - 45), Math.hypot(x - castlePos.x, y - castlePos.y) - 90, ...caves.map(cv => Math.hypot(x - cv.x, y - cv.y) - 90));
   let best = { x: 95, y: 505, r: 0 };
   for (let x = 90; x <= 870; x += 15) for (let y = 80; y <= 530; y += 15) { const r = openness(x, y); if (r > best.r) best = { x, y, r }; }
   const poolR = Math.max(30, Math.min(80, best.r - 10));
   if (best.r > 35) pool(c, best.x, best.y, poolR);
   // Road: layered strokes give the dark outline, edge and center.
   c.lineCap = 'round'; c.lineJoin = 'round';
-  const road = (w: number, color: string) => { c.beginPath(); route.points.forEach((p, i) => i ? c.lineTo(p.x, p.y) : c.moveTo(p.x, p.y)); c.lineWidth = w; c.strokeStyle = color; c.stroke(); };
+  // Each layer is drawn for every road before the next, so forks and merges blend into one road.
+  const road = (w: number, color: string) => { for (const route of stage.routes) { c.beginPath(); route.points.forEach((p, i) => i ? c.lineTo(p.x, p.y) : c.moveTo(p.x, p.y)); c.lineWidth = w; c.strokeStyle = color; c.stroke(); } };
   road(66, C.ink); road(61, theme.pathEdge); road(54, theme.pathDark); road(46, theme.path);
   c.globalAlpha = .55; road(20, theme.pathLight); c.globalAlpha = 1;
   for (let i = 0; i < 260; i++) {
@@ -220,7 +225,7 @@ export function terrain(stage: StageDef): HTMLCanvasElement {
     if (d < 21) ellipse(c, x, y, 1.5 + random() * 2.5, 1 + random() * 1.5, random() > .4 ? theme.pathDark : theme.pebble, null);
   }
   // Fringe along the road
-  for (let d = 0; d < route.length; d += 9) {
+  for (const route of stage.routes) for (let d = 0; d < route.length; d += 9) {
     const a = route.at(d), b = route.at(d + 1), nx = -(b.y - a.y), ny = b.x - a.x, len = Math.hypot(nx, ny) || 1;
     for (const side of [-1, 1]) {
       const off = 31 + random() * 3, x = a.x + nx / len * off * side, y = a.y + ny / len * off * side;
@@ -236,11 +241,11 @@ export function terrain(stage: StageDef): HTMLCanvasElement {
     if (random() > .35) { line(c, [[x - 3, y], [x - 4, y - 6]], theme.tuft, 2); line(c, [[x, y], [x, y - 8]], theme.tuft, 2); line(c, [[x + 3, y], [x + 4, y - 6]], theme.tuft, 2); }
     else circle(c, x, y, 2.4, theme.flowers[Math.floor(random() * theme.flowers.length)], C.ink, 1);
   }
-  cave(c);
+  caves.forEach(at => cave(c, at));
   // Props: sort by y so they overlap like a painting.
   const props: { x: number; y: number; draw: () => void }[] = [];
   const free = (x: number, y: number) => distanceToPath({ x, y }) > 44 && !pads.some(p => Math.hypot(p.x - x, p.y - y) < 54)
-    && Math.hypot(x - castlePos.x, y - castlePos.y - 8) > 95 && !nearPool(x, y) && !(x < 80 && Math.abs(y - cavePos.y) < 90);
+    && Math.hypot(x - castlePos.x, y - castlePos.y - 8) > 95 && !nearPool(x, y) && !caves.some(cv => x < 80 && Math.abs(y - cv.y) < 90);
   for (let i = 0; i < 520; i++) {
     const edge = random() < .6;
     let x = random() * 1000 - 20, y = random() * 650 - 10;
@@ -253,9 +258,12 @@ export function terrain(stage: StageDef): HTMLCanvasElement {
   }
   props.sort((a, b) => a.y - b.y).forEach(p => p.draw());
   castle(c);
-  // Signpost near the cave
-  const signY = cavePos.y > 140 ? cavePos.y - 57 : cavePos.y + 95;
+  // Signpost near each cave
+  for (const cv of caves) {
+  const signY = cv.y > 140 ? cv.y - 57 : cv.y + 95;
+  if (pads.some(p => Math.hypot(p.x - 86, p.y - signY) < 50)) continue;
   c.save(); c.translate(86, signY); line(c, [[0, 0], [0, 26]], C.woodDark, 4); rrect(c, -22, -12, 44, 16, 3, C.woodLight, C.ink, 2); label(c, 'DANGER', 0, -4, 10, C.white); c.restore();
+  }
   // Soft vignette
   const v = c.createRadialGradient(480, 300, 260, 480, 300, 640); v.addColorStop(0, 'rgba(0,0,0,0)'); v.addColorStop(1, theme.vignette);
   c.fillStyle = v; c.fillRect(0, 0, 960, 600);
@@ -403,7 +411,19 @@ function drawTower(c: Ctx, t: Tower, time: number, reduced: boolean, targeted: b
     line(c, [[-18, -h * .8], [-8, -h * .55]], '#ffffff', 3); line(c, [[12, -h * .6], [18, -h * .4]], '#ffffff', 2.5);
     label(c, `❄ ${Math.ceil(t.frozen)}`, 0, -h - 14, 15, '#e6f9ff', '#2a6f9a');
   }
+  if (t.stunned > 0) {
+    // Bomber blast: smoke and circling stars while the tower cannot attack.
+    const h = 70 + tier * 12;
+    c.globalAlpha = .55; for (let i = 0; i < 4; i++) circle(c, (i - 1.5) * 14, -h * .45 + Math.sin(time * 4 + i) * 4, 12, '#6b6461', null); c.globalAlpha = 1;
+    if (!reduced) for (let i = 0; i < 3; i++) { const a = time * 5 + i * TAU / 3; label(c, '★', Math.cos(a) * 20, -h - 4 + Math.sin(a) * 6, 12, C.gold); }
+    label(c, `💫 ${Math.ceil(t.stunned)}`, 0, -h - 22, 14, '#fff3c4', C.ink);
+  }
   if (t.cracked > 0) { c.globalAlpha = Math.min(1, t.cracked * 1.5); label(c, '✕', 0, -40, 26, C.danger); c.globalAlpha = 1; }
+  if (pendingPerks(t.perks, t.level) > 0) {
+    // An evolution waits for a branch pick.
+    const b = reduced ? 0 : Math.sin(time * 5) * 3, y = -104 - tier * 10 + b;
+    circle(c, 22, y, 11, C.gold, C.ink, 2.5); label(c, '!', 22, y + 1, 15, C.white);
+  }
   if (targeted) { const b = reduced ? 0 : Math.sin(time * 6) * 3; shape(c, [[-7, -92 - tier * 8 + b], [7, -92 - tier * 8 + b], [0, -82 - tier * 8 + b]], C.gold, C.ink, 2); }
   // Level badge, coloured by tier, with one star per tier
   const text = `Lv${t.level}`, w = Math.max(34, text.length * 7 + 10);
@@ -493,6 +513,43 @@ export function drawEnemyArt(c: Ctx, kind: EnemyKind, time: number) {
     line(c, [[-3, -32 + step * .5], [4, -32 + step * .5]], C.ink, 1.5);
     rrect(c, 6, -22, 14, 6, 2, '#6c7080'); rrect(c, 18, -23, 5, 8, 2, '#9fd8f2', C.ink, 1.5);
     label(c, '✦', 26, -19 + Math.sin(time * 8) * 2, 9, '#e6f9ff', '#2a6f9a');
+  } else if (kind === 'thief') {
+    // Hooded runner with a sack of loot.
+    shadow(c, 0, 2, 11, 4);
+    line(c, [[-3, -8], [-6 + step * 5, 0]], '#2b2340', 3.5); line(c, [[3, -8], [6 - step * 5, 0]], '#2b2340', 3.5);
+    circle(c, -10, -16, 8, '#c9a46a'); line(c, [[-14, -22], [-8, -24]], C.ink, 1.5); label(c, '$', -10, -15, 9, C.gold);
+    shape(c, [[-8, -6], [-6, -24], [7, -24], [9, -6]], '#3d3358');
+    circle(c, 1, -28, 8.5, '#4b3f6b');
+    shape(c, [[-7, -31], [1, -40], [9, -31]], '#4b3f6b', C.ink, 1.8);
+    ellipse(c, 4, -27, 5, 3.5, '#2b1a0d', null);
+    for (const x of [2, 6]) circle(c, x, -27.5, 1.3, '#ffe14d', null);
+    shape(c, [[-6, -22], [-14, -18 - step * 2], [-6, -14]], '#5a4d85', C.ink, 1.4);
+  } else if (kind === 'shield') {
+    // Soldier hiding behind a tall iron-rimmed shield held toward the keep.
+    shadow(c, 0, 2, 16, 5);
+    rrect(c, -9, -9 + step * 1.2, 7, 9, 2, '#5b3d22'); rrect(c, 1, -9 - step * 1.2, 7, 9, 2, '#5b3d22');
+    rrect(c, -11, -30, 18, 22, 6, '#b5523a');
+    circle(c, -2, -35 + step * .5, 9, '#e3b48a');
+    shape(c, [[-11, -36], [-9, -46], [7, -46], [8, -36]], C.ironLight);
+    line(c, [[-2, -46], [-2, -52]], '#d0472f', 3);
+    circle(c, 1, -36 + step * .5, 1.6, C.ink, null);
+    rrect(c, 6, -46, 13, 46, 5, C.wood); rrect(c, 8, -43, 9, 40, 3, C.woodLight, null);
+    for (const y of [-38, -24, -10]) line(c, [[6, y], [19, y]], C.iron, 2.5);
+    circle(c, 12.5, -24, 3.5, C.gold, C.ink, 1.4);
+  } else if (kind === 'bomber') {
+    // Goblin sapper with a lit bomb on its back.
+    const spark = Math.sin(time * 30);
+    shadow(c, 0, 2, 13, 4);
+    ellipse(c, -4, -1 + step * 1.5, 3.5, 4, '#4f8f2b'); ellipse(c, 4, -1 - step * 1.5, 3.5, 4, '#4f8f2b');
+    circle(c, -9, -22, 11, '#2d2f38'); circle(c, -12, -26, 3, '#5a5d6b', null);
+    rrect(c, -14, -36, 9, 5, 2, '#6c7080');
+    line(c, [[-10, -36], [-6, -44], [-2, -42]], '#c48a12', 2);
+    circle(c, -2, -42, 3 + spark, '#ffdd33', '#ff6a2a', 1.5);
+    rrect(c, -6, -16, 15, 13, 5, '#7a4a22');
+    circle(c, 3, -21 + step, 9, '#76c442');
+    rrect(c, -4, -27 + step, 14, 5, 2, '#3d3f4a', null);
+    for (const x of [1, 7]) circle(c, x, -24.5 + step, 2, '#ffb43c', C.ink, 1);
+    line(c, [[2, -16 + step], [8, -17 + step]], C.ink, 1.5);
   } else if (kind === 'imp') {
     const flicker = .75 + Math.sin(time * 14) * .25;
     shadow(c, 0, 2, 11, 4);
@@ -534,14 +591,20 @@ const SPRITE: Record<EnemyKind, { bar: number; top: number; aim: number }> = {
   normal: { bar: 30, top: -40, aim: 14 }, fast: { bar: 30, top: -40, aim: 14 }, tank: { bar: 40, top: -66, aim: 26 }, boss: { bar: 86, top: -146, aim: 55 },
   slime: { bar: 30, top: -34, aim: 10 }, slimelet: { bar: 20, top: -24, aim: 6 }, bat: { bar: 26, top: -62, aim: 32 },
   shaman: { bar: 30, top: -56, aim: 22 }, engineer: { bar: 32, top: -54, aim: 22 }, imp: { bar: 28, top: -50, aim: 18 },
+  thief: { bar: 26, top: -50, aim: 18 }, shield: { bar: 34, top: -62, aim: 22 }, bomber: { bar: 30, top: -50, aim: 18 },
 };
 function drawEnemy(c: Ctx, e: Enemy, time: number, reduced: boolean) {
-  const ahead = map.route.at(e.distance + 2), facing = ahead.x < e.x - .3 ? -1 : 1;
+  const route = map.routes[e.lane] ?? map.routes[0], ahead = route.at(e.distance + 2), facing = ahead.x < e.x - .3 ? -1 : 1;
   const t = reduced ? 0 : time + e.id * .37;
   c.save(); c.translate(e.x, e.y + 8);
   const scale = e.kind === 'boss' ? 1.35 : 1;
   c.save(); c.scale(facing * scale, scale); drawEnemyArt(c, e.kind, t); c.restore();
   if (e.hit > 0) { c.globalAlpha = Math.min(.55, e.hit * 2.5); circle(c, 0, -SPRITE[e.kind].aim - (e.kind === 'boss' ? -10 : 2), ENEMIES[e.kind].radius + 3, C.white, null); c.globalAlpha = 1; }
+  if (e.poison && e.poison.time > 0) {
+    // Poison: green tint and rising bubbles.
+    c.globalAlpha = .35; circle(c, 0, -SPRITE[e.kind].aim, ENEMIES[e.kind].radius + 2, '#7ed957', null); c.globalAlpha = 1;
+    if (!reduced) for (let i = 0; i < 3; i++) { const k = (time * 1.4 + i / 3) % 1; circle(c, Math.sin(i * 2.3 + time * 3) * 8, -SPRITE[e.kind].aim - 6 - k * 20, 2.5 * (1 - k) + 1, '#9dff7a', '#1f5e14', 1); }
+  }
   if (e.slow > 0) {
     c.globalAlpha = .55; ellipse(c, 0, 2, ENEMIES[e.kind].radius + 6, 7, 'rgba(160,220,255,.6)', '#bfe9ff', 2); c.globalAlpha = 1;
     if (!reduced) for (let i = 0; i < 3; i++) { const a = time * 3 + i * 2.1; label(c, '✦', Math.cos(a) * 14, -24 + Math.sin(a) * 6, 9, '#d8f3ff', '#2a6f9a'); }
@@ -585,7 +648,14 @@ function drawProjectile(c: Ctx, shot: Projectile) {
 function drawEffect(c: Ctx, fx: Effect, reduced: boolean) {
   const a = 1 - fx.life / fx.maxLife;
   c.save();
-  if (fx.kind === 'damage') { c.globalAlpha = Math.min(1, (1 - a) * 2); label(c, fx.text!, fx.x, fx.y - 6 - (reduced ? 0 : a * 26), 15, C.white); }
+  if (fx.kind === 'damage') { c.globalAlpha = Math.min(1, (1 - a) * 2); label(c, fx.text!, fx.x, fx.y - 6 - (reduced ? 0 : a * 26), fx.radius ? 20 : 15, fx.radius ? C.gold : C.white); }
+  else if (fx.kind === 'bomb') {
+    c.globalAlpha = 1 - a;
+    ellipse(c, fx.x, fx.y + 6, fx.radius * (.3 + a * .7), fx.radius * .45 * (.3 + a * .7), 'rgba(255,140,40,.2)', '#ff6a2a', 4 * (1 - a) + 1);
+    circle(c, fx.x, fx.y - 14, 26 * (1 - a * .5), '#ffb43c', null); circle(c, fx.x, fx.y - 14, 15 * (1 - a * .5), '#fff2a8', null);
+    if (!reduced) for (let i = 0; i < 8; i++) { const ang = i * TAU / 8; circle(c, fx.x + Math.cos(ang) * 40 * a, fx.y - 14 + Math.sin(ang) * 22 * a - a * 14, 10 * (1 - a) + 2, 'rgba(90,85,80,.7)', null); }
+    label(c, fx.text ?? '', fx.x, fx.y - 50 - (reduced ? 0 : a * 16), 20, '#ffe14d');
+  } else if (fx.kind === 'steal') { c.globalAlpha = 1 - a; label(c, fx.text!, fx.x, fx.y - (reduced ? 0 : a * 30), 28, C.gold, C.ink); }
   else if (fx.kind === 'coin') {
     c.globalAlpha = Math.min(1, (1 - a) * 2); const y = fx.y - (reduced ? 0 : a * 34);
     circle(c, fx.x - 13, y, 7, C.gold, C.ink, 2); circle(c, fx.x - 13, y, 3.5, C.goldDark, null);
@@ -664,12 +734,24 @@ function drawPad(c: Ctx, i: number, selected: boolean, buildable: boolean, time:
   c.restore();
 }
 
+/** Burning ground from Fire shells: flickering flames that fade out. */
+function drawZone(c: Ctx, z: Zone, time: number, reduced: boolean) {
+  const k = z.life / z.maxLife;
+  c.save(); c.globalAlpha = Math.min(1, k * 2);
+  const g = c.createRadialGradient(z.x, z.y + 4, 2, z.x, z.y + 4, z.radius); g.addColorStop(0, 'rgba(255,200,60,.6)'); g.addColorStop(.6, 'rgba(255,106,42,.35)'); g.addColorStop(1, 'rgba(209,53,15,0)');
+  c.fillStyle = g; c.beginPath(); c.ellipse(z.x, z.y + 4, z.radius, z.radius * .5, 0, 0, TAU); c.fill();
+  for (let i = 0; i < 5; i++) {
+    const a = i * TAU / 5 + z.id, r = z.radius * .55, x = z.x + Math.cos(a) * r, y = z.y + 4 + Math.sin(a) * r * .45, h = 10 + (reduced ? 0 : Math.sin(time * 12 + i * 1.7) * 4);
+    shape(c, [[x - 5, y], [x, y - h], [x + 5, y]], i % 2 ? '#ffb43c' : '#ff6a2a', null);
+  }
+  c.restore();
+}
 /** A laser beam that thickens and heats from pink to white as its lock ramps up. */
 function drawBeam(c: Ctx, t: Tower, e: Enemy, time: number, reduced: boolean) {
   const tier = tierOf(t.level), p = map.pads[t.pad], k = 1 + tier * .07, top = (-52 - (tier >= 2 ? 10 : 0)) * k;
   const reach = (26 + tier * 2) * k, ox = p.x + Math.cos(t.angle) * reach, oy = p.y + 6 + top + Math.sin(t.angle) * reach;
   const tx = e.x, ty = e.y + 8 - SPRITE[e.kind].aim;
-  const charge = (laserRamp(t.beam!.time, tier) - 1) / (laserMaxRamp(tier) - 1), color = TOWER_COLOR.open_ended;
+  const over = perkRank(t.perks, t.level, 'overcharge'), charge = (laserRamp(t.beam!.time, tier, over) - 1) / (laserMaxRamp(tier, over) - 1), color = TOWER_COLOR.open_ended;
   const w = 2.5 + charge * 7 + (reduced ? 0 : Math.sin(time * 45) * .8);
   c.save(); c.lineCap = 'round';
   c.globalAlpha = .25 + charge * .2; line(c, [[ox, oy], [tx, ty]], color, w * 3.2);
@@ -718,14 +800,20 @@ export function render(c: Ctx, bg: HTMLCanvasElement, stage: StageDef, s: GameSt
   }
   const canBuild = s.phase === 'prep' || s.phase === 'battle';
   map.pads.forEach((_, i) => { if (!s.towers.some(t => t.pad === i)) drawPad(c, i, selected === i, canBuild && selected !== i, reduced ? 0 : time); });
-  // Spawn warning flag while preparing
-  if (s.phase === 'prep' && !reduced) { c.globalAlpha = .5 + Math.sin(time * 4) * .3; ellipse(c, 30, caveAt().y, 30, 26, 'rgba(255,60,40,.25)', null); c.globalAlpha = 1; }
+  // Spawn warning flag at each entrance while preparing
+  if (s.phase === 'prep' && !reduced) { c.globalAlpha = .5 + Math.sin(time * 4) * .3; for (const cv of cavesAt()) ellipse(c, 30, cv.y, 30, 26, 'rgba(255,60,40,.25)', null); c.globalAlpha = 1; }
+  for (const z of s.zones) drawZone(c, z, time, reduced);
   type Drawable = { y: number; draw: () => void };
   const list: Drawable[] = [];
   for (const t of s.towers) list.push({ y: map.pads[t.pad].y + 6, draw: () => drawTower(c, t, time, reduced, t.id === target) });
   for (const e of s.enemies) list.push({ y: e.y + 8, draw: () => drawEnemy(c, e, time, reduced) });
   list.sort((a, b) => a.y - b.y).forEach(d => d.draw());
-  for (const t of s.towers) if (t.beam) { const e = s.enemies.find(x => x.id === t.beam!.target); if (e) drawBeam(c, t, e, time, reduced); }
+  for (const t of s.towers) if (t.beam) {
+    const e = s.enemies.find(x => x.id === t.beam!.target); if (!e) continue;
+    drawBeam(c, t, e, time, reduced);
+    // Prism splits: thin beams from the main target to the others.
+    for (const id of t.beam.chain) { const o = s.enemies.find(x => x.id === id); if (o) { const from = [e.x, e.y + 8 - SPRITE[e.kind].aim], to = [o.x, o.y + 8 - SPRITE[o.kind].aim]; c.globalAlpha = .45; line(c, [from, to], TOWER_COLOR.open_ended, 7); c.globalAlpha = 1; line(c, [from, to], '#ffd0f4', 2.5); } }
+  }
   for (const shot of s.projectiles) if (shot.delay <= 0) drawProjectile(c, shot);
   for (const fx of s.effects) drawEffect(c, fx, reduced);
   if (!reduced) drawAmbient(c, time);
@@ -739,5 +827,5 @@ export function portrait(canvas: HTMLCanvasElement, subject: { tower: QuestionTy
   canvas.width = size * dpr; canvas.height = size * dpr;
   c.setTransform(dpr, 0, 0, dpr, 0, 0); c.clearRect(0, 0, size, size);
   if ('tower' in subject) { const tier = subject.tier ?? 0, k = size / (92 + tier * 22); c.translate(size / 2, size * (.78 + tier * .01)); c.scale(k, k); drawTowerArt(c, subject.tower, -.4, 1.2, 0, subject.tier ?? 0); }
-  else { const k = size / (subject.enemy === 'boss' ? 118 : subject.enemy === 'tank' ? 78 : subject.enemy === 'bat' ? 74 : ['shaman', 'engineer', 'imp'].includes(subject.enemy) ? 66 : 56); c.translate(size / 2, size * .86); c.scale(k, k); drawEnemyArt(c, subject.enemy, .3); }
+  else { const k = size / (subject.enemy === 'boss' ? 118 : subject.enemy === 'tank' ? 78 : subject.enemy === 'bat' ? 74 : ['shaman', 'engineer', 'imp', 'thief', 'shield', 'bomber'].includes(subject.enemy) ? 66 : 56); c.translate(size / 2, size * .86); c.scale(k, k); drawEnemyArt(c, subject.enemy, .3); }
 }

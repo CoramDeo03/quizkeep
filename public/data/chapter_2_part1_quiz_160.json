@@ -1,0 +1,1703 @@
+{
+  "metadata": {
+    "title": "Computer Networks Midterm Quiz - Chapter 2 Part 1 Only",
+    "language": "English",
+    "source": "Chapter_2-1.pdf only",
+    "source_policy": "Built only from the uploaded Chapter 2 Part 1 lecture PDF; no DNS / Chapter 2 Part 2 content.",
+    "counts": {
+      "true_false": 50,
+      "multiple_choice": 50,
+      "calculation": 30,
+      "open_ended": 30,
+      "total": 160
+    },
+    "notes": "Calculation questions use the HTTP RTT, Web cache, access-link utilization, and access-delay formulas/examples shown in Chapter 2 Part 1. Open-ended answers include required English keywords."
+  },
+  "true_false": [
+    {
+      "id": "C2P1_TF01",
+      "question": "Network applications must run on routers in the network core to communicate over the Internet.",
+      "answer": false,
+      "explanation": "Network applications run on end systems; network-core devices do not run user applications."
+    },
+    {
+      "id": "C2P1_TF02",
+      "question": "In the client-server paradigm, clients normally communicate directly with each other.",
+      "answer": false,
+      "explanation": "Clients contact the server and do not directly communicate with each other in the client-server model."
+    },
+    {
+      "id": "C2P1_TF03",
+      "question": "A process is a program running within a host.",
+      "answer": true,
+      "explanation": "That is the lecture definition of a process."
+    },
+    {
+      "id": "C2P1_TF04",
+      "question": "Processes on different hosts communicate by exchanging messages.",
+      "answer": true,
+      "explanation": "Inter-host process communication occurs through message exchange."
+    },
+    {
+      "id": "C2P1_TF05",
+      "question": "A socket can be viewed as the door through which a process sends and receives messages.",
+      "answer": true,
+      "explanation": "The lecture explicitly uses the door analogy for sockets."
+    },
+    {
+      "id": "C2P1_TF06",
+      "question": "An IP address alone is always sufficient to identify a receiving process on a host.",
+      "answer": false,
+      "explanation": "A process identifier needs both an IP address and a port number because many processes can run on one host."
+    },
+    {
+      "id": "C2P1_TF07",
+      "question": "TCP provides reliable transport, flow control, and congestion control.",
+      "answer": true,
+      "explanation": "These services are listed for TCP."
+    },
+    {
+      "id": "C2P1_TF08",
+      "question": "TCP guarantees a minimum throughput and a maximum delay.",
+      "answer": false,
+      "explanation": "The lecture states that TCP does not provide timing or minimum throughput guarantees."
+    },
+    {
+      "id": "C2P1_TF09",
+      "question": "UDP provides connection setup before data transfer.",
+      "answer": false,
+      "explanation": "UDP has no connection setup."
+    },
+    {
+      "id": "C2P1_TF10",
+      "question": "HTTP is an application-layer protocol that uses a client/server model.",
+      "answer": true,
+      "explanation": "Browsers act as HTTP clients and web servers respond to their requests."
+    },
+    {
+      "id": "C2P1_TF11",
+      "question": "HTTP is stateful because the server automatically remembers all past requests from a client.",
+      "answer": false,
+      "explanation": "HTTP is stateless; the server maintains no information about past client requests by default."
+    },
+    {
+      "id": "C2P1_TF12",
+      "question": "Non-persistent HTTP sends at most one object over each TCP connection.",
+      "answer": true,
+      "explanation": "Each non-persistent TCP connection carries at most one object."
+    },
+    {
+      "id": "C2P1_TF13",
+      "question": "Persistent HTTP can send multiple objects over a single TCP connection.",
+      "answer": true,
+      "explanation": "The connection remains open and can carry subsequent HTTP messages."
+    },
+    {
+      "id": "C2P1_TF14",
+      "question": "Ignoring transmission time, non-persistent HTTP requires two RTTs per object.",
+      "answer": true,
+      "explanation": "One RTT establishes TCP and one RTT carries the request and initial response."
+    },
+    {
+      "id": "C2P1_TF15",
+      "question": "The HTTP GET method normally places form data in the entity body rather than in the URL.",
+      "answer": false,
+      "explanation": "GET commonly includes user data in the URL after '?'; POST places input in the entity body."
+    },
+    {
+      "id": "C2P1_TF16",
+      "question": "The HTTP HEAD method requests only the headers that a GET request would return.",
+      "answer": true,
+      "explanation": "HEAD retrieves headers without the object body."
+    },
+    {
+      "id": "C2P1_TF17",
+      "question": "HTTP status code 404 means the requested document was not found on the server.",
+      "answer": true,
+      "explanation": "404 Not Found has that meaning."
+    },
+    {
+      "id": "C2P1_TF18",
+      "question": "Cookies can be used to maintain user/server state across otherwise stateless HTTP transactions.",
+      "answer": true,
+      "explanation": "Cookies carry identifiers and state across requests."
+    },
+    {
+      "id": "C2P1_TF19",
+      "question": "A web cache always contacts the origin server before replying to the client.",
+      "answer": false,
+      "explanation": "If the object is already cached, the cache can reply without involving the origin server."
+    },
+    {
+      "id": "C2P1_TF20",
+      "question": "A Conditional GET can avoid sending an object when the cached copy is still up to date.",
+      "answer": true,
+      "explanation": "The server can return 304 Not Modified with no object body."
+    },
+    {
+      "id": "C2P1_TF21",
+      "question": "HTTP/2 can divide objects into frames and interleave their transmission to reduce head-of-line blocking among objects.",
+      "answer": true,
+      "explanation": "The lecture presents frame interleaving as an HTTP/2 mechanism to mitigate HOL blocking."
+    },
+    {
+      "id": "C2P1_TF22",
+      "question": "SMTP is primarily a pull protocol used by a receiver to retrieve stored e-mail.",
+      "answer": false,
+      "explanation": "SMTP is a push protocol used to send mail; IMAP/POP3 are used for retrieval."
+    },
+    {
+      "id": "C2P1_TF23",
+      "question": "SMTP uses persistent connections between mail servers.",
+      "answer": true,
+      "explanation": "The lecture explicitly states that SMTP uses persistent connections."
+    },
+    {
+      "id": "C2P1_TF24",
+      "question": "IMAP keeps messages on the server and supports retrieval, deletion, and folders.",
+      "answer": true,
+      "explanation": "Those capabilities are listed for IMAP."
+    },
+    {
+      "question": "Network applications are normally implemented on end systems rather than on network-core routers.",
+      "answer": true,
+      "explanation": "The lecture says application programs run on end systems and network-core devices do not run user applications.",
+      "id": "C2P1_TF25"
+    },
+    {
+      "question": "A peer-to-peer application cannot contain client processes and server processes.",
+      "answer": false,
+      "explanation": "The lecture explicitly notes that P2P applications still have client processes and server processes.",
+      "id": "C2P1_TF26"
+    },
+    {
+      "question": "A process can be identified for network communication using both an IP address and a port number.",
+      "answer": true,
+      "explanation": "The process identifier contains the host IP address and the port number associated with the process.",
+      "id": "C2P1_TF27"
+    },
+    {
+      "question": "The lecture uses port 80 as an example for an HTTP server and port 25 for a mail server.",
+      "answer": true,
+      "explanation": "Those example port numbers are shown on the addressing-processes slide.",
+      "id": "C2P1_TF28"
+    },
+    {
+      "question": "Open protocols are kept proprietary so that only one vendor can implement them.",
+      "answer": false,
+      "explanation": "Open protocols are defined in RFCs and publicly available, enabling interoperability.",
+      "id": "C2P1_TF29"
+    },
+    {
+      "question": "The lecture classifies file transfer and Web documents as applications that require no data loss.",
+      "answer": true,
+      "explanation": "They are listed as applications requiring reliable, no-loss delivery.",
+      "id": "C2P1_TF30"
+    },
+    {
+      "question": "TCP is connection-oriented, so setup is required between client and server processes before data transfer.",
+      "answer": true,
+      "explanation": "Connection-oriented setup is listed as part of TCP service.",
+      "id": "C2P1_TF31"
+    },
+    {
+      "question": "UDP provides reliable transfer, flow control, and congestion control.",
+      "answer": false,
+      "explanation": "The lecture states that UDP does not provide those services.",
+      "id": "C2P1_TF32"
+    },
+    {
+      "question": "Objects belonging to the same Web page may be stored on different Web servers.",
+      "answer": true,
+      "explanation": "The Web review slide states that Web-page objects can be stored on different servers.",
+      "id": "C2P1_TF33"
+    },
+    {
+      "question": "The HTTP request line contains a method, a URL, and an HTTP version.",
+      "answer": true,
+      "explanation": "The general request format is method SP URL SP version followed by CRLF.",
+      "id": "C2P1_TF34"
+    },
+    {
+      "question": "In the lecture, POST normally sends user form input in the entity body of the request.",
+      "answer": true,
+      "explanation": "The POST method slide places form input in the entity body.",
+      "id": "C2P1_TF35"
+    },
+    {
+      "question": "HTTP status code 400 means the requested object has moved permanently.",
+      "answer": false,
+      "explanation": "400 means Bad Request. 301 indicates Moved Permanently.",
+      "id": "C2P1_TF36"
+    },
+    {
+      "question": "HTTP status code 505 means that the HTTP version is not supported.",
+      "answer": true,
+      "explanation": "505 is listed as HTTP Version Not Supported.",
+      "id": "C2P1_TF37"
+    },
+    {
+      "question": "A Web cache can act as a server to the requesting client and as a client to the origin server.",
+      "answer": true,
+      "explanation": "The lecture explicitly describes this dual role for a Web cache.",
+      "id": "C2P1_TF38"
+    },
+    {
+      "question": "With a cache hit rate of 0.4, the lecture's example sends 100% of requests across the institutional access link.",
+      "answer": false,
+      "explanation": "Only the 60% cache misses use the access link in that example.",
+      "id": "C2P1_TF39"
+    },
+    {
+      "question": "HTTP/2 keeps methods, status codes, and most header fields largely unchanged from HTTP/1.1.",
+      "answer": true,
+      "explanation": "The HTTP/2 slide states that these elements remain mostly unchanged.",
+      "id": "C2P1_TF40"
+    },
+    {
+      "question": "HTTP/3 is described in the lecture as operating over UDP and adding security plus per-object error and congestion control.",
+      "answer": true,
+      "explanation": "That is the lecture's stated motivation for HTTP/3.",
+      "id": "C2P1_TF41"
+    },
+    {
+      "question": "SMTP requires the message header and body to be represented in 7-bit ASCII in the lecture.",
+      "answer": true,
+      "explanation": "The SMTP closing observations explicitly state the 7-bit ASCII requirement.",
+      "id": "C2P1_TF42"
+    },
+    {
+      "question": "A mail server's mailbox contains outgoing messages waiting to be sent, while its message queue stores incoming messages for users.",
+      "answer": false,
+      "explanation": "The lecture says the mailbox contains incoming messages and the outgoing message queue holds messages waiting to be sent.",
+      "id": "C2P1_TF43"
+    },
+    {
+      "question": "In the client-server paradigm, a server often has a permanent IP address and may be located in a data center for scaling.",
+      "answer": true,
+      "explanation": "The client-server slide lists an always-on server, permanent IP address, and data centers for scaling.",
+      "id": "C2P1_TF44"
+    },
+    {
+      "question": "Peers in a P2P architecture are always continuously connected and keep the same IP address.",
+      "answer": false,
+      "explanation": "The lecture says peers may be intermittently connected and may change IP addresses.",
+      "id": "C2P1_TF45"
+    },
+    {
+      "question": "A server process is the process that waits to be contacted.",
+      "answer": true,
+      "explanation": "The lecture defines the server process as the process that waits to be contacted.",
+      "id": "C2P1_TF46"
+    },
+    {
+      "question": "An HTTP request message is presented in the lecture as ASCII and human-readable.",
+      "answer": true,
+      "explanation": "The HTTP request-message slide explicitly labels the format as ASCII and human-readable.",
+      "id": "C2P1_TF47"
+    },
+    {
+      "question": "HTTP status code 200 indicates that the request succeeded.",
+      "answer": true,
+      "explanation": "200 OK means the request succeeded and the requested object follows in the response.",
+      "id": "C2P1_TF48"
+    },
+    {
+      "question": "The browser-managed cookie file is one of the four components used to maintain state with cookies.",
+      "answer": true,
+      "explanation": "The cookie file stored on the user host and managed by the browser is one of the four listed cookie components.",
+      "id": "C2P1_TF49"
+    },
+    {
+      "question": "SMTP transfer consists of handshaking, message transfer, and closure phases.",
+      "answer": true,
+      "explanation": "The SMTP slide explicitly lists these three phases.",
+      "id": "C2P1_TF50"
+    }
+  ],
+  "multiple_choice": [
+    {
+      "id": "C2P1_MC01",
+      "question": "Where are network applications normally implemented?",
+      "options": {
+        "A": "Only in network-core routers",
+        "B": "On end systems",
+        "C": "Only at IXPs",
+        "D": "Only in root DNS servers"
+      },
+      "answer": "B",
+      "explanation": "Applications run on end systems, enabling rapid development and deployment."
+    },
+    {
+      "id": "C2P1_MC02",
+      "question": "Which process initiates communication?",
+      "options": {
+        "A": "Server process",
+        "B": "Client process",
+        "C": "Router process",
+        "D": "TLD process"
+      },
+      "answer": "B",
+      "explanation": "The client process initiates communication."
+    },
+    {
+      "id": "C2P1_MC03",
+      "question": "Which pair uniquely identifies a process endpoint in the lecture model?",
+      "options": {
+        "A": "MAC address and URL",
+        "B": "IP address and port number",
+        "C": "Hostname and RTT",
+        "D": "TTL and status code"
+      },
+      "answer": "B",
+      "explanation": "A process is addressed using the host IP address plus a port number."
+    },
+    {
+      "id": "C2P1_MC04",
+      "question": "Which TCP service prevents a sender from overwhelming the receiver?",
+      "options": {
+        "A": "Flow control",
+        "B": "DNS caching",
+        "C": "Packet sniffing",
+        "D": "FDM"
+      },
+      "answer": "A",
+      "explanation": "Flow control protects the receiver from an overly fast sender."
+    },
+    {
+      "id": "C2P1_MC05",
+      "question": "Which TCP service throttles the sender when the network is overloaded?",
+      "options": {
+        "A": "Congestion control",
+        "B": "Flow control only",
+        "C": "Mail access",
+        "D": "Name resolution"
+      },
+      "answer": "A",
+      "explanation": "Congestion control reduces sending rate when the network is congested."
+    },
+    {
+      "id": "C2P1_MC06",
+      "question": "Which statement about UDP is correct?",
+      "options": {
+        "A": "It guarantees reliable delivery.",
+        "B": "It requires connection setup.",
+        "C": "It provides unreliable data transfer without connection setup.",
+        "D": "It guarantees minimum throughput."
+      },
+      "answer": "C",
+      "explanation": "UDP does not provide reliability or connection setup."
+    },
+    {
+      "id": "C2P1_MC07",
+      "question": "Which is the Web's application-layer protocol?",
+      "options": {
+        "A": "HTTP",
+        "B": "IP",
+        "C": "Ethernet",
+        "D": "DNS only"
+      },
+      "answer": "A",
+      "explanation": "HTTP is the Web's application-layer protocol."
+    },
+    {
+      "id": "C2P1_MC08",
+      "question": "Which statement best describes HTTP's default state behavior?",
+      "options": {
+        "A": "HTTP automatically stores all client history on the server.",
+        "B": "HTTP is stateless.",
+        "C": "HTTP is always peer-to-peer.",
+        "D": "HTTP does not use TCP in the lecture material."
+      },
+      "answer": "B",
+      "explanation": "HTTP is stateless: the server keeps no information about past client requests by default."
+    },
+    {
+      "id": "C2P1_MC09",
+      "question": "In non-persistent HTTP, how many objects can be sent over one TCP connection at most?",
+      "options": {
+        "A": "One",
+        "B": "Two",
+        "C": "Eight",
+        "D": "Unlimited"
+      },
+      "answer": "A",
+      "explanation": "At most one object is sent per TCP connection."
+    },
+    {
+      "id": "C2P1_MC10",
+      "question": "Ignoring transmission time, what is the response time for one object with non-persistent HTTP?",
+      "options": {
+        "A": "0.5 RTT",
+        "B": "1 RTT",
+        "C": "2 RTT",
+        "D": "4 RTT"
+      },
+      "answer": "C",
+      "explanation": "One RTT establishes TCP and one RTT carries the request and beginning of the response."
+    },
+    {
+      "id": "C2P1_MC11",
+      "question": "Which HTTP method sends form input in the entity body?",
+      "options": {
+        "A": "HEAD",
+        "B": "POST",
+        "C": "GET only",
+        "D": "304"
+      },
+      "answer": "B",
+      "explanation": "POST commonly carries user input in the entity body."
+    },
+    {
+      "id": "C2P1_MC12",
+      "question": "Which HTTP method requests only the headers that would be returned by GET?",
+      "options": {
+        "A": "PUT",
+        "B": "POST",
+        "C": "HEAD",
+        "D": "DELETE"
+      },
+      "answer": "C",
+      "explanation": "HEAD requests the headers without the object body."
+    },
+    {
+      "id": "C2P1_MC13",
+      "question": "What does HTTP status code 301 indicate?",
+      "options": {
+        "A": "Bad Request",
+        "B": "Not Found",
+        "C": "Moved Permanently",
+        "D": "Version Not Supported"
+      },
+      "answer": "C",
+      "explanation": "301 Moved Permanently indicates the requested object has moved."
+    },
+    {
+      "id": "C2P1_MC14",
+      "question": "Which is NOT one of the four cookie components listed in the lecture?",
+      "options": {
+        "A": "A cookie header line in an HTTP response",
+        "B": "A cookie header line in a later HTTP request",
+        "C": "A cookie file on the user's host",
+        "D": "A mandatory DNS MX record for every cookie"
+      },
+      "answer": "D",
+      "explanation": "Cookies use response/request headers, a browser-managed cookie file, and a backend database, not DNS MX records."
+    },
+    {
+      "id": "C2P1_MC15",
+      "question": "What is a main goal of a web cache?",
+      "options": {
+        "A": "Force every request to reach the origin server",
+        "B": "Satisfy client requests without involving the origin server when possible",
+        "C": "Replace TCP with DNS",
+        "D": "Increase access-link utilization"
+      },
+      "answer": "B",
+      "explanation": "A cache can return stored objects directly and reduce delay and access-link traffic."
+    },
+    {
+      "id": "C2P1_MC16",
+      "question": "Which header is used in the lecture's Conditional GET example?",
+      "options": {
+        "A": "If-Modified-Since",
+        "B": "MAIL FROM",
+        "C": "RCPT TO",
+        "D": "Recursion Desired"
+      },
+      "answer": "A",
+      "explanation": "The client sends If-Modified-Since with the date of its cached copy."
+    },
+    {
+      "id": "C2P1_MC17",
+      "question": "Which status code can indicate that a browser-cached object is still current?",
+      "options": {
+        "A": "200 OK with a full object always",
+        "B": "304 Not Modified",
+        "C": "404 Not Found",
+        "D": "505 HTTP Version Not Supported"
+      },
+      "answer": "B",
+      "explanation": "304 Not Modified tells the client to use its cached copy."
+    },
+    {
+      "id": "C2P1_MC18",
+      "question": "What is a key HTTP/2 technique for reducing object-level HOL blocking?",
+      "options": {
+        "A": "Remove all headers",
+        "B": "Divide objects into frames and interleave frame transmission",
+        "C": "Use only one object per TCP connection",
+        "D": "Replace URLs with IP addresses"
+      },
+      "answer": "B",
+      "explanation": "HTTP/2 frames and schedules data from multiple objects flexibly."
+    },
+    {
+      "id": "C2P1_MC19",
+      "question": "Which protocol is used between mail servers to send e-mail?",
+      "options": {
+        "A": "SMTP",
+        "B": "IMAP only",
+        "C": "DNS",
+        "D": "HTTP HEAD"
+      },
+      "answer": "A",
+      "explanation": "SMTP is used between mail servers for mail delivery."
+    },
+    {
+      "id": "C2P1_MC20",
+      "question": "Which protocol is mainly used to retrieve and manage messages stored on a mail server?",
+      "options": {
+        "A": "FDM",
+        "B": "IMAP",
+        "C": "IP spoofing",
+        "D": "TDM"
+      },
+      "answer": "B",
+      "explanation": "IMAP supports retrieval, deletion, and folders while messages remain on the server."
+    },
+    {
+      "question": "Which information is needed to identify a specific receiving process on a host?",
+      "options": {
+        "A": "Only the hostname",
+        "B": "Only the IP address",
+        "C": "IP address and port number",
+        "D": "Only the MAC address"
+      },
+      "answer": "C",
+      "explanation": "The lecture identifies a process using the host IP address together with a port number.",
+      "id": "C2P1_MC21"
+    },
+    {
+      "question": "Which three fields appear in an HTTP request line?",
+      "options": {
+        "A": "Method, URL, version",
+        "B": "Status code, status phrase, data",
+        "C": "IP address, port, TTL",
+        "D": "Name, value, type"
+      },
+      "answer": "A",
+      "explanation": "The request-line format is method SP URL SP version.",
+      "id": "C2P1_MC22"
+    },
+    {
+      "question": "What does HTTP status code 505 mean?",
+      "options": {
+        "A": "OK",
+        "B": "Moved Permanently",
+        "C": "Not Found",
+        "D": "HTTP Version Not Supported"
+      },
+      "answer": "D",
+      "explanation": "505 is listed as HTTP Version Not Supported.",
+      "id": "C2P1_MC23"
+    },
+    {
+      "question": "How does a Web cache behave when the requested object is not in the cache?",
+      "options": {
+        "A": "It drops the request.",
+        "B": "It requests the object from the origin server, stores it, and returns it to the client.",
+        "C": "It redirects every request to DNS.",
+        "D": "It opens a circuit-switched connection."
+      },
+      "answer": "B",
+      "explanation": "On a cache miss, the cache fetches the object from the origin server, caches it, and forwards it to the client.",
+      "id": "C2P1_MC24"
+    },
+    {
+      "question": "Which HTTP/2 feature allows the server to send requested objects in an order that is not necessarily FCFS?",
+      "options": {
+        "A": "Client-specified object priority",
+        "B": "DNS TTL",
+        "C": "SMTP DATA",
+        "D": "TCP port 25"
+      },
+      "answer": "A",
+      "explanation": "HTTP/2 can schedule transmission based on client-specified object priority.",
+      "id": "C2P1_MC25"
+    },
+    {
+      "question": "According to the lecture, what marks the end of an SMTP message body?",
+      "options": {
+        "A": "CRLF.CRLF",
+        "B": "HTTP 304",
+        "C": "TTL = 0",
+        "D": "A blank DNS RR"
+      },
+      "answer": "A",
+      "explanation": "The SMTP slide states that CRLF.CRLF is used to determine the end of the message.",
+      "id": "C2P1_MC26"
+    },
+    {
+      "question": "Which component of a mail server stores incoming messages for a user?",
+      "options": {
+        "A": "Mailbox",
+        "B": "Outgoing message queue",
+        "C": "DNS cache",
+        "D": "Web cache"
+      },
+      "answer": "A",
+      "explanation": "The mailbox contains incoming messages for the user.",
+      "id": "C2P1_MC27"
+    },
+    {
+      "question": "Which statement best describes IMAP compared with POP3 in the lecture?",
+      "options": {
+        "A": "IMAP is only for sending mail.",
+        "B": "IMAP supports server-stored messages, retrieval, deletion, and folders.",
+        "C": "IMAP is a DNS record type.",
+        "D": "IMAP requires no mail server."
+      },
+      "answer": "B",
+      "explanation": "IMAP keeps messages on the server and supports retrieval, deletion, and folders; POP3 is described as simpler and limited.",
+      "id": "C2P1_MC28"
+    },
+    {
+      "question": "Which statement best describes a server in the client-server paradigm?",
+      "options": {
+        "A": "Usually an always-on host",
+        "B": "A host that must use a dynamic IP address",
+        "C": "A process that never accepts connections",
+        "D": "A peer that can communicate only with other clients"
+      },
+      "answer": "A",
+      "explanation": "The lecture describes the server as an always-on host, typically with a permanent IP address.",
+      "id": "C2P1_MC29"
+    },
+    {
+      "question": "What does self-scalability mean in the P2P architecture?",
+      "options": {
+        "A": "New peers add only demand",
+        "B": "New peers add both service capacity and service demand",
+        "C": "A central server automatically doubles its bandwidth",
+        "D": "Every peer receives a fixed guaranteed rate"
+      },
+      "answer": "B",
+      "explanation": "New peers bring new service capacity as well as new service demand.",
+      "id": "C2P1_MC30"
+    },
+    {
+      "question": "Which process waits to be contacted?",
+      "options": {
+        "A": "Client process",
+        "B": "Server process",
+        "C": "Routing process only",
+        "D": "Link-layer process only"
+      },
+      "answer": "B",
+      "explanation": "The server process waits to be contacted.",
+      "id": "C2P1_MC31"
+    },
+    {
+      "question": "Which analogy is used for a socket in the lecture?",
+      "options": {
+        "A": "Door",
+        "B": "Highway",
+        "C": "Mailbox queue",
+        "D": "Router table"
+      },
+      "answer": "A",
+      "explanation": "A socket is compared to a door through which the process sends and receives messages.",
+      "id": "C2P1_MC32"
+    },
+    {
+      "question": "Which is an example of an open protocol in the lecture?",
+      "options": {
+        "A": "HTTP",
+        "B": "A vendor-only proprietary protocol",
+        "C": "A private undocumented protocol",
+        "D": "A closed implementation interface"
+      },
+      "answer": "A",
+      "explanation": "HTTP is listed as an open protocol defined publicly in RFCs.",
+      "id": "C2P1_MC33"
+    },
+    {
+      "question": "Which application requirement is most directly associated with interactive games?",
+      "options": {
+        "A": "Low delay",
+        "B": "A fixed DNS TTL",
+        "C": "A permanent IP address",
+        "D": "A Web cache"
+      },
+      "answer": "A",
+      "explanation": "Interactive games are listed as time-sensitive applications requiring low delay.",
+      "id": "C2P1_MC34"
+    },
+    {
+      "question": "Which service is NOT guaranteed by TCP according to the lecture?",
+      "options": {
+        "A": "Reliable transport",
+        "B": "Flow control",
+        "C": "Congestion control",
+        "D": "Minimum throughput"
+      },
+      "answer": "D",
+      "explanation": "TCP provides the first three but does not guarantee minimum throughput.",
+      "id": "C2P1_MC35"
+    },
+    {
+      "question": "What can a Web page contain in addition to its base HTML file?",
+      "options": {
+        "A": "Referenced objects addressable by URLs",
+        "B": "Only one TCP segment",
+        "C": "Only SMTP headers",
+        "D": "Only a single JPEG stored locally"
+      },
+      "answer": "A",
+      "explanation": "A Web page can include multiple referenced objects, each addressable by a URL.",
+      "id": "C2P1_MC36"
+    },
+    {
+      "question": "In HTTP, what role does a browser normally play?",
+      "options": {
+        "A": "HTTP client",
+        "B": "HTTP router",
+        "C": "SMTP server",
+        "D": "Mail access server"
+      },
+      "answer": "A",
+      "explanation": "The browser is the HTTP client that requests, receives, and displays Web objects.",
+      "id": "C2P1_MC37"
+    },
+    {
+      "question": "To which example port does the HTTP client initiate a TCP connection in the lecture?",
+      "options": {
+        "A": "25",
+        "B": "53",
+        "C": "80",
+        "D": "110"
+      },
+      "answer": "C",
+      "explanation": "The HTTP overview uses server port 80.",
+      "id": "C2P1_MC38"
+    },
+    {
+      "question": "How is an HTTP request message described in the lecture?",
+      "options": {
+        "A": "ASCII and human-readable",
+        "B": "Only binary video data",
+        "C": "A DNS resource record",
+        "D": "A link-layer frame format"
+      },
+      "answer": "A",
+      "explanation": "The lecture describes the HTTP request message as ASCII and human-readable.",
+      "id": "C2P1_MC39"
+    },
+    {
+      "question": "What does HTTP status code 200 mean?",
+      "options": {
+        "A": "OK; the request succeeded",
+        "B": "Moved Permanently",
+        "C": "Bad Request",
+        "D": "Not Found"
+      },
+      "answer": "A",
+      "explanation": "200 OK means the request succeeded.",
+      "id": "C2P1_MC40"
+    },
+    {
+      "question": "What does HTTP status code 400 mean?",
+      "options": {
+        "A": "Bad Request",
+        "B": "Not Found",
+        "C": "Moved Permanently",
+        "D": "HTTP Version Not Supported"
+      },
+      "answer": "A",
+      "explanation": "400 means the server did not understand the request.",
+      "id": "C2P1_MC41"
+    },
+    {
+      "question": "Which is a use of HTTP cookies listed in the lecture?",
+      "options": {
+        "A": "Shopping carts",
+        "B": "IP routing",
+        "C": "Physical signal encoding",
+        "D": "TCP congestion-window calculation"
+      },
+      "answer": "A",
+      "explanation": "Shopping carts are one of the listed cookie uses.",
+      "id": "C2P1_MC42"
+    },
+    {
+      "question": "A Web cache acts as which two roles?",
+      "options": {
+        "A": "Server to the requesting client and client to the origin server",
+        "B": "Only as a server",
+        "C": "Only as a client",
+        "D": "Only as a router"
+      },
+      "answer": "A",
+      "explanation": "The cache is a server for the original client and a client when contacting the origin server.",
+      "id": "C2P1_MC43"
+    },
+    {
+      "question": "Which HTTP/2 feature is mentioned in addition to frame interleaving?",
+      "options": {
+        "A": "Server can push unrequested objects",
+        "B": "HTTP/2 eliminates TCP",
+        "C": "HTTP/2 requires a new TCP connection per object",
+        "D": "HTTP/2 removes all status codes"
+      },
+      "answer": "A",
+      "explanation": "The lecture lists server push as an HTTP/2 feature.",
+      "id": "C2P1_MC44"
+    },
+    {
+      "question": "Which statement best matches HTTP/3 in the lecture?",
+      "options": {
+        "A": "It adds security and per-object error/congestion control over UDP",
+        "B": "It runs only over SMTP",
+        "C": "It removes all application-layer headers",
+        "D": "It requires non-persistent TCP"
+      },
+      "answer": "A",
+      "explanation": "The lecture describes HTTP/3 in this way.",
+      "id": "C2P1_MC45"
+    },
+    {
+      "question": "What are the three major components of e-mail?",
+      "options": {
+        "A": "User agents, mail servers, SMTP",
+        "B": "Browsers, routers, DNS",
+        "C": "TCP, IP, Ethernet",
+        "D": "GET, POST, HEAD"
+      },
+      "answer": "A",
+      "explanation": "The e-mail section lists user agents, mail servers, and SMTP.",
+      "id": "C2P1_MC46"
+    },
+    {
+      "question": "Which port is used by SMTP between mail servers in the lecture?",
+      "options": {
+        "A": "25",
+        "B": "53",
+        "C": "80",
+        "D": "443"
+      },
+      "answer": "A",
+      "explanation": "SMTP uses TCP port 25 in the lecture.",
+      "id": "C2P1_MC47"
+    },
+    {
+      "question": "Which sequence gives the three phases of SMTP transfer?",
+      "options": {
+        "A": "Handshaking, message transfer, closure",
+        "B": "Routing, caching, forwarding",
+        "C": "GET, POST, HEAD",
+        "D": "Encoding, DNS, routing"
+      },
+      "answer": "A",
+      "explanation": "The SMTP slide lists handshaking, transfer of messages, and closure.",
+      "id": "C2P1_MC48"
+    },
+    {
+      "question": "Where are outgoing e-mail messages waiting to be sent stored?",
+      "options": {
+        "A": "Message queue",
+        "B": "User mailbox",
+        "C": "Browser cookie file",
+        "D": "Web cache"
+      },
+      "answer": "A",
+      "explanation": "Outgoing messages wait in the mail server message queue.",
+      "id": "C2P1_MC49"
+    },
+    {
+      "question": "Which statement best describes POP3 in the lecture?",
+      "options": {
+        "A": "A simple and relatively limited mail access protocol",
+        "B": "The protocol used between mail servers to push mail",
+        "C": "A Web caching protocol",
+        "D": "An HTTP/2 framing mechanism"
+      },
+      "answer": "A",
+      "explanation": "POP3 is described as an extremely simple, rather limited mail access protocol.",
+      "id": "C2P1_MC50"
+    }
+  ],
+  "calculation": [
+    {
+      "id": "C2P1_CALC01",
+      "question": "For non-persistent HTTP, RTT is 40 ms and the file transmission time is 20 ms. What is the response time for one object?",
+      "answer": "100 ms",
+      "solution": "Response time = 2RTT + transmission time = 2(40) + 20 = 100 ms"
+    },
+    {
+      "id": "C2P1_CALC02",
+      "question": "An HTML file references 4 very small objects on the same server. RTT is 25 ms. Using non-persistent HTTP with no parallel connections and neglecting transmission times, how long does it take to retrieve the HTML file and all 4 objects?",
+      "answer": "250 ms",
+      "solution": "There are 5 objects total, each requiring 2RTT. Time = 5 × 2 × 25 = 250 ms"
+    },
+    {
+      "id": "C2P1_CALC03",
+      "question": "An HTML file references 8 very small objects on the same server. RTT is 30 ms. Using non-persistent HTTP with no parallel connections and neglecting transmission times, what is the total time?",
+      "answer": "540 ms",
+      "solution": "Lecture result is 18RTT. Time = 18 × 30 = 540 ms"
+    },
+    {
+      "id": "C2P1_CALC04",
+      "question": "An HTML file references 8 very small objects on the same server. RTT is 50 ms. The browser uses non-persistent HTTP with 5 parallel TCP connections. Neglect transmission times. What is the total time?",
+      "answer": "300 ms",
+      "solution": "Lecture result is 6RTT. Time = 6 × 50 = 300 ms"
+    },
+    {
+      "id": "C2P1_CALC05",
+      "question": "An HTML file references 8 very small objects on the same server. RTT is 20 ms. Using persistent HTTP with pipelining and neglecting transmission times, what is the total time?",
+      "answer": "60 ms",
+      "solution": "Lecture result is 3RTT. Time = 3 × 20 = 60 ms"
+    },
+    {
+      "id": "C2P1_CALC06",
+      "question": "An HTML file references 8 very small objects on the same server. RTT is 20 ms. Using persistent HTTP without pipelining and without parallel connections, what is the total time?",
+      "answer": "200 ms",
+      "solution": "Lecture result is 10RTT. Time = 10 × 20 = 200 ms"
+    },
+    {
+      "id": "C2P1_CALC07",
+      "question": "An HTML file references 12 very small objects on the same server. RTT is 15 ms. Using persistent HTTP without pipelining and without parallel connections, neglect transmission times. What is the total time?",
+      "answer": "210 ms",
+      "solution": "1RTT for TCP setup + 1RTT for the base HTML + 12RTT for 12 referenced objects = 14RTT. 14 × 15 = 210 ms"
+    },
+    {
+      "id": "C2P1_CALC08",
+      "question": "For one object using non-persistent HTTP, RTT is 50 ms, the object size is 2 Mbits, and the link rate is 10 Mbps. What is the total response time?",
+      "answer": "300 ms",
+      "solution": "Transmission time = 2/10 = 0.2 s = 200 ms. Total = 2RTT + transmission = 100 + 200 = 300 ms"
+    },
+    {
+      "id": "C2P1_CALC09",
+      "question": "The average Web object size is 100 Kbits and browsers make 15 requests per second. What is the average data rate to browsers?",
+      "answer": "1.50 Mbps",
+      "solution": "100,000 bits × 15/s = 1,500,000 bits/s = 1.50 Mbps"
+    },
+    {
+      "id": "C2P1_CALC10",
+      "question": "The data rate over an access link is 1.50 Mbps and the access link rate is 1.54 Mbps. What is the access-link utilization?",
+      "answer": "About 0.97",
+      "solution": "Utilization = 1.50 / 1.54 = 0.974 ≈ 0.97"
+    },
+    {
+      "id": "C2P1_CALC11",
+      "question": "The original data rate to browsers is 1.50 Mbps. A Web cache has a hit rate of 0.40. What data rate must cross the access link?",
+      "answer": "0.90 Mbps",
+      "solution": "Miss rate = 1 - 0.40 = 0.60. Access-link data rate = 0.60 × 1.50 = 0.90 Mbps"
+    },
+    {
+      "id": "C2P1_CALC12",
+      "question": "After installing a cache, the access-link data rate is 0.90 Mbps and the access-link rate is 1.54 Mbps. What is the access-link utilization?",
+      "answer": "About 0.58",
+      "solution": "Utilization = 0.90 / 1.54 = 0.584 ≈ 0.58"
+    },
+    {
+      "id": "C2P1_CALC13",
+      "question": "A Web cache has a hit rate of 0.40. A cache miss takes 2.01 s and a cache hit takes 0.005 s. What is the average response time?",
+      "answer": "About 1.21 s",
+      "solution": "Average = 0.60(2.01) + 0.40(0.005) = 1.208 s ≈ 1.21 s"
+    },
+    {
+      "id": "C2P1_CALC14",
+      "question": "An access link has rate 15 Mbps, the average object size is 850,000 bits, and the object arrival rate is 16/s. Using average access delay = t/(1 - t·a), find the average access delay.",
+      "answer": "About 0.61 s",
+      "solution": "t = 850,000/15,000,000 = 0.0567 s. t·a = 0.9067. Delay = 0.0567/(1 - 0.9067) = 0.607 s ≈ 0.61 s"
+    },
+    {
+      "id": "C2P1_CALC15",
+      "question": "Using the same scenario as the lecture exercise, RTT to the origin server is 3 s and the average access delay is about 0.61 s. What is the total average response time without a cache?",
+      "answer": "About 3.61 s",
+      "solution": "Total response time ≈ RTT + access delay = 3 + 0.61 = 3.61 s"
+    },
+    {
+      "id": "C2P1_CALC16",
+      "question": "An institutional cache has a miss rate of 0.40. The original browser request rate is 16 requests/s. What is the arrival rate of objects to the access link?",
+      "answer": "6.4 requests/s",
+      "solution": "Only misses use the access link: 0.40 × 16 = 6.4 requests/s"
+    },
+    {
+      "id": "C2P1_CALC17",
+      "question": "For one object using non-persistent HTTP, RTT is 30 ms and object transmission time is 10 ms. What is the response time?",
+      "answer": "70 ms",
+      "solution": "2RTT + transmission time = 2(30) + 10 = 70 ms."
+    },
+    {
+      "id": "C2P1_CALC18",
+      "question": "A base HTML file references 6 very small objects. With non-persistent HTTP, no parallel connections, RTT = 20 ms, and negligible transmission time, what is the total time?",
+      "answer": "280 ms",
+      "solution": "7 objects × 2RTT = 14RTT = 280 ms."
+    },
+    {
+      "id": "C2P1_CALC19",
+      "question": "A base HTML file references 9 very small objects. Non-persistent HTTP allows 3 parallel TCP connections. RTT = 25 ms and transmission time is negligible. What is the total time?",
+      "answer": "200 ms",
+      "solution": "Base HTML needs 2RTT. Referenced objects need 3 parallel rounds × 2RTT. Total = 8RTT = 200 ms."
+    },
+    {
+      "id": "C2P1_CALC20",
+      "question": "A base HTML file references 10 very small objects. Non-persistent HTTP allows 4 parallel TCP connections. RTT = 15 ms and transmission time is negligible. What is the total time?",
+      "answer": "120 ms",
+      "solution": "ceil(10/4) = 3 rounds. Total = 2RTT + 3×2RTT = 8RTT = 120 ms."
+    },
+    {
+      "id": "C2P1_CALC21",
+      "question": "A base HTML file references 15 very small objects on the same server. Persistent HTTP with pipelining is used. RTT = 18 ms and transmission time is negligible. What is the total time?",
+      "answer": "54 ms",
+      "solution": "Lecture model: 1RTT setup + 1RTT base object + 1RTT for pipelined referenced objects = 3RTT = 54 ms."
+    },
+    {
+      "id": "C2P1_CALC22",
+      "question": "A base HTML file references 6 very small objects. Persistent HTTP without pipelining or parallel connections is used. RTT = 25 ms. What is the total time?",
+      "answer": "200 ms",
+      "solution": "Total = (1 setup + 1 base + 6 referenced)RTT = 8RTT = 200 ms."
+    },
+    {
+      "id": "C2P1_CALC23",
+      "question": "Browsers request 12 Web objects per second and the average object size is 150,000 bits. What is the average data rate to browsers?",
+      "answer": "1.80 Mbps",
+      "solution": "12 × 150,000 = 1,800,000 bits/s = 1.80 Mbps."
+    },
+    {
+      "id": "C2P1_CALC24",
+      "question": "The average data rate over an access link is 1.8 Mbps and the link rate is 3.0 Mbps. What is the access-link utilization?",
+      "answer": "0.60",
+      "solution": "Utilization = 1.8/3.0 = 0.60."
+    },
+    {
+      "id": "C2P1_CALC25",
+      "question": "Browsers generate 2.4 Mbps of object data. A Web cache has a hit rate of 0.25. What data rate must cross the access link?",
+      "answer": "1.80 Mbps",
+      "solution": "Miss rate = 0.75; access-link data rate = 0.75 × 2.4 = 1.80 Mbps."
+    },
+    {
+      "id": "C2P1_CALC26",
+      "question": "The access-link data rate after caching is 1.80 Mbps and the access-link rate is 4.0 Mbps. What is utilization?",
+      "answer": "0.450",
+      "solution": "Utilization = 1.80/4.0 = 0.450."
+    },
+    {
+      "id": "C2P1_CALC27",
+      "question": "Average object size is 500,000 bits, access-link rate is 10 Mbps, and arrival rate is 12/s. Using average access delay = t/(1 - t·a), what is the access delay?",
+      "answer": "0.125 s",
+      "solution": "t=0.050s, t·a=0.600, delay=0.050/(1-0.600)=0.125s."
+    },
+    {
+      "id": "C2P1_CALC28",
+      "question": "If the Internet RTT component is 2.0 s and the average access delay is 0.125 s, what is the approximate total response time (ignore LAN delay)?",
+      "answer": "2.125 s",
+      "solution": "Total ≈ Internet delay + access delay = 2.0 + 0.125 = 2.125s."
+    },
+    {
+      "id": "C2P1_CALC29",
+      "question": "Original request rate is 16/s and cache miss rate is 0.4. For an object size of 850,000 bits over a 15 Mbps access link, what is the average access delay for cache misses using t/(1 - t·a)?",
+      "answer": "0.089 s",
+      "solution": "Miss arrival rate=6.4/s. t=0.0567s, t·a=0.3627; delay=0.0567/(1-0.3627)=0.089s."
+    },
+    {
+      "id": "C2P1_CALC30",
+      "question": "Using the previous cache scenario, assume a cache hit takes approximately 0 s and a miss takes 3.089 s. With miss rate 0.4, what is the average response time?",
+      "answer": "1.236 s",
+      "solution": "Average = miss_rate × miss_response + hit_rate × hit_response = 0.4×3.089 + 0.6×0 = 1.236s."
+    }
+  ],
+  "open_ended": [
+    {
+      "id": "C2P1_OE01",
+      "question": "Compare the client-server paradigm with peer-to-peer architecture as introduced in Chapter 2 Part 1.",
+      "sample_answer": "In the client-server paradigm, an always-on server with a stable address provides service to clients, and clients normally do not communicate directly with each other. In peer-to-peer architecture, there is no always-on server; arbitrary end systems can communicate directly and peers both request and provide service. P2P can be self-scalable but is more complex to manage because peers can join, leave, and change IP addresses.",
+      "required_keywords": [
+        "client-server",
+        "always-on server",
+        "clients",
+        "peer-to-peer",
+        "no always-on server",
+        "direct communication",
+        "self scalability"
+      ]
+    },
+    {
+      "id": "C2P1_OE02",
+      "question": "Explain how processes on different hosts communicate and how sockets fit into this communication.",
+      "sample_answer": "A process is a program running on a host. Processes on different hosts communicate by exchanging messages. Each process sends and receives messages through a socket, which acts as the interface between the application process and the transport-layer infrastructure. A receiving process is identified using an IP address and port number.",
+      "required_keywords": [
+        "process",
+        "messages",
+        "socket",
+        "transport layer",
+        "IP address",
+        "port number"
+      ]
+    },
+    {
+      "id": "C2P1_OE03",
+      "question": "Compare the transport services of TCP and UDP as presented in the lecture.",
+      "sample_answer": "TCP is connection-oriented and provides reliable transport, flow control, and congestion control. It does not guarantee timing, minimum throughput, or security by itself. UDP provides unreliable data transfer and does not provide connection setup, reliability, flow control, congestion control, timing, throughput guarantees, or security.",
+      "required_keywords": [
+        "TCP",
+        "connection-oriented",
+        "reliable transport",
+        "flow control",
+        "congestion control",
+        "UDP",
+        "unreliable",
+        "no connection setup"
+      ]
+    },
+    {
+      "id": "C2P1_OE04",
+      "question": "Explain why HTTP is described as stateless and how cookies can still support user state.",
+      "sample_answer": "HTTP is stateless because the server does not automatically remember past client requests. Cookies add state across transactions by sending a cookie identifier in HTTP response and request headers, storing the identifier in a browser-managed cookie file, and associating it with information in a backend database.",
+      "required_keywords": [
+        "HTTP",
+        "stateless",
+        "cookies",
+        "cookie header",
+        "cookie file",
+        "backend database",
+        "state"
+      ]
+    },
+    {
+      "id": "C2P1_OE05",
+      "question": "Compare non-persistent HTTP and persistent HTTP in terms of TCP connections and response time.",
+      "sample_answer": "Non-persistent HTTP opens a TCP connection, sends at most one object, and closes the connection, so each object generally costs two RTTs plus transmission time. Persistent HTTP keeps the TCP connection open so multiple objects can use the same connection, reducing repeated connection setup and often lowering response time.",
+      "required_keywords": [
+        "non-persistent HTTP",
+        "persistent HTTP",
+        "TCP connection",
+        "2 RTT",
+        "multiple objects",
+        "response time"
+      ]
+    },
+    {
+      "id": "C2P1_OE06",
+      "question": "A base HTML file references eight very small objects on the same server. Ignoring transmission time, explain why non-persistent HTTP without parallel connections takes 18 RTT units, while persistent HTTP with pipelining takes 3 RTT units in the lecture exercise.",
+      "sample_answer": "With non-persistent HTTP, the base HTML costs 2 RTTs and each of the eight referenced objects costs another 2 RTTs, giving 2 + 8×2 = 18 RTTs. With persistent pipelining, the base HTML costs 2 RTTs and the pipelined requests for all eight objects can be handled with about 1 additional RTT, giving 3 RTTs total.",
+      "required_keywords": [
+        "non-persistent HTTP",
+        "persistent HTTP",
+        "pipelining",
+        "RTT",
+        "18 RTT",
+        "3 RTT"
+      ],
+      "concepts": [
+        [
+          "2 RTT",
+          "2 RTTs",
+          "2RTT",
+          "2RTTs",
+          "two RTT",
+          "two RTTs"
+        ],
+        [
+          "each object",
+          "each referenced object",
+          "per object",
+          "every object",
+          "each of the eight",
+          "each of the 8",
+          "each of 8"
+        ],
+        [
+          "2 + 8 × 2",
+          "2+8×2",
+          "8 × 2",
+          "8×2",
+          "8 x 2",
+          "8*2",
+          "16 RTT",
+          "16 RTTs"
+        ],
+        [
+          "1 RTT",
+          "1 additional RTT",
+          "one RTT",
+          "one additional RTT",
+          "1RTT",
+          "single RTT",
+          "one more RTT"
+        ],
+        [
+          "all eight",
+          "all 8",
+          "all objects",
+          "all the objects",
+          "at once",
+          "together",
+          "back-to-back",
+          "back to back"
+        ]
+      ],
+      "min_concepts": 3
+    },
+    {
+      "id": "C2P1_OE07",
+      "question": "Explain the roles of GET, POST, HEAD, and PUT HTTP methods as presented in the lecture.",
+      "sample_answer": "GET retrieves a resource and can include user data in the URL. POST sends user input in the entity body. HEAD requests only the headers that a corresponding GET would return. PUT uploads a file or replaces the object at the specified URL with the content in the entity body.",
+      "required_keywords": [
+        "GET",
+        "POST",
+        "HEAD",
+        "PUT",
+        "URL",
+        "entity body",
+        "headers"
+      ]
+    },
+    {
+      "id": "C2P1_OE08",
+      "question": "Explain how a web cache works and why it can improve performance.",
+      "sample_answer": "A browser can send requests to a web cache. If the object is already cached, the cache returns it directly. Otherwise, the cache requests the object from the origin server, stores it, and forwards it to the client. Because the cache can be closer to the client and can reduce traffic on the access link, it can lower response time and network load.",
+      "required_keywords": [
+        "web cache",
+        "proxy server",
+        "origin server",
+        "cache hit",
+        "response time",
+        "access link traffic"
+      ]
+    },
+    {
+      "id": "C2P1_OE09",
+      "question": "Explain how Conditional GET works and why HTTP 304 is useful.",
+      "sample_answer": "The browser sends an If-Modified-Since header containing the date of its cached copy. If the object has not changed, the server can return 304 Not Modified without sending the object. This avoids object transmission delay and saves network resources. If the object has changed, the server can return 200 OK with the updated data.",
+      "required_keywords": [
+        "Conditional GET",
+        "If-Modified-Since",
+        "304 Not Modified",
+        "200 OK",
+        "cached copy",
+        "network resources"
+      ]
+    },
+    {
+      "id": "C2P1_OE10",
+      "question": "Explain the head-of-line blocking problem in HTTP/1.1 and how HTTP/2 reduces it at the application layer.",
+      "sample_answer": "With pipelined HTTP/1.1, responses are sent in order, so a small object may have to wait behind a large object, producing head-of-line blocking. HTTP/2 divides objects into frames and can interleave frame transmission, allowing smaller or higher-priority objects to make progress instead of waiting for a full large object to finish.",
+      "required_keywords": [
+        "HTTP/1.1",
+        "head-of-line blocking",
+        "HTTP/2",
+        "frames",
+        "interleaving",
+        "priority"
+      ]
+    },
+    {
+      "id": "C2P1_OE11",
+      "question": "Explain the three major components of e-mail and how a message moves from sender to receiver.",
+      "sample_answer": "The major components are user agents, mail servers, and SMTP. The sender composes a message in a user agent, which sends it to the sender's mail server. SMTP transfers the message between mail servers. The receiver then retrieves the stored message from the receiver's mail server using a mail access protocol such as IMAP or a web interface.",
+      "required_keywords": [
+        "user agent",
+        "mail server",
+        "SMTP",
+        "mail access protocol",
+        "IMAP"
+      ]
+    },
+    {
+      "id": "C2P1_OE12",
+      "question": "Compare SMTP and HTTP using the comparisons given in the lecture.",
+      "sample_answer": "HTTP is mainly a pull protocol, while SMTP is a push protocol. Both use ASCII command/response interactions and status codes. HTTP normally puts each object in its own response message, while SMTP can send multiple objects as parts of a multipart message. SMTP also uses persistent connections.",
+      "required_keywords": [
+        "SMTP",
+        "HTTP",
+        "push",
+        "pull",
+        "ASCII",
+        "status codes",
+        "persistent connection"
+      ]
+    },
+    {
+      "question": "Explain why network applications are implemented at end systems rather than in network-core devices.",
+      "sample_answer": "Network applications are written as programs that run on end systems and communicate over the network. Network-core devices do not run user applications. Keeping applications at the edge enables rapid application development and propagation without changing core routers and switches.",
+      "required_keywords": [
+        "end systems",
+        "network applications",
+        "network-core devices",
+        "edge",
+        "rapid development"
+      ],
+      "id": "C2P1_OE13",
+      "concepts": [
+        [
+          "do not run user applications",
+          "don't run user applications",
+          "do not run applications",
+          "don't run applications",
+          "no user applications",
+          "not run user applications",
+          "only forward"
+        ],
+        [
+          "rapid",
+          "rapidly",
+          "quick",
+          "quickly",
+          "fast",
+          "faster"
+        ],
+        [
+          "without changing",
+          "no need to change",
+          "not need to change",
+          "don't need to change",
+          "without modifying",
+          "no change"
+        ]
+      ],
+      "min_concepts": 2
+    },
+    {
+      "question": "Explain how a process endpoint is identified and why an IP address alone is insufficient.",
+      "sample_answer": "A host can run many processes, so an IP address identifies the host but not a specific receiving process. The endpoint identifier therefore combines the host IP address with the port number associated with the process.",
+      "required_keywords": [
+        "IP address",
+        "port number",
+        "process",
+        "identifier",
+        "endpoint"
+      ],
+      "id": "C2P1_OE14"
+    },
+    {
+      "question": "Describe the four elements defined by an application-layer protocol and distinguish open from proprietary protocols.",
+      "sample_answer": "An application-layer protocol defines message types, message syntax, message semantics, and rules for when and how processes send and respond. Open protocols are defined publicly in RFCs and enable interoperability, while proprietary protocols are controlled privately.",
+      "required_keywords": [
+        "message types",
+        "syntax",
+        "semantics",
+        "rules",
+        "RFC",
+        "interoperability"
+      ],
+      "id": "C2P1_OE15"
+    },
+    {
+      "question": "Explain the transport-service requirements of data integrity, timing, throughput, and security with examples from the lecture.",
+      "sample_answer": "Different applications require different transport services. File transfer and Web transactions may need reliable no-loss delivery; interactive telephony and games need low delay; multimedia may need minimum throughput; and applications may also need security such as encryption and data integrity.",
+      "required_keywords": [
+        "data integrity",
+        "timing",
+        "throughput",
+        "security",
+        "reliable",
+        "low delay"
+      ],
+      "id": "C2P1_OE16"
+    },
+    {
+      "question": "Explain the structure of a Web page and the role of a URL.",
+      "sample_answer": "A Web page contains a base HTML file and referenced objects such as images, applets, or audio files. Objects may reside on different Web servers, and each object is addressable by a URL that includes a host name and path name.",
+      "required_keywords": [
+        "base HTML",
+        "referenced objects",
+        "URL",
+        "host name",
+        "path name"
+      ],
+      "id": "C2P1_OE17"
+    },
+    {
+      "question": "Describe the general format of an HTTP request message.",
+      "sample_answer": "An HTTP request contains a request line, header lines, and possibly an entity body. The request line includes the method, URL, and HTTP version. The lecture presents HTTP requests as ASCII and human-readable.",
+      "required_keywords": [
+        "request line",
+        "header lines",
+        "entity body",
+        "method",
+        "URL",
+        "HTTP version"
+      ],
+      "id": "C2P1_OE18"
+    },
+    {
+      "question": "Describe the general format of an HTTP response message and explain the meaning of 200, 301, 400, 404, and 505.",
+      "sample_answer": "An HTTP response contains a status line, header lines, and possibly the requested data. 200 means OK, 301 means Moved Permanently, 400 means Bad Request, 404 means Not Found, and 505 means HTTP Version Not Supported.",
+      "required_keywords": [
+        "status line",
+        "200 OK",
+        "301 Moved Permanently",
+        "400 Bad Request",
+        "404 Not Found",
+        "505 HTTP Version Not Supported"
+      ],
+      "id": "C2P1_OE19",
+      "concepts": [
+        [
+          "status line"
+        ],
+        [
+          "OK"
+        ],
+        [
+          "Moved Permanently"
+        ],
+        [
+          "Bad Request"
+        ],
+        [
+          "Not Found"
+        ],
+        [
+          "Version Not Supported",
+          "not supported"
+        ]
+      ],
+      "min_concepts": 4
+    },
+    {
+      "question": "Explain the four components used by cookies and mention one privacy concern.",
+      "sample_answer": "Cookies use a cookie header in the HTTP response, a cookie header in later HTTP requests, a browser-managed cookie file on the user host, and a back-end database at the Web site. Persistent third-party cookies can enable tracking of a common identity across multiple Web sites.",
+      "required_keywords": [
+        "cookie header",
+        "HTTP response",
+        "HTTP request",
+        "cookie file",
+        "back-end database",
+        "tracking"
+      ],
+      "id": "C2P1_OE20"
+    },
+    {
+      "question": "Explain the dual role of a Web cache and what happens on a cache miss.",
+      "sample_answer": "A Web cache acts as a server to the original requesting client and as a client to the origin server. On a miss, it requests the object from the origin server, stores the received object, and then returns the object to the client.",
+      "required_keywords": [
+        "Web cache",
+        "server",
+        "client",
+        "origin server",
+        "cache miss",
+        "stores object"
+      ],
+      "id": "C2P1_OE21"
+    },
+    {
+      "question": "Using the lecture caching example, explain how a cache hit rate reduces access-link utilization and average response time.",
+      "sample_answer": "If a fraction of requests are cache hits, only cache misses cross the institutional access link. Therefore the data rate and utilization of the access link fall. Hits are served locally with very small delay, so the weighted average response time also decreases.",
+      "required_keywords": [
+        "cache hit rate",
+        "cache miss",
+        "access link",
+        "utilization",
+        "data rate",
+        "average response time"
+      ],
+      "id": "C2P1_OE22",
+      "concepts": [
+        [
+          "only cache misses",
+          "only misses",
+          "cache misses",
+          "cache miss",
+          "misses"
+        ],
+        [
+          "decrease",
+          "decreases",
+          "fall",
+          "falls",
+          "lower",
+          "lowers",
+          "reduce",
+          "reduces",
+          "reduced",
+          "drop",
+          "drops",
+          "less"
+        ],
+        [
+          "locally",
+          "local",
+          "small delay",
+          "very small delay",
+          "almost no delay",
+          "near zero"
+        ],
+        [
+          "weighted",
+          "weighted average"
+        ]
+      ],
+      "min_concepts": 3
+    },
+    {
+      "question": "Compare HTTP/1.1 pipelining with HTTP/2 scheduling for multiple objects.",
+      "sample_answer": "HTTP/1.1 can pipeline multiple GET requests over one TCP connection but responds in order using FCFS, so a small object can wait behind a large one. HTTP/2 can use priorities, divide objects into frames, and interleave frames to mitigate application-level HOL blocking.",
+      "required_keywords": [
+        "HTTP/1.1",
+        "pipelining",
+        "FCFS",
+        "HOL blocking",
+        "HTTP/2",
+        "frames",
+        "interleaving"
+      ],
+      "id": "C2P1_OE23"
+    },
+    {
+      "question": "Explain why TCP packet loss can still stall HTTP/2 even though HTTP/2 interleaves frames.",
+      "sample_answer": "HTTP/2 commonly uses a single TCP connection. TCP must recover lost segments in order, so packet loss can stall delivery for all object streams sharing that connection. Application-level frame interleaving does not remove this TCP-level loss recovery behavior.",
+      "required_keywords": [
+        "HTTP/2",
+        "single TCP connection",
+        "packet loss",
+        "loss recovery",
+        "stall"
+      ],
+      "id": "C2P1_OE24"
+    },
+    {
+      "question": "Summarize the lecture motivation for HTTP/3.",
+      "sample_answer": "The lecture presents HTTP/3 as adding security and per-object error and congestion control over UDP, allowing more pipelining and addressing limitations that remain when HTTP/2 uses one TCP connection.",
+      "required_keywords": [
+        "HTTP/3",
+        "UDP",
+        "security",
+        "per-object",
+        "error control",
+        "congestion control"
+      ],
+      "id": "C2P1_OE25"
+    },
+    {
+      "question": "Explain the roles of the mailbox and outgoing message queue in a mail server.",
+      "sample_answer": "The mailbox stores incoming messages for a user. The outgoing message queue stores messages waiting to be sent to other mail servers. SMTP is used between mail servers to transfer those outgoing messages.",
+      "required_keywords": [
+        "mailbox",
+        "incoming messages",
+        "message queue",
+        "outgoing messages",
+        "SMTP"
+      ],
+      "id": "C2P1_OE26"
+    },
+    {
+      "question": "Describe the three SMTP transfer phases and its command/response interaction.",
+      "sample_answer": "SMTP uses TCP and proceeds through handshaking, message transfer, and closure. It uses ASCII commands and server responses containing status codes and phrases.",
+      "required_keywords": [
+        "SMTP",
+        "TCP",
+        "handshaking",
+        "message transfer",
+        "closure",
+        "ASCII",
+        "status code"
+      ],
+      "id": "C2P1_OE27"
+    },
+    {
+      "question": "Explain the meaning of HELO, MAIL FROM, RCPT TO, DATA, and QUIT in the sample SMTP interaction.",
+      "sample_answer": "HELO begins the greeting, MAIL FROM identifies the sender, RCPT TO identifies the recipient, DATA begins transmission of the message contents, and QUIT closes the SMTP session.",
+      "required_keywords": [
+        "HELO",
+        "MAIL FROM",
+        "RCPT TO",
+        "DATA",
+        "QUIT"
+      ],
+      "id": "C2P1_OE28",
+      "concepts": [
+        [
+          "greeting",
+          "greet",
+          "greets",
+          "introduces",
+          "introduce",
+          "hello",
+          "begins"
+        ],
+        [
+          "sender",
+          "who sends"
+        ],
+        [
+          "recipient",
+          "recipients",
+          "receiver"
+        ],
+        [
+          "message contents",
+          "message content",
+          "message body",
+          "contents",
+          "content",
+          "body"
+        ],
+        [
+          "close",
+          "closes",
+          "closing",
+          "end",
+          "ends",
+          "terminate",
+          "terminates"
+        ]
+      ],
+      "min_concepts": 4
+    },
+    {
+      "question": "Distinguish the e-mail message header fields From/To/Subject from the SMTP commands MAIL FROM and RCPT TO.",
+      "sample_answer": "From, To, and Subject are header lines in the e-mail message format defined for the message itself. MAIL FROM and RCPT TO are SMTP protocol commands used during message transfer. They belong to different layers of the e-mail exchange.",
+      "required_keywords": [
+        "From",
+        "To",
+        "Subject",
+        "MAIL FROM",
+        "RCPT TO",
+        "message format",
+        "SMTP command"
+      ],
+      "id": "C2P1_OE29",
+      "concepts": [
+        [
+          "header lines",
+          "header line",
+          "headers",
+          "header"
+        ],
+        [
+          "message format",
+          "message itself",
+          "part of the message",
+          "inside the message",
+          "in the message"
+        ],
+        [
+          "protocol commands",
+          "commands",
+          "command"
+        ],
+        [
+          "message transfer",
+          "transfer",
+          "transmission",
+          "envelope"
+        ],
+        [
+          "different layers",
+          "different",
+          "not the same",
+          "distinct",
+          "separate"
+        ]
+      ],
+      "min_concepts": 3
+    },
+    {
+      "question": "Compare POP3, IMAP, and HTTP as ways a user can access e-mail.",
+      "sample_answer": "POP3 is a simple and limited mail access protocol. IMAP keeps messages on the server and supports retrieval, deletion, and folders. Web-mail systems use HTTP as a Web interface while SMTP is used to send and IMAP or POP can be used to retrieve messages.",
+      "required_keywords": [
+        "POP3",
+        "IMAP",
+        "HTTP",
+        "mail access",
+        "folders",
+        "SMTP"
+      ],
+      "id": "C2P1_OE30"
+    }
+  ]
+}

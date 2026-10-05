@@ -226,7 +226,7 @@ kbd{font-family:var(--font-game)}
   border:5px solid var(--wood-dark);border-radius:20px;overflow:hidden;
   box-shadow:inset 0 0 0 3px var(--parchment-dark),inset 0 0 40px rgba(160,110,40,.25),0 0 0 3px var(--ink),0 10px 0 var(--wood-deep),0 20px 40px rgba(0,0,0,.45);
 }
-.scroll-head{display:flex;align-items:center;gap:12px;padding:12px 14px;background:linear-gradient(180deg,#8a5427,#5a3216);border-bottom:4px solid var(--ink);color:#fff}
+.scroll-head{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;padding:12px 14px;background:linear-gradient(180deg,#8a5427,#5a3216);border-bottom:4px solid var(--ink);color:#fff}
 .scroll-portrait{flex:none;width:72px;height:72px;display:grid;place-items:center;border-radius:50%;border:4px solid var(--ink);background:radial-gradient(circle at 40% 35%,#fff8e4,#e2c88f);box-shadow:0 0 0 3px var(--c),0 4px 0 var(--ink)}
 .scroll-title{min-width:0}
 .scroll-title small{display:block;font-family:var(--font-ko);font-size:.82rem;color:var(--c);text-shadow:0 1px 0 var(--ink)}
@@ -333,7 +333,7 @@ form{display:contents}
 .help-towers small{font-size:.7rem;color:var(--ink-soft);line-height:1.3}
 .help ol{margin:0;padding-left:20px;font-size:.9rem}
 .help li{margin:4px 0}
-.help-enemies{display:flex;justify-content:center;gap:10px}
+.help-enemies{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 10px}
 .help-enemies div{display:flex;flex-direction:column;align-items:center;font-family:var(--font-ko);font-size:.8rem}
 .setting-row{display:flex;align-items:center;gap:8px;font-family:var(--font-ko)}
 .help .btn{align-self:center}
@@ -513,3 +513,73 @@ form{display:contents}
 .ability .frozen{position:absolute;inset:0;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle,rgba(220,245,255,.55),rgba(120,200,240,.8));color:#fff;font-size:1.3rem;text-shadow:0 2px 0 #2a6f9a;box-shadow:inset 0 0 0 3px #fff}
 .ability .frozen em{position:absolute;bottom:4px;font-style:normal;font-family:var(--font-game);font-size:.8rem}
 .frozen-note{margin:4px 0 0;padding:2px 8px;border-radius:8px;background:#bfeaff;color:#1d4f73!important;font-family:var(--font-ko);font-size:.82rem!important;text-shadow:none;animation:throb 1s infinite}
+
+/* ───────── Study record: notebook, self-check, accuracy bars ───────── */
+.notebook-chip{align-self:flex-start;margin:2px 0 4px}
+.notebook-chip.on{background:linear-gradient(#ff8a6b,#d2452f)}
+.notebook-chip:disabled{opacity:.5;cursor:default}
+.typing-badge{background:#8a5cd6}
+.self-check{display:flex;align-items:center;flex-wrap:wrap;gap:6px 10px;padding:8px 10px;border-radius:10px;border:2px dashed var(--green-dark);background:rgba(255,255,255,.55);font-family:var(--font-ko);font-size:.85rem;color:var(--ink-soft)}
+.feedback .self-check .btn{margin:0 0 0 auto;align-self:center}
+.doubt-note{display:flex;align-items:center;gap:6px;margin:0;font-family:var(--font-ko);font-size:.85rem;color:var(--red-dark)}
+.doubt-tag{font-style:normal;color:var(--red-dark)}
+.stats{display:flex;flex-direction:column;gap:10px}
+.stats h3{display:flex;align-items:baseline;gap:6px;margin:6px 0 0;font-family:var(--font-ko);font-weight:400;font-size:1.1rem}
+.stats h3 small{font-size:.8rem;color:var(--ink-soft)}
+.stats-summary{grid-template-columns:repeat(3,1fr)}
+.study-rows{display:flex;flex-direction:column;gap:6px;margin:0;padding:0;list-style:none}
+.review .study-rows{margin:0 12px 12px}
+.study-rows li{display:grid;grid-template-columns:minmax(0,10rem) 1fr 3rem;grid-template-areas:"label bar pct" "label count count";align-items:center;column-gap:10px;padding:6px 10px;border-radius:10px;border:2px solid var(--parchment-dark);background:#fffaf0;--bar:var(--green)}
+.study-rows li.mid{--bar:var(--gold)}
+.study-rows li.weak{--bar:var(--red)}
+.study-rows li.unseen{opacity:.6}
+.study-rows span{grid-area:label;font-weight:600;font-size:.88rem;overflow-wrap:anywhere}
+.study-bar{grid-area:bar;height:12px;border-radius:99px;border:2px solid var(--ink);background:rgba(0,0,0,.08);overflow:hidden}
+.study-bar i{display:block;height:100%;background:var(--bar)}
+.study-rows b{grid-area:pct;text-align:right;font-family:var(--font-game);font-weight:400;font-size:1.05rem}
+.study-rows small{grid-area:count;font-family:var(--font-ko);font-size:.75rem;color:var(--ink-soft)}
+@media (max-width:560px){.study-rows li{grid-template-columns:1fr 3rem;grid-template-areas:"label pct" "bar bar" "count count";row-gap:3px}}
+
+/* ───────── Evolution branches, targeting, speed, early call ───────── */
+.speed-btn{width:auto;min-width:38px;padding:0 8px;gap:2px;display:inline-flex;align-items:center}
+.speed-btn b{font-family:var(--font-game);font-weight:400;font-size:.85rem}
+.speed-btn.on{background:radial-gradient(circle at 35% 30%,#ffe37a,#e0a81d 70%);color:var(--ink)}
+.wave-call.early{background:radial-gradient(circle at 40% 30%,#ffd23f,#c48a12 75%);color:var(--ink);text-shadow:none;animation:none;padding:6px 8px 4px;font-size:.72rem}
+.ability .perk-alert{position:absolute;top:-6px;right:-6px;width:22px;height:22px;display:grid;place-items:center;border-radius:50%;border:2px solid var(--ink);background:var(--gold);font-family:var(--font-game);color:var(--ink);animation:ready 1.2s infinite}
+.perk-chips{display:flex;flex-wrap:wrap;gap:4px;margin:4px 0 0}
+.perk-chips span{padding:0 8px;border-radius:99px;border:2px solid var(--ink);background:var(--c);color:var(--ink);font-family:var(--font-ko);font-size:.75rem;text-shadow:none}
+.perk-chips small{font-size:.7rem;opacity:.8}
+.aim-row{display:flex;flex-wrap:wrap;align-items:center;gap:4px;margin-top:5px}
+.aim-row small{font-family:var(--font-ko);font-size:.75rem;opacity:.85;margin-right:2px}
+.aim-row button{padding:1px 9px;border-radius:99px;border:2px solid var(--ink);background:#3a2412;color:#fff;font-family:var(--font-ko);font-size:.75rem;cursor:pointer}
+.aim-row button.on{background:var(--c);color:var(--ink)}
+.aim-row button:disabled{opacity:.6;cursor:default}
+.perk-pick{min-width:0;display:flex;flex-direction:column;gap:8px;padding:10px 12px;border-radius:14px;border:3px solid var(--ink);background:linear-gradient(180deg,#fff6d5,#ffe7a3);box-shadow:0 4px 0 var(--gold-dark,#c48a12);animation:popPlain .35s var(--ease-pop) both}
+.perk-pick-head{display:flex;align-items:center;gap:6px;font-family:var(--font-ko)}
+.perk-pick-head b{font-weight:400;font-size:1.1rem}
+.perk-pick-head .chip{margin-left:auto;flex:none;white-space:nowrap}
+.perk-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.perk-option{min-width:0;white-space:normal;display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 6px;border-radius:12px;border:3px solid var(--ink);background:#fffaf0;box-shadow:0 3px 0 var(--ink);cursor:pointer;text-align:center;transition:transform .1s}
+.perk-option:hover{transform:translateY(-2px);background:#fff}
+.perk-option .perk-icon{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;border:2px solid var(--ink);background:var(--c);font-size:1.1rem}
+.perk-option b{font-family:var(--font-ko);font-weight:400;font-size:1rem}
+.perk-option small{font-size:.74rem;line-height:1.3;color:var(--ink-soft)}
+.perk-pick .hint{text-align:center;font-size:.75rem}
+@media (max-width:560px){.perk-options{grid-template-columns:minmax(0,1fr)}}
+.scroll-head .perk-chips,.scroll-head .aim-row{flex-basis:100%;margin:0}
+.scroll-body>.perk-pick{flex:none}
+
+/* ───────── Quiz text size ───────── */
+/* The question panel (and the result review) scale with --quiz-scale; the panel widens a little so lines stay readable. */
+.battle{grid-template-columns:minmax(0,1fr) min(52vw,calc(clamp(340px,28vw,430px) * var(--panel-grow,1)))}
+@media (max-width:1000px){.battle{grid-template-columns:1fr}}
+/* The tower header grows only a little, so a large question still fits without scrolling. */
+.scroll-body,.modal .review{zoom:var(--quiz-scale,1)}
+.scroll-head{zoom:var(--head-scale,1)}
+.text-size{flex:none;display:flex;align-items:center;gap:6px;padding:5px 10px;background:#4a2a12;border-bottom:2px solid var(--ink);color:#f6e4ad;font-family:var(--font-ko);font-size:.85rem}
+.text-size span{margin-right:auto}
+.text-size button{display:grid;place-items:center;min-width:28px;height:26px;padding:0 6px;border-radius:8px;border:2px solid var(--ink);background:var(--parchment-light);color:var(--ink);font-family:var(--font-game);font-size:.85rem;cursor:pointer;box-shadow:0 2px 0 var(--ink)}
+.text-size button:hover:not(:disabled){background:#fff}
+.text-size button:disabled{opacity:.45;cursor:default}
+.text-size .text-size-value{min-width:52px}
+.help .text-size{border-radius:10px;border:2px solid var(--ink);width:100%}

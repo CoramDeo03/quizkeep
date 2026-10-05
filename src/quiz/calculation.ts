@@ -12,13 +12,16 @@ export function calculationQuestions(data: unknown, chapterKeys?: string[]): Que
   const bank = data as Record<string, unknown>;
   return Object.keys(bank).filter(k => /^chapter_\d+$/.test(k) && (!chapterKeys || chapterKeys.includes(k))).flatMap(key => {
     const list = (bank[key] as Record<string, unknown>)?.short_answer_calculation;
-    return (Array.isArray(list) ? list : []).map((raw): Question => {
-      const q = raw as Record<string, unknown>, answer = String(q.answer ?? ''), numeric = numericSpec(answer);
-      const plain = answer.replace(/^(about|approximately|approx\.?|≈)\s*/i, '');
-      return { id: String(q.id), type: 'short_answer', prompt: String(q.question ?? ''), topic: `Chapter ${key.split('_')[1]} · Calculation`,
-        answers: [...new Set([answer, plain])], explanation: String(q.solution ?? answer), ...(numeric ? { numeric } : {}) };
-    });
+    return (Array.isArray(list) ? list : []).map(raw => calculationQuestion(raw, `Chapter ${key.split('_')[1]} · Calculation`));
   });
+}
+
+/** One raw calculation ({ id, question, answer, solution }) as a numerically graded short answer. */
+export function calculationQuestion(raw: unknown, topic: string): Question {
+  const q = raw as Record<string, unknown>, answer = String(q.answer ?? ''), numeric = numericSpec(answer);
+  const plain = answer.replace(/^(about|approximately|approx\.?|≈)\s*/i, '');
+  return { id: String(q.id), type: 'short_answer', prompt: String(q.question ?? ''), topic,
+    answers: [...new Set([answer, plain])], explanation: String(q.solution ?? answer), ...(numeric ? { numeric } : {}) };
 }
 
 /** Descriptive short answers keep their keyword rubric but are graded as open-ended explanations. */

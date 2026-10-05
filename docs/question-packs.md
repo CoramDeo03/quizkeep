@@ -75,3 +75,11 @@
 ```
 
 변환 시 문제 문장에 이미 나온 핵심어는 제외하고, 단답형은 남은 핵심어의 50%, 서술형은 60% 이상을 요구합니다(`src/quiz/chapters.ts`). 모든 챕터를 선택하면 `full` 문제집을 사용합니다.
+
+### 챕터 하나짜리 별도 파일 (`extras`)
+
+`manifest.json`의 `extras`에 `{"id":"chapter_2_part1","title":"Chapter 2-1","file":"chapter_2_part1_quiz_160.json"}`처럼 적으면 시작 화면에 칩이 하나 더 생깁니다. 파일은 `metadata`와 `true_false`, `multiple_choice`, `calculation`, `open_ended` 배열을 가집니다(`chapter_N` 키 없이 한 챕터).
+
+- `calculation`: `{ "id", "question", "answer", "solution" }` — 숫자·단위로 채점하는 단답형(Sniper)이 됩니다. `answer`의 첫 숫자와 단위가 정답이고 `About …`은 ±2% 허용입니다.
+- `open_ended`: `sample_answer` + `required_keywords`. 문제 문장에 이미 나온 핵심어는 빠지므로, 남는 핵심어가 너무 적으면 `concepts`(동의어 묶음 배열, 예: `[["sender","who sends"],["recipient","receiver"]]`)와 `min_concepts`(필요한 묶음 수)를 직접 적어 채점 기준을 정할 수 있습니다. 직접 적은 기준은 `chapters` 파일의 서술형에도 똑같이 쓸 수 있습니다.
+- 파일을 못 읽으면 그 칩만 빠지고 나머지는 정상 동작합니다.

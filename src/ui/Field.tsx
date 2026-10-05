@@ -8,8 +8,8 @@ import { Sprite } from './Sprite';
 const pct=(x:number,y:number)=>({left:`${x/WORLD.width*100}%`,top:`${y/WORLD.height*100}%`});
 // Radial build menu slots around a pad, in world units.
 const RING:[number,number][]=[[-58,-52],[58,-52],[-58,44],[58,44]],RING_SIZE=240;
-interface Props {game:Game;selected:number|null;target?:number|null;onSelect:(pad:number|null)=>void;reduced:boolean;preview?:boolean;onBuild?:(type:QuestionType)=>void;onSell?:()=>void;onStartWave?:()=>void}
-export function Field({game,selected,target=null,onSelect,reduced,preview=false,onBuild,onSell,onStartWave}:Props){
+interface Props {game:Game;selected:number|null;target?:number|null;onSelect:(pad:number|null)=>void;reduced:boolean;preview?:boolean;onBuild?:(type:QuestionType)=>void;onSell?:()=>void;onStartWave?:()=>void;onCallEarly?:()=>void}
+export function Field({game,selected,target=null,onSelect,reduced,preview=false,onBuild,onSell,onStartWave,onCallEarly}:Props){
  const ref=useRef<HTMLCanvasElement>(null);
  const live=useRef({selected,target,reduced});live.current={selected,target,reduced};
  useEffect(()=>{
@@ -27,7 +27,8 @@ export function Field({game,selected,target=null,onSelect,reduced,preview=false,
  return <div className={`field ${preview?'field-preview':''}`} onClick={e=>{if(e.target===e.currentTarget||(e.target as HTMLElement).tagName==='CANVAS')onSelect(null);}}>
   <canvas ref={ref} width="960" height="600" aria-label="숲길을 따라 기지로 이동하는 적과 여덟 개의 타워 건설 지점"/>
   {!preview&&PADS.map((p,i)=>{const t=s.towers.find(t=>t.pad===i);return <button key={i} className={`pad-hit ${t?'has-tower':''} ${selected===i?'selected':''}`} style={pct(p.x,p.y-(t?14:0))} disabled={!active} onClick={()=>onSelect(selected===i?null:i)} aria-label={`${i+1}번 ${t?`${TOWERS[t.type].name} 타워 Lv${t.level}`:'건설 지점'}`} aria-pressed={selected===i}/>;})}
-  {!preview&&s.phase==='prep'&&!s.paused&&<button className="wave-call" style={pct(56,game.stage.route.points[0].y)} onClick={onStartWave} disabled={!s.towers.length||game.reviewing()} aria-label={`웨이브 ${s.wave+1} 시작`}><Skull size={22} strokeWidth={2.5}/><span>{!s.towers.length?'타워 필요':game.reviewing()?'복습 중':`WAVE ${s.wave+1}`}</span></button>}
+  {!preview&&s.phase==='prep'&&!s.paused&&<button className="wave-call" style={pct(56,game.stage.routes[0].points[0].y)} onClick={onStartWave} disabled={!s.towers.length||game.reviewing()} aria-label={`웨이브 ${s.wave+1} 시작`}><Skull size={22} strokeWidth={2.5}/><span>{!s.towers.length?'타워 필요':game.reviewing()?'복습 중':`WAVE ${s.wave+1}`}</span></button>}
+  {!preview&&game.canCallEarly()&&<button className="wave-call early" style={pct(56,game.stage.routes[0].points[0].y)} onClick={onCallEarly} aria-label={`다음 웨이브 지금 부르기, 보너스 골드 ${game.earlyBonus()}`} title="다음 웨이브 조기 호출 (N)"><Skull size={18} strokeWidth={2.5}/><span>NEXT +{game.earlyBonus()}G</span></button>}
   {!preview&&pad&&active&&!tower&&<div className="ring" style={pct(pad.x,pad.y)}>
    <div className="ring-circle"/>
    {QUESTION_TYPES.map((t,i)=>{const cost=TOWERS[t].cost,poor=s.gold<cost;return <button key={t} className={`ring-option ${t}`} style={{left:`${50+RING[i][0]/RING_SIZE*100}%`,top:`${50+RING[i][1]/RING_SIZE*100}%`}} disabled={poor} onClick={()=>onBuild?.(t)} title={`${TOWERS[t].name} · ${TOWERS[t].label}`} aria-label={`${TOWERS[t].name} 건설 ${cost} 골드`}>

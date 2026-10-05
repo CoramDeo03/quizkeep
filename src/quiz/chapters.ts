@@ -6,7 +6,8 @@ import { QUESTION_TYPES, type Question, type QuestionPack } from './types';
  * Reads the "by chapter" bank ({ metadata, chapter_1: { metadata, true_false: [...], ... }, chapter_2: ... })
  * into one validated pack per chapter. Raw `keywords` / `required_keywords` become partial-credit concept groups.
  */
-export interface ChapterPack { id: string; title: string; coverage?: string; pack: QuestionPack }
+/** `extra`: a stand-alone chapter file listed in the manifest's `extras` (not part of the full bank). */
+export interface ChapterPack { id: string; title: string; coverage?: string; pack: QuestionPack; extra?: boolean }
 
 const STOPWORDS = new Set('a an the and or of to in on at for by with is are be as it its this that from into than then when which while each can may into was were their there these those via per its'.split(' '));
 
@@ -41,10 +42,21 @@ export function conceptsFor(question: string, keywords: unknown, modelAnswer: st
   return words.map(keywordVariants).filter(satisfied);
 }
 
-function convertChapter(chapter: Record<string, unknown>, fallbackTitle: string): QuestionPack {
+/**
+ * Optional hand-written rubric on a raw open-ended question: `concepts` is a list of synonym groups, `min_concepts`
+ * how many groups must appear. Used when the generated keywords would be too weak (e.g. every keyword is already in the prompt).
+ */
+function handRubric(value: unknown): string[][] | undefined {
+  if (!Array.isArray(value)) return undefined;
+  const groups = value.filter((g): g is string[] => Array.isArray(g) && g.length > 0 && g.every(p => typeof p === 'string' && p.trim().length > 0));
+  return groups.length ? groups : undefined;
+}
+
+/** `topic` overrides the topic taken from the metadata title; `extra` questions (e.g. calculations) join before validation. */
+export function convertChapter(chapter: Record<string, unknown>, fallbackTitle: string, options: { topic?: string; extra?: Question[] } = {}): QuestionPack {
   const meta = (chapter.metadata && typeof chapter.metadata === 'object' ? chapter.metadata : {}) as Record<string, unknown>;
   const title = typeof meta.title === 'string' ? meta.title : fallbackTitle;
-  const topic = title.split(' - ')[0];
+  const topic = options.topic ?? title.split(' - ')[0];
   const questions = QUESTION_TYPES.flatMap(type => (Array.isArray(chapter[type]) ? chapter[type] as Record<string, unknown>[] : []).map((q): Question => {
     const prompt = String(q.question ?? ''), common = { id: String(q.id), prompt, topic };
     if (type === 'true_false') return { ...common, type, answer: q.answer as boolean, explanation: String(q.explanation ?? '') };
@@ -56,10 +68,11 @@ function convertChapter(chapter: Record<string, unknown>, fallbackTitle: string)
       const answer = String(q.answer ?? ''), concepts = conceptsFor(prompt, q.keywords, answer);
       return { ...common, type, answers: [answer], explanation: answer, ...(concepts.length ? { concepts, minConcepts: Math.max(1, Math.ceil(concepts.length * .5)) } : {}) };
     }
-    const model = String(q.sample_answer ?? ''), concepts = conceptsFor(prompt, q.required_keywords, model);
-    return { ...common, type, modelAnswer: model, explanation: model, concepts, minConcepts: Math.max(1, Math.ceil(concepts.length * .6)) };
+    const model = String(q.sample_answer ?? ''), given = handRubric(q.concepts), concepts = given ?? conceptsFor(prompt, q.required_keywords, model);
+    const min = typeof q.min_concepts === 'number' ? q.min_concepts : Math.max(1, Math.ceil(concepts.length * .6));
+    return { ...common, type, modelAnswer: model, explanation: model, concepts, minConcepts: Math.min(min, concepts.length) };
   }));
-  return validatePack({ version: 1, title, coverage: typeof meta.coverage === 'string' ? [meta.coverage] : undefined, questions });
+  return validatePack({ version: 1, title, coverage: typeof meta.coverage === 'string' ? [meta.coverage] : undefined, questions: [...questions, ...(options.extra ?? [])] });
 }
 
 export function isChapterBank(data: unknown): data is Record<string, unknown> {
