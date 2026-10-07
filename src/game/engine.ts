@@ -110,7 +110,7 @@ export class Game {
   togglePause(){if(!['prep','battle'].includes(this.state.phase))return;this.state.paused=!this.state.paused;this.accumulator=0;this.notify();}
   pause(){if(!this.state.paused&&['prep','battle'].includes(this.state.phase))this.togglePause();}
   focus(){const s=this.state;if(s.phase!=='battle'||s.paused||s.focusRemaining>0||s.focusCharges<=0)return false;s.focusCharges--;s.focusRemaining=8;this.notify();return true;}
-  /** While an open-ended answer is being typed the battle runs slower (see TYPING_SLOW). */
+  /** While a calculation or written answer is being worked on the battle runs slower (see TYPING_SLOW, SLOW_TYPES). */
   setTyping(on:boolean){if(this.state.typing===on)return;this.state.typing=on;this.notify();}
   blockReason(towerId:number|null){
     const s=this.state,t=this.tower(towerId);

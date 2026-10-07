@@ -8,7 +8,7 @@
  */
 import { readFileSync } from 'node:fs';
 import { Game } from '../src/game/engine';
-import { TOWERS, PERKS, WRONG_LOCKOUT, pendingPerks } from '../src/game/config';
+import { TOWERS, PERKS, WRONG_LOCKOUT, SLOW_TYPES, pendingPerks } from '../src/game/config';
 import { type StageDef } from '../src/game/stages';
 import { validatePack } from '../src/quiz/loader';
 import type { Question, QuestionType } from '../src/quiz/types';
@@ -32,7 +32,7 @@ export interface Player {
   perks?: 'a' | 'b' | 'mix';
   /** Play at ×2 speed during waves. */
   fast?: boolean;
-  /** The "slow battle while typing open-ended" option (on by default in the game). */
+  /** The "slow the battle while solving calculation / written questions" option (on by default in the game). */
   slowTyping?: boolean;
   /** Never answer (accuracy is ignored). */
   idle?: boolean;
@@ -83,7 +83,7 @@ export function simulate(stage: StageDef, player: Player): Result {
       if (t) { target = t.id; busy = BASE_SECONDS[t.type] * pace + .5; }
     }
     const answering = target !== null ? g.tower(target) : undefined;
-    g.setTyping((player.slowTyping ?? true) && answering?.type === 'open_ended' && busy > 0);
+    g.setTyping((player.slowTyping ?? true) && !!answering && SLOW_TYPES.includes(answering.type) && busy > 0);
     if (answering && busy <= 0) {
       const card = s.cards[answering.type], right = chance() < accuracy;
       const r = g.submit(answering.id, card.token, right ? answerFor(card.question) : wrongFor(card.question));

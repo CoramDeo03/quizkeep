@@ -108,8 +108,10 @@ export const upgradeGain = (type:QuestionType, combo:number, level = 1) => Math.
 export const wrongPenalty = (type:QuestionType, level = 1) => Math.max(1, Math.round(TOWERS[type].penalty / (1 + tierOf(level))));
 /** Seconds of answer lockout after a wrong answer, so guessing is not free. */
 export const WRONG_LOCKOUT = 3;
-/** Game speed while the learner types an open-ended answer (when the option is on). Time-slow (F) still wins when slower. */
+/** Game speed while the learner works on a calculation or written answer (when the option is on). Time-slow (F) still wins when slower. */
 export const TYPING_SLOW = .5;
+/** Question types that take long enough to slow the battle while being answered: calculations and written answers. */
+export const SLOW_TYPES: readonly QuestionType[] = ['short_answer', 'open_ended'];
 /** Gold for each question answered correctly in the between-wave review. */
 export const REVIEW_GOLD = 12;
 

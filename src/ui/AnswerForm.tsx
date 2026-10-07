@@ -13,7 +13,7 @@ interface Props {
   given?: { answer: Answer; correct: boolean };
   submitLabel: ReactNode;
   inputRef?: Ref<HTMLInputElement & HTMLTextAreaElement>;
-  /** Reports when the open-ended text box gains or loses focus (the battle slows while typing). */
+  /** Reports when the answer box (short answer or written) gains or loses focus (the battle slows while answering). */
   onFocusChange?: (focused: boolean) => void;
 }
 
@@ -29,7 +29,7 @@ export function AnswerForm({ question, draft, onDraft, onSubmit, disabled, answe
         <span className="key">{String.fromCharCode(65 + i)}</span><span lang="en">{choice.text}</span></button>)}</div>
     : <>
       {question.type === 'short_answer'
-        ? <input ref={inputRef} className="answer-input" aria-label="답 입력" lang="en" autoComplete="off" maxLength={2000} value={draft} disabled={answered} onChange={e => onDraft(e.target.value)} onKeyDown={e => { if (e.key === 'Enter' && e.nativeEvent.isComposing) e.preventDefault(); }} placeholder="Type your answer…" />
+        ? <input ref={inputRef} className="answer-input" aria-label="답 입력" onFocus={() => onFocusChange?.(true)} onBlur={() => onFocusChange?.(false)} lang="en" autoComplete="off" maxLength={2000} value={draft} disabled={answered} onChange={e => onDraft(e.target.value)} onKeyDown={e => { if (e.key === 'Enter' && e.nativeEvent.isComposing) e.preventDefault(); }} placeholder="Type your answer…" />
         : <textarea ref={inputRef} className="answer-input" aria-label="서술형 답 입력" onFocus={() => onFocusChange?.(true)} onBlur={() => onFocusChange?.(false)} lang="en" rows={4} maxLength={5000} value={draft} disabled={answered} onChange={e => onDraft(e.target.value)} onKeyDown={e => { if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) { e.preventDefault(); if (!answered) onSubmit(draft); } }} placeholder="Explain with the key concepts…" />}
       {question.type === 'open_ended' && <p className="grading-note">핵심 개념 {question.minConcepts ?? question.concepts.length}개 이상 포함하면 정답 · Ctrl/⌘+Enter 제출</p>}
       {!answered && <button type="submit" className="btn btn-fire btn-lg" disabled={disabled || !draft.trim()}>{submitLabel}</button>}

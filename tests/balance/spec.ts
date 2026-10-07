@@ -7,12 +7,15 @@ import { describe, expect, it } from 'vitest';
 import { STAGES } from '../../src/game/stages';
 import { PACES, simulate, winRate } from '../sim';
 
-/** Accuracy at which a normal-pace player should reliably clear each stage. */
-export const PASS = [.6, .7, .7, .8, .8];
+/**
+ * `pass`: accuracy at which a normal-pace player should reliably clear each stage; `low`: an accuracy that should mostly lose.
+ * Measured with the calculation/written-answer slowdown on (the virtual player answers every type equally well).
+ */
+export const TARGETS = [{ pass: .5, low: .3 }, { pass: .6, low: .4 }, { pass: .7, low: .5 }, { pass: .8, low: .6 }, { pass: .8, low: .5 }];
 const SEEDS = 8;
 
 export function stageBalance(id: number) {
-  const stage = STAGES[id - 1], pass = PASS[id - 1];
+  const stage = STAGES[id - 1], { pass, low } = TARGETS[id - 1];
   const rate = (accuracy: number, pace: number, extra = {}) => winRate(stage, { accuracy, pace, ...extra }, SEEDS).rate;
   const pct = (x: number) => `${Math.round(x * 100)}%`;
   describe(`stage ${id} balance`, () => {
@@ -20,13 +23,12 @@ export function stageBalance(id: number) {
       expect(simulate(stage, { accuracy: 0, pace: 1, idle: true }).won).toBe(false);
       for (const seed of [1, 2]) expect(simulate(stage, { accuracy: .5, pace: 1, strategy: 'guess', seed }).won).toBe(false);
     });
-    it(`accuracy matters: ${pct(pass)} at a normal pace clears it, ${pct(pass - .2)} mostly does not`, () => {
+    it(`accuracy matters: ${pct(pass)} at a normal pace clears it, ${pct(low)} mostly does not`, () => {
       expect(rate(pass, PACES.normal)).toBeGreaterThanOrEqual(.7);
-      expect(rate(pass - .2, PACES.normal)).toBeLessThanOrEqual(.35);
+      expect(rate(low, PACES.normal)).toBeLessThanOrEqual(.35);
     });
-    it(`volume matters: at ${pct(pass - .1)} accuracy, answering fast wins and answering slowly loses`, () => {
-      expect(rate(pass - .1, PACES.fast)).toBeGreaterThanOrEqual(.4);
-      expect(rate(pass - .1, PACES.slow)).toBeLessThanOrEqual(.35);
+    it(`volume matters: at ${pct(pass - .1)} accuracy, answering fast wins far more often than answering slowly`, () => {
+      expect(rate(pass - .1, PACES.fast) - rate(pass - .1, PACES.slow)).toBeGreaterThanOrEqual(.4);
     });
     it('both evolution branches are viable', () => {
       const accuracy = Math.min(1, pass + .1);

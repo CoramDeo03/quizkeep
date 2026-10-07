@@ -11,7 +11,7 @@ import { terrain } from './game/renderer';
 import { chapterPacks, mergePacks, type ChapterPack } from './quiz/chapters';
 import { calculationQuestions, withCalculations } from './quiz/calculation';
 import { standaloneChapter, type ExtraChapter } from './quiz/standalone';
-import { TOWERS, ENEMIES, TIER_NAMES, LEVELS_PER_TIER, WRONG_LOCKOUT, REVIEW_GOLD, tierOf, towerStats, comboMultiplier, upgradeGain, MAX_LEVEL, MAX_LEVEL_GOLD, BALANCE_GAP, laserMaxRamp, laserRampSeconds, TYPING_SLOW, PERKS, PERK_INFO, ROMAN, AIMS, perkRank, pendingPerks, type EnemyKind, type Perk } from './game/config';
+import { TOWERS, ENEMIES, TIER_NAMES, LEVELS_PER_TIER, WRONG_LOCKOUT, REVIEW_GOLD, tierOf, towerStats, comboMultiplier, upgradeGain, MAX_LEVEL, MAX_LEVEL_GOLD, BALANCE_GAP, laserMaxRamp, laserRampSeconds, TYPING_SLOW, SLOW_TYPES, PERKS, PERK_INFO, ROMAN, AIMS, perkRank, pendingPerks, type EnemyKind, type Perk } from './game/config';
 import { QUESTION_TYPES, type QuestionType, type QuestionPack, type Answer, type Question } from './quiz/types';
 import { recordAnswer, retractAnswer, notebook, notebookQuestions, breakdown, accuracyOf, studyKey, type StudyLog, type Breakdown } from './quiz/study';
 import { parsePack, validatePack } from './quiz/loader';
@@ -171,8 +171,8 @@ function Experience({ library }: { library: Library }) {
   useEffect(() => { save('quizkeep-quiz-scale', quizScale); }, [quizScale]);
   useEffect(() => { if (!notice) return; const id = setTimeout(() => setNotice(''), 2600); return () => clearTimeout(id); }, [notice]);
   useEffect(() => { if (s.phase === 'battle') playSound('wave', muted); }, [s.wave, s.phase === 'battle']);
-  // Typing an open-ended answer slows the battle, so long explanations are not a race.
-  useEffect(() => { game.setTyping(slowTyping && typingFocus && document.activeElement?.tagName === 'TEXTAREA' && screen === 'game' && type === 'open_ended' && !card?.result); });
+  // Working on a calculation or a written answer slows the battle, so long questions are not a race.
+  useEffect(() => { game.setTyping(slowTyping && typingFocus && !!document.activeElement?.classList.contains('answer-input') && screen === 'game' && !!type && SLOW_TYPES.includes(type) && !card?.result); });
 
   const focusAnswer = () => requestAnimationFrame(() => answerInput.current?.focus());
   // A waiting branch pick sits above the question; focusing the answer box would scroll it out of view.
@@ -348,7 +348,7 @@ function Experience({ library }: { library: Library }) {
           {s.combo >= 2 && <div key={`c${s.combo}`} className={`combo ${s.combo >= 6 ? 'max' : s.combo >= 3 ? 'hot' : ''}`}><b>{s.combo}</b><span>COMBO!</span>{comboMultiplier(s.combo + 1) > 1 && <small>레벨업 ×{comboMultiplier(s.combo + 1)}</small>}</div>}
           {lastAttempt && <div key={`f${s.history.length}`} className={`answer-flash ${lastAttempt.correct ? 'good' : 'bad'}`} />}
           {reviewItem && <div className="review-badge"><BookOpen size={16} />복습 시간 · 적이 기다리는 중</div>}
-          {s.typing && s.phase === 'battle' && !s.paused && s.focusRemaining <= 0 && <div className="focus-badge typing-badge"><Hourglass size={16} />서술형 입력 중 · 속도 {Math.round(TYPING_SLOW * 100)}%</div>}
+          {s.typing && s.phase === 'battle' && !s.paused && s.focusRemaining <= 0 && <div className="focus-badge typing-badge"><Hourglass size={16} />{type === 'short_answer' ? '계산 문제 푸는 중' : '서술형 입력 중'} · 속도 {Math.round(TYPING_SLOW * 100)}%</div>}
           {s.focusRemaining > 0 && <div className="focus-badge"><Hourglass size={16} />시간 감속 {s.focusRemaining.toFixed(1)}s</div>}
           <div className="abilities">
             {roster.map((t, i) => <button key={t.id} className={`ability t-${t.type} ${t.id === targetId ? 'active' : ''}`} onClick={() => pickTarget(t)} disabled={s.paused} aria-pressed={t.id === targetId} aria-label={`${i + 1}번 ${TOWERS[t.type].name} Lv${t.level} 업그레이드 대상으로 선택`}>
@@ -469,7 +469,8 @@ function Experience({ library }: { library: Library }) {
           <li><b>연속 정답 = 콤보.</b> 3콤보부터 레벨업 ×1.5, 6콤보부터 ×2. 오답은 그 타워 레벨이 내려가고(O/X −2, 객관식 −2, 단답·서술 −3, 등급이 높을수록 덜), 콤보 초기화, {WRONG_LOCKOUT}초 패널티.</li>
           <li><b>10레벨마다 진화</b> (강화 → 정예 → 전설, 최대 Lv{MAX_LEVEL}). 모습이 바뀌고 Archer는 다중 사격, Cannon은 전설 쌍포, Laser는 최대 증폭이 커집니다. <b>등급이 높을수록 정답 한 번에 오르는 레벨이 줄어요.</b> 또 한 타워는 <b>다른 타워 평균 레벨 +{BALANCE_GAP}</b>까지만 올라가요(균형 제한) — 여러 타워를 고르게 키우세요.</li>
           <li><b>Laser</b>는 체력이 가장 많은 적을 계속 조준해요. 같은 적을 {laserRampSeconds()}초 쏘면 피해가 최대 ×4(전설 ×7)까지 올라가 <b>보스·탱커 특화</b>입니다.</li>
-          <li><b>서술형</b>은 맞혀도 모범답안과 비교해 보세요. 부족하면 <b>"사실 부족했어요"</b>를 눌러 오답 노트에 넣을 수 있어요(레벨은 그대로). 입력하는 동안 전투가 느려집니다.</li>
+          <li><b>서술형</b>은 맞혀도 모범답안과 비교해 보세요. 부족하면 <b>"사실 부족했어요"</b>를 눌러 오답 노트에 넣을 수 있어요(레벨은 그대로).</li>
+          <li><b>계산(Sniper)·서술형(Laser) 문제</b>는 오래 걸리니까, 답 칸에 커서가 있는 동안 전투가 {Math.round(TYPING_SLOW * 100)}% 속도로 느려져요.</li>
           <li><b>진화 갈래:</b> Lv11·21·31로 진화할 때마다 두 갈래 중 하나를 골라요(Archer 독화살/관통, Cannon 넉백/화염 장판, Sniper 헤드샷/처형, Laser 분광 빔/과충전). 같은 갈래를 또 고르면 II·III으로 강해집니다.</li>
           <li><b>조준 우선순위:</b> 타워를 선택하면 선두 · 강한 적 · 약한 적 · 비행 중 무엇을 먼저 쏠지 고를 수 있어요.</li>
           <li><b>×2 배속(S)</b>으로 쉬운 웨이브를 빨리 넘기고, 적이 다 나온 뒤에는 <b>다음 웨이브 조기 호출(N)</b>로 보너스 골드를 받으세요(그 웨이브 복습은 다음으로 넘어가요).</li>
@@ -481,7 +482,7 @@ function Experience({ library }: { library: Library }) {
         <p className="grading-note">단축키: 1–8 타워 선택 · O/X · A–D · F 감속 · S 배속 · N 조기 호출 · −/= 문제 글자 크기 · Space 일시정지 · Esc 선택 해제</p>
         <label className="setting-row"><input type="checkbox" checked={reduced} onChange={e => setReduced(e.target.checked)} />모션 줄이기</label>
         <div className="setting-row">{textSize}</div>
-        <label className="setting-row"><input type="checkbox" checked={slowTyping} onChange={e => setSlowTyping(e.target.checked)} />서술형 입력 중 전투 속도 {Math.round(TYPING_SLOW * 100)}%로 감속</label>
+        <label className="setting-row"><input type="checkbox" checked={slowTyping} onChange={e => setSlowTyping(e.target.checked)} />계산·서술형 문제를 푸는 동안 전투 속도 {Math.round(TYPING_SLOW * 100)}%로 감속</label>
         <button className="btn btn-green" onClick={() => setHelp(false)}>알겠어요!<Check size={17} /></button>
       </div>
     </Modal>}
